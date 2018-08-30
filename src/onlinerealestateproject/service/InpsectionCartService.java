@@ -7,15 +7,15 @@ import onlinerealestateproject.domain.Order;
 
 public class InpsectionCartService {
 	
-	public static InspectionCart getCartOf(int uid) {
+	public InspectionCart getCartOf(int uid) {
 		return null;
 	}
 	
-	public static ArrayList<Order> getAllOrderInCart(int uid){
+	public ArrayList<Order> getAllOrderInCart(int uid){
 		return null;
 	}
 	
-	public static String cleanCart(int uid) {
+	public String cleanCart(int uid) {
 		return null;
 	}
 	

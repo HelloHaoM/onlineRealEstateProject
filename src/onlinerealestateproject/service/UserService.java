@@ -6,11 +6,11 @@ package onlinerealestateproject.service;
  */
 public class UserService {
 	
-	public static String Login(String userName, String password) {
+	public String Login(String userName, String password) {
 		return null;
 	}
 	
-	public static String register(String userName, String password) {
+	public String register(String userName, String password) {
 		return null;
 	}
 

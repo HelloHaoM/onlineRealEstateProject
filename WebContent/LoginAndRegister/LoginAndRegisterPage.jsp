@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Online RealEstate</title>
-<link rel='stylesheet' href='LoginPage.css'/>
+<link rel='stylesheet' href='LoginAndRegisterPage.css'/>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -17,20 +17,20 @@
             <div class="pr-wrap">
                 <div class="register-body">
                     <label>Register </label>
-                    <form class="register"> 
-                    	<input type="text" placeholder="UserName" />
-                    	<input type="password" placeholder="Password" />
-                    	<input type="submit" value="Submit" class="register-submit btn btn-success btn-sm" />
+                    <form class="register" action="/onlinerealestateproject/LoginAndRegisterController" method="post"> 
+                    	<input type="text" name="register-username" placeholder="Username" />
+                    	<input type="password" name="register-password" placeholder="Password" />
+                    	<input type="submit" name="submit" value="register" class="register-submit btn btn-success btn-sm" />
                     </form>  
                 </div>
             </div>
             <div class="wrap">
                 <p class="form-title">
                     Sign In</p>
-                <form class="login">
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+                <form class="login" action="/onlinerealestateproject/LoginAndRegisterController" method="post">
+                <input type="text" name="username" placeholder="Username" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="submit" name="submit" value="login" class="btn btn-success btn-sm" />
                 <div class="remember-register">
                     <div class="row">
                         <div class="col-md-6">
@@ -51,7 +51,9 @@
         </div>
     </div>
 </div>
+<jsp:include page="../Share/Footer.jsp"></jsp:include>
 </body>
+
 <script>
 	$(document).ready(function () {
     	$('.register-btn').click(function(event) {

@@ -2,14 +2,14 @@ package onlinerealestateproject.service;
 
 import onlinerealestateproject.domain.Order;
 
-public class OrderService {
+/**
+ * @author haomai
+ * A order service interface 
+ */
+
+public interface OrderService {
 	
-	public String makeOrder(int uid, Order order) {
-		return null;
-	}
-	
-	public String deleteOrder(int uid, Order order) {
-		return null;
-	}
+	public String makeOrder(int uid, Order order);
+	public String deleteOrder(int uid, Order order);
 
 }

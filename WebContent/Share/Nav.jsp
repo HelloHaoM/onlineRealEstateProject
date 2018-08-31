@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<style type="text/css">
+</style>
 </head>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">

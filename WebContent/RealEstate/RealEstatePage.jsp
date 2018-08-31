@@ -43,6 +43,8 @@
             <div class="row">
                 <div class="col-sm-6"> 
 
+
+					
                     <!-- Begin Listing: 609 W GRAVERS LN-->
                     <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                         <div class="media">
@@ -184,8 +186,6 @@
                             </div>
                         </div>
                     </div><!-- End Listing-->
-
-
 
                 </div>
 

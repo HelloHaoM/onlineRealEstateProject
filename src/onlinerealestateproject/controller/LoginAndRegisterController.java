@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import onlinerealestateproject.service.UserService;
+import onlinerealestateproject.service.UserServiceImp;
 
 /**
  * Servlet implementation class LoginController
@@ -30,7 +30,7 @@ public class LoginAndRegisterController extends ActionSevlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		UserService userService = new UserService();
+		UserServiceImp userService = new UserServiceImp();
 	}
 
 	/**

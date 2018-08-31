@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import onlinerealestateproject.domain.InspectionCart;
 import onlinerealestateproject.domain.Order;
 
-public class InpsectionCartService {
+/**
+ * @author haomai
+ * A inspection cart service interface implementation
+ */
+
+public class InpsectionCartServiceImp implements InspectionCartService{
 	
 	public InspectionCart getCartOf(int uid) {
 		return null;

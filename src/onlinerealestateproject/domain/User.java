@@ -13,14 +13,17 @@ public class User {
 	private String userName;
 	private String password;
 	
+	private Order order;
+	
 	public User(int uid, String firstName, String lastName,
-			String userName, String password) {
+			String userName, String password, Order order) {
 		this.uid = uid;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		
 		this.userName = userName;
 		this.password = password;
+		this.order = order;
 	}
 	
 	private void load() {

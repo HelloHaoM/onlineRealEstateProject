@@ -291,8 +291,10 @@
                                 <p class="hidden-xs">A once in a lifetime
                                 opportunity! live in this grand home with its
                                 stunning entry and staircase, bedroom suites,
-                                firepla...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
-                                Evergreen</span>
+                                firepla...</p><span class="fnt-smaller fnt-lighter fnt-arial text-right">                               
+                                 <form class="realestate-order" method="post">
+                    				<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
+                    			</form></span>
                             </div>
                         </div>
                     </div><!-- End Listing-->

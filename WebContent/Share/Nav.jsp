@@ -25,10 +25,10 @@
                     <a href="#page-top"></a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#cart">Cart</a>
+                    <a href="../InspectionCart/InspectionCartPage.jsp">Cart</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#account">Account</a>
+                    <a href="../LoginAndRegister/LoginAndRegisterPage.jsp">Log Out</a>
                 </li>
             </ul>
         </div>

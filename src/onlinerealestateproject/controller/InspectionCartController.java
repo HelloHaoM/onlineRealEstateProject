@@ -8,19 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import onlinerealestateproject.service.UserServiceImp;
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class InspectionCartController
  */
-@WebServlet("/LoginAndRegisterController")
-public class LoginAndRegisterController extends ActionServlet {
+@WebServlet("/InspectionCartController")
+public class InspectionCartController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginAndRegisterController() {
+    public InspectionCartController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +28,6 @@ public class LoginAndRegisterController extends ActionServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		UserServiceImp userService = new UserServiceImp();
 	}
 
 	/**
@@ -47,14 +44,8 @@ public class LoginAndRegisterController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		if(request.getParameter("submit").equals("login")) {
-			System.out.println(request.getParameter("username"));
-			//request.getRequestDispatcher("./RealEstate/RealEstatePage.jsp").forward(request, response);
-			//forward("/RealEstatePage.jsp", request, response);
+		if(request.getParameter("back").equals("Back")) {
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp");
-		}
-		else if(request.getParameter("submit").equals("register")) {
-			System.out.println(request.getParameter("register-username"));
 		}
 	}
 

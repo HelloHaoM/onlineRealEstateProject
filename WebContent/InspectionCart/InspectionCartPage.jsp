@@ -88,10 +88,14 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-lg btn-block btn-light">Back</button>
+                	<form class="cart-back" action="/onlinerealestateproject/InspectionCartController" method="post">
+                    	<input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input>
+                    </form>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Confirm</button>
+                	<form class="cart-confirm" action="/onlinerealestateproject/InspectionCartController" method="post">
+                    	<input type="submit" name="confirm" value="Confirm" class="btn btn-lg btn-block btn-success text-uppercase" ></input>
+                    </form>
                 </div>
             </div>
         </div>

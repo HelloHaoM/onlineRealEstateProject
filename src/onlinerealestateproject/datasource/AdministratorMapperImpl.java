@@ -89,9 +89,7 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 			dbStatement.executeUpdate();
 			
 		} catch (SQLException e) {
-			// We don't want any types which use the Data Mapper
-			// to be coupled to java.sql.SQLException
-			// So instead, we throw a custom DataMapperException 
+			 
 			throw new DataMapperException( e);
 		}
 		
@@ -110,9 +108,7 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 			dbStatement.executeUpdate();
 			
 		} catch (SQLException e) {
-			// We don't want any types which use the Data Mapper
-			// to be coupled to java.sql.SQLException
-			// So instead, we throw a custom DataMapperException 
+			
 			throw new DataMapperException( e);
 		}
 		

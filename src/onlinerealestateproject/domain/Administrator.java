@@ -8,9 +8,9 @@ public class Administrator extends User{
 	
 	private String permission;
 
-	public Administrator(int uid, String firstName, String lastName, 
+	public Administrator(int aid, String firstName, String lastName, 
 			String userName, String password, Order order, String permission) {
-		super(uid, firstName, lastName, userName, password, order);
+		super(aid, firstName, lastName, userName, password, order);
 		this.permission = permission;
 	}
 

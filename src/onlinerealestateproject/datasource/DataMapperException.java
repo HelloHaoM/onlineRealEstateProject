@@ -1,5 +1,10 @@
 package onlinerealestateproject.datasource;
 
-public class DataMapperException {
+public final class DataMapperException extends RuntimeException{
+	public DataMapperException (final String message) {
+		super(message);
+		
+	}
+	
 
 }

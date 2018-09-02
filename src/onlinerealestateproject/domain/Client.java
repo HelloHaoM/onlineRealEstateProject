@@ -8,9 +8,9 @@ public class Client extends User{
 	
 	private String permission;
 
-	public Client(int uid, String firstName, String lastName, 
+	public Client(int cid, String firstName, String lastName, 
 			String userName, String password, Order order, String permission) {
-		super(uid, firstName, lastName, userName, password, order);
+		super(cid, firstName, lastName, userName, password, order);
 		this.permission = permission;
 	}
 	

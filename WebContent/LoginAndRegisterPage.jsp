@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="../Share/Footer.jsp"></jsp:include>
+<jsp:include page="./Share/Footer.jsp"></jsp:include>
 </body>
 
 <script>

@@ -1,8 +1,10 @@
 package onlinerealestateproject.datasource;
 
+import java.sql.SQLException;
+
 public final class DataMapperException extends RuntimeException{
-	public DataMapperException (final String message) {
-		super(message);
+	public DataMapperException (final SQLException e) {
+		super(e);
 		
 	}
 	

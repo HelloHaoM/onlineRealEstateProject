@@ -1,5 +1,5 @@
 package onlinerealestateproject.datasource;
 
-public interface OrderMapper {
+public class DataMapperException {
 
 }

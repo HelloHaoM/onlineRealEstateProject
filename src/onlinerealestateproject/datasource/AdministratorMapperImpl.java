@@ -54,43 +54,43 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	public void update(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		try {
-		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
+				Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
 				+ "/onlineRealEstate?serverTimezone=Australia/Melbourne", "root", "19950110maihao");		
-		String statement = "UPDATE 'administrator' SET 'aid'=?, 'firstName'=?, 'lastName'=?, 'userName'=?,'password'=? where 'aid'=?";
-		PreparedStatement dbStatement = db.prepareStatement(statement);
-		dbStatement.setInt(1, administrator.getUid());
-		dbStatement.setString(2, administrator.getFirstName());
-		dbStatement.setString(3, administrator.getLastName());
-		dbStatement.setString(4, administrator.getUserName());
-		dbStatement.setString(5, administrator.getPassword());
-		dbStatement.setInt(4, administrator.getOrder());		
-		dbStatement.executeUpdate();
+				String statement = "UPDATE 'administrator' SET 'aid'=?, 'firstName'=?, 'lastName'=?, 'userName'=?,'password'=? where 'aid'=?";
+				PreparedStatement dbStatement = db.prepareStatement(statement);
+				dbStatement.setInt(1, administrator.getUid());
+				dbStatement.setString(2, administrator.getFirstName());
+				dbStatement.setString(3, administrator.getLastName());
+				dbStatement.setString(4, administrator.getUserName());
+				dbStatement.setString(5, administrator.getPassword());
+				dbStatement.setInt(4, administrator.getOrder());		
+				dbStatement.executeUpdate();
 		} catch (SQLException e) {
 			
-			throw new DataMapperException(e);
-		}
+				throw new DataMapperException(e);
+			}
 	}
 
 
 	public void insert(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		try {
-			Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
+				Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
 					+ "/onlineRealEstate?serverTimezone=Australia/Melbourne", "root", "19950110maihao");	
 	
-			String statement = "INSERT INTO 'administrator' ('aid', 'fistName', 'lastName','userName','password') VALUES (1, steve, aoki, steve,123)";
-			PreparedStatement dbStatement = db.prepareStatement(statement);
-			dbStatement.setInt(1, administrator.getUid());
-			dbStatement.setString(2, administrator.getFirstName());
-			dbStatement.setString(3, administrator.getLastName());
-			dbStatement.setString(4, administrator.getUserName());
-			dbStatement.setString(5, administrator.getPassword());
-			dbStatement.setInt(4, administrator.getOrder());			
-			dbStatement.executeUpdate();
+				String statement = "INSERT INTO 'administrator' ('aid', 'fistName', 'lastName','userName','password') VALUES (1, steve, aoki, steve,123)";
+				PreparedStatement dbStatement = db.prepareStatement(statement);
+				dbStatement.setInt(1, administrator.getUid());
+				dbStatement.setString(2, administrator.getFirstName());
+				dbStatement.setString(3, administrator.getLastName());
+				dbStatement.setString(4, administrator.getUserName());
+				dbStatement.setString(5, administrator.getPassword());
+				dbStatement.setInt(4, administrator.getOrder());			
+				dbStatement.executeUpdate();
 			
 		} catch (SQLException e) {
 			 
-			throw new DataMapperException( e);
+				throw new DataMapperException( e);
 		}
 		
 	}
@@ -99,17 +99,17 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	public void delete(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		try {
-			Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
+				Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
 					+ "/onlineRealEstate?serverTimezone=Australia/Melbourne", "root", "19950110maihao");	
 	
-			String statement = "DELETE FROM 'administrator' where 'aid'=?";
-			PreparedStatement dbStatement = db.prepareStatement(statement);
-			dbStatement.setInt(1, administrator.getUid());
-			dbStatement.executeUpdate();
+				String statement = "DELETE FROM 'administrator' where 'aid'=?";
+				PreparedStatement dbStatement = db.prepareStatement(statement);
+				dbStatement.setInt(1, administrator.getUid());
+				dbStatement.executeUpdate();
 			
 		} catch (SQLException e) {
 			
-			throw new DataMapperException( e);
+				throw new DataMapperException( e);
 		}
 		
 	}

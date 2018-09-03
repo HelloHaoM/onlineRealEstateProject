@@ -1,5 +1,5 @@
 package onlinerealestateproject.datasource;
 
-public class ApartmentMapperImpl {
+public class ApartmentMapperImpl  {
 
 }

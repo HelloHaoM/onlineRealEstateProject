@@ -26,6 +26,14 @@ public class User {
 		this.order = oid;
 	}
 	
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
+	}
+
 	private void load() {
 		
 	}

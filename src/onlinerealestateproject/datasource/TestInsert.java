@@ -12,12 +12,12 @@ public class TestInsert {
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	insert1(55,"steve","aoki","steve","123");
+	insert(55,"steve","aoki","steve","123");
 
 
   }
 
-private static void insert1(int i, String string, String string2, String string3, String string4) {
+private static void insert(int i, String string, String string2, String string3, String string4) {
 	// TODO Auto-generated method stub
 	try {
 		Administrator administrator = new Administrator(i, string, string2, string3, string4,i,string4);

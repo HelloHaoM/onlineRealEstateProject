@@ -42,7 +42,7 @@ public class ActionServlet extends HttpServlet {
     
     protected void forward(String target, HttpServletRequest request,
     		HttpServletResponse response) throws ServletException, IOException {
-    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(target);
+    	RequestDispatcher dispatcher = request.getRequestDispatcher(target);
     	dispatcher.forward(request, response);
     }
 

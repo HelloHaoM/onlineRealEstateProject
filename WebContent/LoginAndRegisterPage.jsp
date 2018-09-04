@@ -26,7 +26,15 @@
             </div>
             <div class="wrap">
                 <p class="form-title">
-                    Sign In</p>
+                    Sign In
+                </p>
+                <p class="alter-info">
+                	<%
+						String info = (String) request.getAttribute("info");
+						if(info != null)
+							out.print(info);
+					%>
+                </p>
                 <form class="login" action="/onlinerealestateproject/LoginAndRegisterController" method="post">
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />

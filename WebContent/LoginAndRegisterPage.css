@@ -15,6 +15,11 @@ body
 	height:calc(100% - 30px);
 }
 
+.alter-info
+{
+	text-align: center;
+    color: red;
+}
 
 .wrap
 {

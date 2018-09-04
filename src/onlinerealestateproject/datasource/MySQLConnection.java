@@ -1,14 +1,38 @@
 package onlinerealestateproject.datasource;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySQLConnection {
-	public static final String  SQL_URL = "jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
+	public static final String SQL_URL = "jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
+	public static final String USER_NAME = "root";
+	public static final String PASSWORD = "19950110maihao";
+	
+	public static PreparedStatement prepare(String stm) {
+		 
+		PreparedStatement preparedStatement = null;
+		try {	
+	
+	       	Connection dbConnection = getDBConnection();
+				
+			preparedStatement = dbConnection.prepareStatement(stm);
+			
+		} catch (SQLException e) {
 
-	//TODO: A sample mysql connection
-	public static void main(String[] args) {
+			System.out.println(e.getMessage());
+
+		
+		}
+
+		return preparedStatement;
+	} 
+	
+	
+	// Get a mysql connection
+	public static Connection getDBConnection() {
 		// TODO Auto-generated method stub
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -20,15 +44,18 @@ public class MySQLConnection {
 		}
 		
 		try {
-			Connection connect = DriverManager.getConnection(SQL_URL, "root", "19950110maihao");
-			Statement statement = connect.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from user");
-			while (resultSet.next()) {
-				System.out.println(resultSet.getString("name"));
-			}
+			Connection connection = DriverManager.getConnection(SQL_URL, USER_NAME, PASSWORD);
+//			Statement statement = connect.createStatement();
+//			ResultSet resultSet = statement.executeQuery("select * from user");
+//			while (resultSet.next()) {
+//				System.out.println(resultSet.getString("name"));
+//			}
+			System.out.println("DB Connect Successfully");
+			return connection;
 
 		}catch(Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 

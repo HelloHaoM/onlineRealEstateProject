@@ -24,8 +24,15 @@ public class User {
 	
 	private int order;
 	
+	private String permission;
+	
+	public User(String userName, String password) {
+		this.userName = userName;
+		this.password = password;
+	}
+	
 	public User(int uid, String firstName, String lastName,
-			String userName, String password, int oid) {
+			String userName, String password, int oid, String permission) {
 		this.uid = uid;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -33,6 +40,7 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 		this.order = oid;
+		this.permission = permission;
 	}
 	
 	public int getOrder() {
@@ -97,9 +105,9 @@ public class User {
 		this.password = password;
 	}
 	
-	public boolean findUP(String username, String password) {
+	public boolean findUP(String userName, String password) {
 		TestLogin tl1 = new TestLogin();
-		if(tl1.find(username, password)) {
+		if(tl1.find(userName, password)) {
 			return true;
 		}
 		return false;

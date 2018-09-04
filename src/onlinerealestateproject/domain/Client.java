@@ -6,13 +6,17 @@ package onlinerealestateproject.domain;
  */
 public class Client extends User{
 	
-	private String permission;
+	private InspectionCart cart;
 
 	public Client(int cid, String firstName, String lastName, 
-			String userName, String password, Order order, String permission) {
-		super(cid, firstName, lastName, userName, password, order);
-		this.permission = permission;
+			String userName, String password, int order, 
+			String permission, InspectionCart cart) {
+		super(cid, firstName, lastName, userName, password, order, permission);
+		this.cart = cart;
 	}
 	
+	public Client(String firstName, String lastName) {
+		super(firstName,lastName);
+	}
 
 }

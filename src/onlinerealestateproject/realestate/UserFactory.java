@@ -11,24 +11,38 @@ import onlinerealestateproject.domain.User;
  */
 public class UserFactory {
 	
-	public User createUser(String type,
-			int uid, String firstName, String lastName,
-			String userName, String password, Order order, String permission) {
+	public static User createSimpleUser(String type, String userName, String password) {
 		switch(type) {
-		
 		case "client":
-			return new Client(uid, firstName, lastName,
-					userName, password, order, permission);
+			return new Client(userName, password);
 			
 		case "administrator":
-			return new Administrator(uid, firstName, lastName,
-					userName, password, order, permission);
+			return new Administrator(userName, password);
 			
 		default:
 			break;
-			
 		}
 		return null;
 	}
+	
+//	public User createUser(String type,
+//			int uid, String firstName, String lastName,
+//			String userName, String password, int order, String permission) {
+//		switch(type) {
+//		
+//		case "client":
+//			return new Client(uid, firstName, lastName,
+//					userName, password, order, permission);
+//			
+//		case "administrator":
+//			return new Administrator(uid, firstName, lastName,
+//					userName, password, order, permission);
+//			
+//		default:
+//			break;
+//			
+//		}
+//		return null;
+//	}
 
 }

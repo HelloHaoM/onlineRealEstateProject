@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onlinerealestateproject.service.UserService;
 import onlinerealestateproject.service.UserServiceImp;
 
 /**
@@ -51,7 +52,12 @@ public class LoginAndRegisterController extends ActionServlet {
 			System.out.println(request.getParameter("username"));
 			//request.getRequestDispatcher("./RealEstate/RealEstatePage.jsp").forward(request, response);
 			//forward("/RealEstatePage.jsp", request, response);
-			response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+			UserService userService = new UserServiceImp();
+			if(userService.Login(request.getParameter("username"), 
+					request.getParameter("password"))) {
+				response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+			}
+			
 		}
 		else if(request.getParameter("submit").equals("register")) {
 			System.out.println(request.getParameter("register-username"));

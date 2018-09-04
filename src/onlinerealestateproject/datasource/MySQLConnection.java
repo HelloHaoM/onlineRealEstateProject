@@ -8,7 +8,7 @@ public class MySQLConnection {
 	public static final String  SQL_URL = "jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
 
 	//TODO: A sample mysql connection
-	public static void SampleConnect(String[] args) {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

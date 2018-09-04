@@ -19,11 +19,12 @@ public class TestLogin {
 //	find("steve","123");
 //  }
 
-public Boolean find(String a, String b){
+public boolean find(String a, String b){
 	try {
 		int aid1=0;
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-				+ "/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");						
+				+ "/onlineRealEstate?serverTimezone=Australia/Melbourne", "root", "19950110maihao");						
 		String sql = "SELECT * FROM administrator where userName='"+a+"' and password="+b;
 		PreparedStatement dbStatement = db.prepareStatement(sql);
 		System.out.println("MySQL JDBC Driver Registered11!");
@@ -61,10 +62,14 @@ public Boolean find(String a, String b){
 			return false;
 		}
 	}	
-	 catch (SQLException e) {
-		
+	catch (SQLException e) {
 		throw new DataMapperException(e);
 	}
+	catch(ClassNotFoundException e) {
+		e.printStackTrace();
+		return false;
+	}
+	
 	
 }
   

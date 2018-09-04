@@ -7,7 +7,7 @@ package onlinerealestateproject.service;
 
 public interface UserService {
 	
-	public String Login(String userName, String password);
+	public boolean Login(String userName, String password);
 	public String register(String userName, String password);
 
 }

@@ -17,6 +17,8 @@ import onlinerealestateproject.service.UserServiceImp;
 @WebServlet("/LoginAndRegisterController")
 public class LoginAndRegisterController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private UserService userService = new UserServiceImp();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,7 +33,6 @@ public class LoginAndRegisterController extends ActionServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		UserServiceImp userService = new UserServiceImp();
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class LoginAndRegisterController extends ActionServlet {
 			System.out.println(request.getParameter("username"));
 			//request.getRequestDispatcher("./RealEstate/RealEstatePage.jsp").forward(request, response);
 			//forward("/RealEstatePage.jsp", request, response);
-			UserService userService = new UserServiceImp();
+			//UserService userService = new UserServiceImp();
 			if(userService.Login(request.getParameter("username"), 
 					request.getParameter("password"))) {
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp");

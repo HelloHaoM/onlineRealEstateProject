@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.datasource.TestLogin;
+import onlinerealestateproject.datasource.TestRegister;
 
 /**
  * @author haomai
@@ -110,7 +111,19 @@ public class User {
 		if(tl1.find(userName, password)) {
 			return true;
 		}
-		return false;
+		return false;	
+	}
+	
+	public boolean register(int Aid, String firstName, String lastName, String userName,String password) {
+		TestRegister tr1 = new TestRegister();
+		if(tr1.find(userName)) {
+		tr1.insert(Aid,firstName,lastName,userName,password);
+		return true;
+		}else {
+			System.out.print("username is not available");
+			return false;
+			
+		}
 		
 	}
 	

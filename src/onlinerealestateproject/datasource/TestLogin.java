@@ -24,7 +24,7 @@ public boolean find(String a, String b){
 		int aid1=0;
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-				+ "/onlineRealEstate?serverTimezone=Australia/Melbourne", "root", "19950110maihao");						
+				+ "/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");						
 		String sql = "SELECT * FROM administrator where userName='"+a+"' and password="+b;
 		PreparedStatement dbStatement = db.prepareStatement(sql);
 		System.out.println("MySQL JDBC Driver Registered11!");

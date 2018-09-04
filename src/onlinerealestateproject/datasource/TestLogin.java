@@ -13,13 +13,13 @@ public class TestLogin {
 	
 	
 
-  public static void main(String[] argv) {
+//  public static void main(String[] argv) {
+//
+//	System.out.println("-------- MySQL JDBC Connection Testing ------------");
+//	find("steve","123");
+//  }
 
-	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	find("steve","123");
-  }
-
-public static Boolean find(String a, String b){
+public Boolean find(String a, String b){
 	try {
 		int aid1=0;
 		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
@@ -27,10 +27,8 @@ public static Boolean find(String a, String b){
 		String sql = "SELECT * FROM administrator where userName='"+a+"' and password="+b;
 		PreparedStatement dbStatement = db.prepareStatement(sql);
 		System.out.println("MySQL JDBC Driver Registered11!");
-//		dbStatement.setLong(1, '1');
 		System.out.println("MySQL JDBC Driver Registered22!");
 		ResultSet rs = dbStatement.executeQuery();
-//		System.out.println(rs);
 		while(rs.next()) {
 			aid1 = rs.getInt(1);
 			System.out.println(aid1);
@@ -43,9 +41,7 @@ public static Boolean find(String a, String b){
 			String password = rs.getString(5);
 			System.out.println(password);
 			int order = rs.getInt(5);
-//			System.out.println(order);
 			String permission = rs.getString(5);	
-//			System.out.println(permission);
 			Administrator administrator = new Administrator(aid1, fistName, 
 			lastName, userName, password, order, permission);
 			administrator.setUid(aid1);
@@ -54,9 +50,7 @@ public static Boolean find(String a, String b){
 			administrator.setLastName(lastName);
 			administrator.setUserName(userName);
 			administrator.setPassword(password);	
-			administrator.setOrder(order);
-			
-			
+			administrator.setOrder(order);	
 		}
 		if(aid1!=0) {
 			System.out.print("yes");
@@ -66,14 +60,11 @@ public static Boolean find(String a, String b){
 			System.out.print("No");
 			return false;
 		}
-	}
-	
+	}	
 	 catch (SQLException e) {
 		
 		throw new DataMapperException(e);
 	}
-	
-
 	
 }
   

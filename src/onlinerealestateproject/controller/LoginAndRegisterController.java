@@ -53,10 +53,13 @@ public class LoginAndRegisterController extends ActionServlet {
 			System.out.println(request.getParameter("username"));
 			//request.getRequestDispatcher("./RealEstate/RealEstatePage.jsp").forward(request, response);
 			//forward("/RealEstatePage.jsp", request, response);
-			//UserService userService = new UserServiceImp();
-			if(userService.Login(request.getParameter("username"), 
-					request.getParameter("password"))) {
+			String userName = request.getParameter("username");
+			String password = request.getParameter("password");
+			if(userService.Login(userName, password)) {
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+			}
+			else {
+				
 			}
 			
 		}

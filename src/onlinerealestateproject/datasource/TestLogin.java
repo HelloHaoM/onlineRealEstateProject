@@ -1,3 +1,5 @@
+
+
 package onlinerealestateproject.datasource;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,19 +9,22 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.domain.Administrator;
 
-public class TestFind {
+public class TestLogin {
+	
+	
 
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	find(2);
+	find("steve","123");
   }
 
-public static void find(int a){
+public static Boolean find(String a, String b){
 	try {
+		int aid1=0;
 		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
 				+ "/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");						
-		String sql = "SELECT * FROM administrator where Aid="+a;
+		String sql = "SELECT * FROM administrator where userName='"+a+"' and password="+b;
 		PreparedStatement dbStatement = db.prepareStatement(sql);
 		System.out.println("MySQL JDBC Driver Registered11!");
 //		dbStatement.setLong(1, '1');
@@ -27,7 +32,7 @@ public static void find(int a){
 		ResultSet rs = dbStatement.executeQuery();
 //		System.out.println(rs);
 		while(rs.next()) {
-			int aid1 = rs.getInt(1);
+			aid1 = rs.getInt(1);
 			System.out.println(aid1);
 			String fistName = rs.getString(2);
 			System.out.println(fistName);
@@ -51,14 +56,23 @@ public static void find(int a){
 			administrator.setPassword(password);	
 			administrator.setOrder(order);
 			
+			
 		}
-		
+		if(aid1!=0) {
+			System.out.print("yes");
+			return true;
+		}
+		else {
+			System.out.print("No");
+			return false;
+		}
 	}
 	
 	 catch (SQLException e) {
 		
 		throw new DataMapperException(e);
 	}
+	
 
 	
 }

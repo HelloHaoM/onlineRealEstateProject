@@ -40,11 +40,6 @@ public static void update(int a, String string, String string2, String string3, 
 		throw new DataMapperException(e);
 	}
 
-	
 }
-  
 
-	
-
-  
 }

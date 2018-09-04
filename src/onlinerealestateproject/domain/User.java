@@ -1,5 +1,14 @@
 package onlinerealestateproject.domain;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.TestLogin;
+
 /**
  * @author haomai
  * A high level user object
@@ -88,6 +97,15 @@ public class User {
 		this.password = password;
 	}
 	
+	public boolean findUP(String username, String password) {
+		TestLogin tl1 = new TestLogin();
+		if(tl1.find(username, password)) {
+			return true;
+		}
+		return false;
+		
+	}
 	
-
+			
+			
 }

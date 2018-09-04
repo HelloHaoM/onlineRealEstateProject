@@ -13,5 +13,8 @@ public class Administrator extends User{
 		super(aid, firstName, lastName, userName, password, oid);
 		this.permission = permission;
 	}
-
+	
+	
+	
+	
 }

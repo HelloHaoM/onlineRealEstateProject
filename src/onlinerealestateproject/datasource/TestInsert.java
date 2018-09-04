@@ -12,7 +12,7 @@ public class TestInsert {
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	insert(55,"steve","aoki","steve","123");
+	insert(222,"steve","aoki","steve","123");
 
 
   }

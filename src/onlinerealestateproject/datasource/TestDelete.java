@@ -12,7 +12,7 @@ public class TestDelete {
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	delete(2);
+	delete(222);
   }
 
   

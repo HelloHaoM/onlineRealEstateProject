@@ -19,11 +19,7 @@ import onlinerealestateproject.*;
 
 
 public class ApartmentMapperImpl implements ApartmentMapper {
-	public static void returnaplist() {
-		
-		TestFind tf = new TestFind();
-		tf.find("SELECT * FROM apartment");
-	}
+	
 	
 
 //  public static void main(String[] argv) {

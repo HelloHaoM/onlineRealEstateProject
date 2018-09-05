@@ -11,26 +11,27 @@ public class Apartment {
 	
 	private int apid;
 	
-	// the format should be yyyy-mm-dd
+	// the format should be dd/mm/year
 	private String startRentTime;
 	private String endRentTime;
 	private String availableDate;
 	private ArrayList<String> inspectionTimeList;
 	
-	private int availability;
-	private String price;
-	private String location;
+	private String availability;
+	private int price;
 	private int acreage;
+	private String location;
+	private String apartmentName;
+	
 	
 	public Apartment(int apid,
-			String startRentTime, String endRentTime, String availableDate,
-			ArrayList<String> inspectionTimeList,
-			int availablility, String price, String location, int acreage) {
+			String startRentTime, String endRentTime,
+			String availablility, int price, int acreage, String location, String apartmentName) {
 		this.apid = apid;
 		this.startRentTime = startRentTime;
 		this.endRentTime = endRentTime;
-		this.availableDate = availableDate;
-		this.inspectionTimeList = new ArrayList<String>(inspectionTimeList);
+
+		
 		this.availability = availablility;
 		this.price = price;
 		this.location = location;
@@ -91,24 +92,40 @@ public class Apartment {
 		this.inspectionTimeList = new ArrayList<String>(inspectionTimeList);
 	}
 
-	public int getAvailability() {
-		if(this.availability == -1)
+	public String getAvailability() {
+		if(this.availability == null)
 			load();
 		return this.availability;
 	}
 
-	public void setAvailability(int availability) {
+	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
 
-	public String getPrice() {
-		if(this.price == null)
+	public int getPrice() {
+		if(this.price == 0)
 			load();
 		return this.price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public int getApid() {
+		return apid;
+	}
+
+	public void setApid(int apid) {
+		this.apid = apid;
+	}
+
+	public String getApartmentName() {
+		return apartmentName;
+	}
+
+	public void setApartmentName(String apartmentName) {
+		this.apartmentName = apartmentName;
 	}
 
 	public String getLocation() {

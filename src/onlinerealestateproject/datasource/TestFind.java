@@ -9,21 +9,21 @@ import onlinerealestateproject.domain.Administrator;
 
 public class TestFind {
 
-  public static void main(String[] argv) {
+//  public static void main(String[] argv) {
+//
+//	System.out.println("-------- MySQL JDBC Connection Testing ------------");
+//	find("SELECT * FROM administrator where Aid>-1");
+//  }
 
-	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	find(2);
-  }
-
-public static void find(int a){
+public static void find(String statement){
 	try {
-		String sql = "SELECT * FROM administrator where Aid="+a;
+//		String sql = "SELECT * FROM administrator where Aid>"+a;
 		MySQLConnection mysqlconnection = new MySQLConnection();
 		mysqlconnection.getDBConnection();
-		mysqlconnection.prepare(sql);
+		mysqlconnection.prepare(statementl);
 		System.out.println("MySQL JDBC Driver Registered11!");
 		System.out.println("MySQL JDBC Driver Registered22!");
-		ResultSet rs = mysqlconnection.prepare(sql).executeQuery();
+		ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
 
 		while(rs.next()) {
 			int aid1 = rs.getInt(1);
@@ -36,15 +36,17 @@ public static void find(int a){
 			System.out.println(userName);
 			String password = rs.getString(5);
 			System.out.println(password);
-			int order = rs.getInt(5);
-//			System.out.println(order);
-			String permission = rs.getString(5);	
+			int order = rs.getInt(6);
+			System.out.println(order);
+			String permission = rs.getString(7);	
 //			System.out.println(permission);
+			System.out.println(permission);
 			Administrator administrator = new Administrator(aid1, fistName, 
 			lastName, userName, password, order, permission);
 			administrator.setUid(aid1);
-			System.out.println("id="+administrator.getUid());
+			
 			administrator.setFirstName(fistName);
+			System.out.println(administrator.getFirstName()+"--------");
 			administrator.setLastName(lastName);
 			administrator.setUserName(userName);
 			administrator.setPassword(password);	

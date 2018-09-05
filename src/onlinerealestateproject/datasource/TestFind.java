@@ -17,15 +17,14 @@ public class TestFind {
 
 public static void find(int a){
 	try {
-		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-				+ "/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");						
 		String sql = "SELECT * FROM administrator where Aid="+a;
-		PreparedStatement dbStatement = db.prepareStatement(sql);
+		MySQLConnection mysqlconnection = new MySQLConnection();
+		mysqlconnection.getDBConnection();
+		mysqlconnection.prepare(sql);
 		System.out.println("MySQL JDBC Driver Registered11!");
-//		dbStatement.setLong(1, '1');
 		System.out.println("MySQL JDBC Driver Registered22!");
-		ResultSet rs = dbStatement.executeQuery();
-//		System.out.println(rs);
+		ResultSet rs = mysqlconnection.prepare(sql).executeQuery();
+
 		while(rs.next()) {
 			int aid1 = rs.getInt(1);
 			System.out.println(aid1);

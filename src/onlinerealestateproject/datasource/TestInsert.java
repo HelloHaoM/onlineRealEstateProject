@@ -12,7 +12,7 @@ public class TestInsert {
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	insert(222,"steve","aoki","steve","123");
+	insert(233333,"steve","aoki","steve","123");
 
 
   }
@@ -20,11 +20,12 @@ public class TestInsert {
 private static void insert(int i, String string, String string2, String string3, String string4) {
 	// TODO Auto-generated method stub
 	try {
-		Administrator administrator = new Administrator(i, string, string2, string3, string4,i,string4);
-		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");					
+		MySQLConnection mysqlconnection = new MySQLConnection();		
+		Administrator administrator = new Administrator(i, string, string2, string3, string4,i,string4);			
 		String statement = "insert into administrator (aid, firstName, lastName, userName, password)  values (?, ?, ?, ?, ?)";
+		mysqlconnection.getDBConnection();
 		System.out.println("hello");
-		PreparedStatement dbStatement = db.prepareStatement(statement);
+		PreparedStatement dbStatement = mysqlconnection.prepare(statement);
 		System.out.println(dbStatement);
 		dbStatement.setInt(1, i);
 		dbStatement.setString(2, string);

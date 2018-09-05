@@ -18,40 +18,28 @@ public class TestRegister {
 public static boolean find(String a){
 	try {
 		int aid1=0;
-		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-				+ "/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");						
-		String sql = "SELECT * FROM administrator where username='"+a+"'";
-		PreparedStatement dbStatement = db.prepareStatement(sql);
+		MySQLConnection mysqlconnection = new MySQLConnection();
+		mysqlconnection.getDBConnection();						
+		String statement = "SELECT * FROM administrator where username='"+a+"'";
+		PreparedStatement dbStatement = mysqlconnection.prepare(statement);
 		System.out.println("MySQL JDBC Driver Registered11!");
-//		dbStatement.setLong(1, '1');
 		System.out.println("MySQL JDBC Driver Registered22!");
 		ResultSet rs = dbStatement.executeQuery();
-//		System.out.println(rs);
 		while(rs.next()) {
 			aid1 = rs.getInt(1);
-			System.out.println(aid1);
 			String fistName = rs.getString(2);
-			System.out.println(fistName);
 			String lastName = rs.getString(3);
-			System.out.println(lastName);
 			String userName = rs.getString(4);
-			System.out.println(userName);
 			String password = rs.getString(5);
-			System.out.println(password);
 			int order = rs.getInt(5);
-//			System.out.println(order);
-			String permission = rs.getString(5);	
-//			System.out.println(permission);
-			Administrator administrator = new Administrator(aid1, fistName, 
+			String permission = rs.getString(5);				Administrator administrator = new Administrator(aid1, fistName, 
 			lastName, userName, password, order, permission);
 			administrator.setUid(aid1);
-			System.out.println("id="+administrator.getUid());
 			administrator.setFirstName(fistName);
 			administrator.setLastName(lastName);
 			administrator.setUserName(userName);
 			administrator.setPassword(password);	
-			administrator.setOrder(order);
-			
+			administrator.setOrder(order);			
 		}
 		if(aid1!=0) {
 			System.out.print("no, username existed");
@@ -78,10 +66,11 @@ public static void insert(int i, String string, String string2, String string3, 
 	// TODO Auto-generated method stub
 	try {
 		Administrator administrator = new Administrator(i, string, string2, string3, string4,i,string4);
-		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");					
-		String statement = "insert into administrator (aid, firstName, lastName, userName, password)  values (?, ?, ?, ?, ?)";
+		MySQLConnection mysqlconnection = new MySQLConnection();
+		mysqlconnection.getDBConnection();
+		String statement = "insert into administrator ( firstName, lastName, userName, password)  values (?, ?, ?, ?, ?)";
 		System.out.println("hello");
-		PreparedStatement dbStatement = db.prepareStatement(statement);
+		PreparedStatement dbStatement = mysqlconnection.prepare(statement);
 		System.out.println(dbStatement);
 		dbStatement.setInt(1, i);
 		dbStatement.setString(2, string);

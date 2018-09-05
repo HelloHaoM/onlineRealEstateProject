@@ -17,8 +17,16 @@ drop table if exists apartment;
 create table apartment (apid int not null auto_increment,StartRentTime varchar(255), EndRentTime varchar(255),Availability varchar(255),price int, acreage int, location varchar(255), apartmentName varchar(255),  primary key(apid));
 insert into apartment (StartRentTime, EndRentTime,Availability,price, acreage, location, apartmentName) values ('08/09/2018','09/09/2018','yes',100,100,'parkvile','empirestatebuilding');
 
-
-
 drop table if exists order;
 create table order (oid int not null auto_increment,inspStartTime varchar(255), inspEndTime varchar(255),  primary key(oid),uid int, apid int, foreign key(uid) references user(uid), foreign key(apid) references apartment(apid));
-insert into order(inspStartTime, inspEndTime,uid, apid) values ('08/09/2018','09/09/2018', 1, 1)
+insert into order(inspStartTime, inspEndTime,uid, apid) values ('08/09/2018','09/09/2018', 1, 1);
+
+drop table if exists apartment_has_admin;
+create table apartment_has_admin (aid int not null,apid int not null, primary key(aid,apid), foreign key(aid) references administrator(aid), foreign key(apid) references apartment(apid));
+insert into apartment_has_admin(apid, aid) values (1, 1);
+
+drop table if exists order_has_admin;
+create table order_has_admin (oid int not null,aid int not null, primary key(oid,aid), foreign key(oid) references order(oid), foreign key(aid) references administrator(aid));
+insert into order_has_admin(oid, aid) values (1, 1);
+
+

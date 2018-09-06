@@ -27,16 +27,16 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 //	System.out.println("-------- MySQL JDBC Connection Testing ------------");
 //	find( "SELECT * FROM apartment");
 //  }
-
-  public List<Apartment> find(String statement){
+ 
+  public List<Apartment> findAllApartments(String statement){
 	  List<Apartment> apartments = new ArrayList<>();
 		try {
-//			String sql = "SELECT * FROM administrator where Aid>"+a;
+			String sql = "SELECT * FROM apartment";
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
 			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
-			
+			 
 			while(rs.next()) {
 				int apid = rs.getInt(1);
 				String startRentTime = rs.getString(2);
@@ -78,6 +78,10 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 @Override
 public void insert(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
+	ToolInsert ti = new ToolInsert();
+	ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
+			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName);
+
 	
 }
 
@@ -85,14 +89,17 @@ public void insert(Apartment apartment) throws DataMapperException {
 @Override
 public void update(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
-	
-}
+	ToolUpdate tu = new ToolUpdate();
+	tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
+			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName);
+	}
 
 
 @Override
 public void delete(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
-	
+	ToolDelete td = new ToolDelete();
+	td.delete(1, "apartment");
 }
 
 }

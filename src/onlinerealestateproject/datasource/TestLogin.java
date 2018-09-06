@@ -18,7 +18,7 @@ public class TestLogin {
 //	System.out.println("-------- MySQL JDBC Connection Testing ------------");
 //	find("steve","123");
 //  }
-
+ 
 public boolean find(String a, String b){
 	try {
 		int aid1=0;

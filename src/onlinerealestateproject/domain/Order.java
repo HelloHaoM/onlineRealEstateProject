@@ -13,6 +13,9 @@ public class Order {
 	private int apid;
 	
 	private String orderDate;
+	private String inspStartTime;
+	private String inspEndTime;
+	private int id;
 	
 	private String inspectionTime;
 	
@@ -24,6 +27,40 @@ public class Order {
 		this.inspectionTime = inspectionTime;
 	}
 	
+	public Order(int aid1, String inspStartTime, String inspEndTime, int id, int apid2) {
+		// TODO Auto-generated constructor stub
+		this.uid = aid1;
+		this.apid = apid2;
+		this.inspStartTime = inspStartTime;
+		this.inspEndTime = inspEndTime;
+		this.id = id;
+		
+	}
+
+	public String getInspStartTime() {
+		return inspStartTime;
+	}
+
+	public void setInspStartTime(String inspStartTime) {
+		this.inspStartTime = inspStartTime;
+	}
+
+	public String getInspEndTime() {
+		return inspEndTime;
+	}
+
+	public void setInspEndTime(String inspEndTime) {
+		this.inspEndTime = inspEndTime;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private void load() {
 		
 	}

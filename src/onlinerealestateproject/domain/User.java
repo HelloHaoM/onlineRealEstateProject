@@ -16,16 +16,16 @@ import onlinerealestateproject.datasource.TestRegister;
  */
 public class User {
 	
-	private int uid;
-	private String firstName;
-	private String lastName;
+	public int uid;
+	public String firstName;
+	public String lastName;
 	
-	private String userName;
-	private String password;
+	public String userName;
+	public String password;
 	
-	private int order;
+	public int order;
 	
-	private String permission;
+	public String permission;
 	
 	public User(String userName, String password) {
 		this.userName = userName;
@@ -34,7 +34,7 @@ public class User {
 	
 	public User(int uid, String firstName, String lastName,
 			String userName, String password, int oid, String permission) {
-		this.uid = uid;
+//		this.uid = uid;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		
@@ -50,6 +50,14 @@ public class User {
 
 	public void setOrder(int order) {
 		this.order = order;
+	}
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 
 	private void load() {

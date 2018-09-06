@@ -9,19 +9,19 @@ import java.util.Date;
  */
 public class Apartment {
 	
-	private int apid;
+	public int apid;
 	
 	// the format should be dd/mm/year
-	private String startRentTime;
-	private String endRentTime;
-	private String availableDate;
-	private ArrayList<String> inspectionTimeList;
+	public  String startRentTime;
+	public  String endRentTime;
+	public  String availableDate;
+	public  ArrayList<String> inspectionTimeList;
 	
-	private String availability;
-	private int price;
-	private int acreage;
-	private String location;
-	private String apartmentName;
+	public  String availability;
+	public  int price;
+	public  int acreage;
+	public  String location;
+	public  String apartmentName;
 	
 	
 	public Apartment(int apid,
@@ -36,6 +36,7 @@ public class Apartment {
 		this.price = price;
 		this.location = location;
 		this.acreage = acreage;
+		this.apartmentName = apartmentName;
 	}
 
 	private void load() {
@@ -126,7 +127,7 @@ public class Apartment {
 
 	public void setApartmentName(String apartmentName) {
 		this.apartmentName = apartmentName;
-	}
+	} 
 
 	public String getLocation() {
 		if(this.location == null)

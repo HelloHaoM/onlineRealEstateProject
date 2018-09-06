@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import onlinerealestateproject.domain.Administrator;
 
 public class TestFind {
-
+//
 //  public static void main(String[] argv) {
 //
 //	System.out.println("-------- MySQL JDBC Connection Testing ------------");
@@ -20,7 +20,7 @@ public static void find(String statement){
 //		String sql = "SELECT * FROM administrator where Aid>"+a;
 		MySQLConnection mysqlconnection = new MySQLConnection();
 		mysqlconnection.getDBConnection();
-		mysqlconnection.prepare(statementl);
+		mysqlconnection.prepare(statement);
 		System.out.println("MySQL JDBC Driver Registered11!");
 		System.out.println("MySQL JDBC Driver Registered22!");
 		ResultSet rs = mysqlconnection.prepare(statement).executeQuery();

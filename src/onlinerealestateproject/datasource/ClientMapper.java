@@ -2,7 +2,10 @@ package onlinerealestateproject.datasource;
 
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Client;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public interface ClientMapper {
 
 	public Client find(String statement, String tablename);

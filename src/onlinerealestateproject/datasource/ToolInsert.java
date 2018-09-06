@@ -10,7 +10,10 @@ import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.domain.Client;
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.domain.User;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public class ToolInsert {
 
 //  public static void main(String[] argv) {

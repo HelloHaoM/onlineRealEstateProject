@@ -1,7 +1,10 @@
 package onlinerealestateproject.datasource;
 
 import onlinerealestateproject.domain.User;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public class UserMapperImpl implements UserMapper {
 
 	@Override

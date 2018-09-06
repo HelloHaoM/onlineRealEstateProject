@@ -1,7 +1,10 @@
 package onlinerealestateproject.datasource;
 
 import onlinerealestateproject.domain.Administrator;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public interface AdministratorMapper {
 	
 	public Administrator find(String statement, String tablename);

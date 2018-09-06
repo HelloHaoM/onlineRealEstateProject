@@ -17,7 +17,10 @@ import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.*;
 
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public class ApartmentMapperImpl implements ApartmentMapper {
 	
 	

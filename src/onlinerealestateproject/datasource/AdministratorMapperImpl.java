@@ -9,7 +9,10 @@ import java.util.UUID;
 
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Order;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public class AdministratorMapperImpl implements AdministratorMapper {
 
 	@Override

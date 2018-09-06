@@ -6,7 +6,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import onlinerealestateproject.domain.Administrator;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public class ToolDelete {
 
   public static void main(String[] argv) {

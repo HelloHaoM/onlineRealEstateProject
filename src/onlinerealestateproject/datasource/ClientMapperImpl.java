@@ -3,7 +3,10 @@ package onlinerealestateproject.datasource;
 import java.awt.List;
 
 import onlinerealestateproject.domain.Client;
-
+/**
+ * @author Junjie Huang
+ * 
+ */
 public class ClientMapperImpl implements ClientMapper {
 
 	@Override

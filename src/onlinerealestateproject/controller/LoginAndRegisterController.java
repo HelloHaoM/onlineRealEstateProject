@@ -72,6 +72,10 @@ public class LoginAndRegisterController extends ActionServlet {
 			String password = request.getParameter("register-password");
 			if(userService.register(firstName, lastName, userName, password)) {
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+			}else {
+				request.setAttribute("info", "Register Failed");
+				//request.getRequestDispatcher("LoginAndRegisterPage.jsp").forward(request, response);
+				forward("LoginAndRegisterPage.jsp", request, response);
 			}
 		}
 	}

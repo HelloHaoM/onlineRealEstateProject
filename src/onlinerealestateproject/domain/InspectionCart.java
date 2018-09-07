@@ -14,20 +14,20 @@ public class InspectionCart {
 		this.orderList = new ArrayList<Order>();
 	}
 	
-	public static InspectionCart getCartOf(int uid) {
-		return null;
-	}
-	
-	public void addInspectionOrder(Order order) {
-		
-	}
-	
-	public void updateInspectionOrder(int uid, Order order) {
-		
-	}
-	
-	public  void deleteInspectionOrder(int uid, Order order) {
-		
-	}
+//	public static InspectionCart getCartOf(int uid) {
+//		return null;
+//	}
+//	
+//	public void addInspectionOrder(Order order) {
+//		
+//	}
+//	
+//	public void updateInspectionOrder(int uid, Order order) {
+//		
+//	}
+//	
+//	public  void deleteInspectionOrder(int uid, Order order) {
+//		
+//	}
 
 }

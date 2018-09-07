@@ -132,7 +132,7 @@ public static void updateOrder(int oid, String inspStartTime, String inspEndTime
 				dbStatement.setInt(1, order.getUid());
 				dbStatement.setString(2, order.getInspStartTime());
 				dbStatement.setString(3, order.getInspEndTime());
-				dbStatement.setInt(4, order.getId());
+				dbStatement.setInt(4, order.getUid());
 				dbStatement.setInt(5, order.getApid());
 				dbStatement.executeUpdate();
 			}

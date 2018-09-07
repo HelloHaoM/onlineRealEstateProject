@@ -116,6 +116,7 @@ public class User {
 		this.password = password;
 	}
 	
+	
 	public boolean findUP(String userName, String password) {
 		ToolLogin tl1 = new ToolLogin();
 		if(tl1.find(userName, password)) {
@@ -124,46 +125,44 @@ public class User {
 		return false;	
 	}
 	
-
-	public User find(int id) {
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		return userMapperImpl.find(id, "user");
-		
-	}
-	
-	
-	public void insert (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.insert(user);;
-	}
-	
-	
-	public void update (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.update(user);;
-	}
-	
-	
-	public void delete (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.delete(user);;
-	}
-	
-	public boolean login(String username, String password) {
-		
-		ToolLogin tl = new ToolLogin();
-		if(tl.find(username, password)) {
-			System.out.println("login succeded");
-		}else {
-			System.out.println("login failed");
-		}
-		
-		return tl.find(username, password);
-	}
+//	public User find(int id) {
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		return userMapperImpl.find(id, "user");
+//		
+//	}	
+//	
+//	public void insert (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.insert(user);;
+//	}
+//	
+//	
+//	public void update (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.update(user);;
+//	}
+//	
+//	
+//	public void delete (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.delete(user);;
+//	}
+//	
+//	public boolean login(String username, String password) {
+//		
+//		ToolLogin tl = new ToolLogin();
+//		if(tl.find(username, password)) {
+//			System.out.println("login succeded");
+//		}else {
+//			System.out.println("login failed");
+//		}
+//		
+//		return tl.find(username, password);
+//	}
 	
 	
 			

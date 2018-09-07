@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.MySQLConnection;
 import onlinerealestateproject.domain.Administrator;
 /**
  * @author Junjie Huang
@@ -21,19 +22,20 @@ public class ToolDelete {
  
   
 
-public static void delete(int id, String tablename) throws DataMapperException {
+public static boolean delete(int id, String tablename) throws DataMapperException {
 	// TODO Auto-generated method stub
 	try {
-		Connection db = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-				+ "/softwarearchitecture?serverTimezone=Australia/Melbourne", "root", "123");					
 			String statement = "delete from "+tablename+ " where id=?";
-			PreparedStatement dbStatement = db.prepareStatement(statement);
+			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
 			dbStatement.setInt(1, id);
 			dbStatement.executeUpdate();
+			return true;
 		
 	} catch (SQLException e) {
 		
-			throw new DataMapperException( e);
+		e.printStackTrace();
+			//throw new DataMapperException( e);
+		return false;
 	}
 	
 }

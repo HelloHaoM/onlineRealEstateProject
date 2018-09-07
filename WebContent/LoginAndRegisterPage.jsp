@@ -18,6 +18,8 @@
                 <div class="register-body">
                     <label>Register </label>
                     <form class="register" action="/onlinerealestateproject/LoginAndRegisterController" method="post"> 
+                    	<input type="text" name="register-firstname" placeholder="First Name" />
+                    	<input type="text" name="register-lastname" placeholder="Last Name" />
                     	<input type="text" name="register-username" placeholder="Username" />
                     	<input type="password" name="register-password" placeholder="Password" />
                     	<input type="submit" name="submit" value="register" class="register-submit btn btn-success btn-sm" />

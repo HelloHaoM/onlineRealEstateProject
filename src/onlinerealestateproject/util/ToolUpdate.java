@@ -25,7 +25,7 @@ public class ToolUpdate {
 //	updateAp(1,"09/2018","10/2018","no",100,200,"olala","olala");
 //  } 
  
-public static void updateUAC(int id, String firstName, String lastName, String userName, String password,int oid,String permission
+public static boolean updateUAC(int id, String firstName, String lastName, String userName, String password,int oid,String permission
 	 ,String tablename){
 	try {
 		switch(tablename) {
@@ -87,12 +87,13 @@ public static void updateUAC(int id, String firstName, String lastName, String u
 	
 	 catch (SQLException e) {
 		
-		throw new DataMapperException(e);
+		//throw new DataMapperException(e);
+		 return false;
 	}
+	return true;
 
 }
-public static void updateAp(int apid, String StartRentTime, String EndRentTime, String  Availability, int price,int acreage,String location,String apartmentName
-		 ){
+public static boolean updateAp(int apid, String StartRentTime, String EndRentTime, String  Availability, int price,int acreage,String location,String apartmentName){
 		try {
 			
 				Apartment apartment = new Apartment(apid, StartRentTime, EndRentTime,Availability, price,acreage,location,apartmentName);
@@ -111,15 +112,16 @@ public static void updateAp(int apid, String StartRentTime, String EndRentTime, 
 				dbStatement.setString(7, apartment.getLocation());
 				dbStatement.setString(8, apartment.getApartmentName());
 				dbStatement.executeUpdate();
-			}
-		
-
-catch (SQLException e) {
+			}catch (SQLException e) {
 	
-	throw new DataMapperException(e);
+				e.printStackTrace();
+				//throw new DataMapperException(e);
+				return false;
+			}
+		return true;
 }
-		}
-public static void updateOrder(int oid, String inspStartTime, String inspEndTime, int id, int apid){
+
+public static boolean updateOrder(int oid, String inspStartTime, String inspEndTime, int id, int apid){
 		try {
 			
 				Order order = new Order(oid, inspStartTime, inspEndTime,id, apid);
@@ -135,13 +137,13 @@ public static void updateOrder(int oid, String inspStartTime, String inspEndTime
 				dbStatement.setInt(4, order.getUid());
 				dbStatement.setInt(5, order.getApid());
 				dbStatement.executeUpdate();
-			}
-		
-
-catch (SQLException e) {
+			}catch (SQLException e) {
 	
-	throw new DataMapperException(e);
+				e.printStackTrace();
+				//throw new DataMapperException(e);
+				return false;
+			}
+		return true;
 }
-		}
 
 }

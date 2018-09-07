@@ -154,45 +154,38 @@ public class Apartment {
 		this.acreage = acreage;
 	}
 	
-	public static Apartment getApartment(int Apid) {
-		return null;
-	}
 	
-	public static ArrayList<Apartment> getAvailableApartmentList(){
-		return null;
-	}
-	public Apartment find(int id) {
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		return apartmentMapperImpl.find(id);
-		
-	}
-	
-	
-	public void insert (Apartment apartment) throws DataMapperException{
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		apartmentMapperImpl.insert(apartment);
-	}
-	
-	
-	public void update (Apartment apartment) throws DataMapperException{
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		apartmentMapperImpl.delete(apartment);
-	}
-	
-	
-	public void delete (Apartment apartment) throws DataMapperException{
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		apartmentMapperImpl.delete(apartment);
-	}
-
-	public List<Apartment> findAllApartments(int id){
-		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
-		return apmi.findAllApartments(id);
-		
-	}
+//	public Apartment find(int id) {
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		return apartmentMapperImpl.find(id);
+//		
+//	}
+//	
+//	public void insert (Apartment apartment) throws DataMapperException{
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.insert(apartment);
+//	}
+//	
+//	
+//	public void update (Apartment apartment) throws DataMapperException{
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.delete(apartment);
+//	}
+//	
+//	
+//	public void delete (Apartment apartment) throws DataMapperException{
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.delete(apartment);
+//	}
+//
+//	public List<Apartment> findAllApartments(int id){
+//		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
+//		return apmi.findAllApartments(id);
+//		
+//	}
 
 }

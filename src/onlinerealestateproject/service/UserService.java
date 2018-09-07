@@ -8,6 +8,6 @@ package onlinerealestateproject.service;
 public interface UserService {
 	
 	public boolean Login(String userName, String password);
-	public String register(String userName, String password);
+	public boolean register(String firstName, String lastName, String userName, String password);
 
 }

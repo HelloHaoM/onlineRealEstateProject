@@ -25,24 +25,24 @@ public class UserFactory {
 		return null;
 	}
 	
-//	public User createUser(String type,
-//			int uid, String firstName, String lastName,
-//			String userName, String password, int order, String permission) {
-//		switch(type) {
-//		
-//		case "client":
-//			return new Client(uid, firstName, lastName,
-//					userName, password, order, permission);
-//			
-//		case "administrator":
-//			return new Administrator(uid, firstName, lastName,
-//					userName, password, order, permission);
-//			
-//		default:
-//			break;
-//			
-//		}
-//		return null;
-//	}
+	public static User createUser(String type,
+			int uid, String firstName, String lastName,
+			String userName, String password, int order, String permission) {
+		switch(type) {
+		
+		case "client":
+			return new Client(uid, firstName, lastName,
+					userName, password, order, permission);
+			
+		case "administrator":
+			return new Administrator(uid, firstName, lastName,
+					userName, password, order, permission);
+			
+		default:
+			break;
+			
+		}
+		return null;
+	}
 
 }

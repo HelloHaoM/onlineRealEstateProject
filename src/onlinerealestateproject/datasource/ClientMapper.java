@@ -9,8 +9,9 @@ import onlinerealestateproject.domain.Client;
 public interface ClientMapper {
 
 	public Client find(int id);
-	public void insert (Client client) throws DataMapperException;
-	public void update (Client client) throws DataMapperException;
-	public void delete (Client client) throws DataMapperException;
+	public boolean isFind(String username, String password);
+	public boolean insert (Client client) throws DataMapperException;
+	public boolean update (Client client) throws DataMapperException;
+	public boolean delete (Client client) throws DataMapperException;
 
 }

@@ -36,35 +36,21 @@ public class Order {
 		
 	}
 
-
-
-
 	public int getOid() {
 		return oid;
 	}
-
-
-
 
 	public void setOid(int oid) {
 		this.oid = oid;
 	}
 
-
-
-
 	public int getApid() {
 		return apid;
 	}
 
-
-
-
 	public void setApid(int apid) {
 		this.apid = apid;
 	}
-
-
 
 
 	public String getInspStartTime() {
@@ -72,13 +58,9 @@ public class Order {
 	}
 
 
-
-
 	public void setInspStartTime(String inspStartTime) {
 		this.inspStartTime = inspStartTime;
 	}
-
-
 
 
 	public String getInspEndTime() {
@@ -86,13 +68,9 @@ public class Order {
 	}
 
 
-
-
 	public void setInspEndTime(String inspEndTime) {
 		this.inspEndTime = inspEndTime;
 	}
-
-
 
 
 	public int getUid() {
@@ -100,45 +78,42 @@ public class Order {
 	}
 
 
-
-
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
 
-	public Order find(int id) {
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		return orderMapperImpl.find(id);
-		
-	}
+//	public Order find(int id) {
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		return orderMapperImpl.find(id);
+//		
+//	}
 	
-	
-	public void insert (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.insert(order);
-	}
-	
-	
-	public void update (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.delete(order);
-	}
-	
-	
-	public void delete (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.delete(order);
-	}
-
-	public List<Order> findAllOrders(int id){
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		return orderMapperImpl.findAllOrders(id);
-		
-	}
+//	public void insert (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.insert(order);
+//	}
+//	
+//	
+//	public void update (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.delete(order);
+//	}
+//	
+//	
+//	public void delete (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.delete(order);
+//	}
+//
+//	public List<Order> findAllOrders(int id){
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		return orderMapperImpl.findAllOrders(id);
+//		
+//	}
 	
 
 	

@@ -24,12 +24,12 @@ public class ToolLogin {
 //	find("steve","123");
 //  }
  
-public boolean find(String a, String b){
+public boolean find(String username, String password){
 	try {
 		int aid1=0;
 		MySQLConnection mysqlconnection = new MySQLConnection();
 		mysqlconnection.getDBConnection();
-		String statement = "SELECT * FROM administrator where userName='"+a+"' and password="+b;
+		String statement = "SELECT * FROM administrator where userName='"+username+"' and password="+password;
 		PreparedStatement dbStatement = MySQLConnection.prepare(statement);
 		System.out.println("MySQL JDBC Driver Registered11!");
 		System.out.println("MySQL JDBC Driver Registered22!");
@@ -39,16 +39,16 @@ public boolean find(String a, String b){
 			String fistName = rs.getString(2);			
 			String lastName = rs.getString(3);
 			String userName = rs.getString(4);			
-			String password = rs.getString(5);			
+			String passWord = rs.getString(5);			
 			int order = rs.getInt(5);
 			String permission = rs.getString(5);	
 			Administrator administrator = new Administrator(aid1, fistName, 
-			lastName, userName, password, order, permission);
+			lastName, userName, passWord, order, permission);
 			administrator.setUid(aid1);			
 			administrator.setFirstName(fistName);
 			administrator.setLastName(lastName);
 			administrator.setUserName(userName);
-			administrator.setPassword(password);	
+			administrator.setPassword(passWord);	
 			administrator.setOrder(order);	
 		}
 		if(aid1!=0) {

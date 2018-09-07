@@ -66,7 +66,13 @@ public class LoginAndRegisterController extends ActionServlet {
 			
 		}
 		else if(request.getParameter("submit").equals("register")) {
-			System.out.println(request.getParameter("register-username"));
+			String firstName = request.getParameter("register-firstname");
+			String lastName = request.getParameter("register-lastname");
+			String userName = request.getParameter("register-username");
+			String password = request.getParameter("register-password");
+			if(userService.register(firstName, lastName, userName, password)) {
+				response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+			}
 		}
 	}
 

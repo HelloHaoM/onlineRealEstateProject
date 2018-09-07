@@ -24,6 +24,33 @@ public class ToolFind {
 	findClient(1);
   }
   
+  public static boolean findByAccount(String username, String password) {
+	  try {
+			int aid1=0;
+			String statement = "SELECT * FROM user where userName='"+username+"' and password="+password;
+			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			System.out.println("MySQL JDBC Driver Registered11!");
+			System.out.println("MySQL JDBC Driver Registered22!");
+			ResultSet rs = dbStatement.executeQuery();
+			while(rs.next()) {
+				aid1 = rs.getInt(1);
+			}
+			if(aid1!=0) {
+				System.out.print("yes");
+				return true;
+			}
+			else {
+				System.out.print("No");
+				return false;
+			}
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+			//throw new DataMapperException(e);
+			return false;
+		}
+  }
+  
   public static User findUser(int uid){
 	  try {
 			String statement ="select * from user where id="+uid;
@@ -59,11 +86,13 @@ public class ToolFind {
 				user.setOrder(oid);
 				user.setPermission(permission);
 				return user;
-			}}
-			catch (SQLException e) {
+			}
+		}catch (SQLException e) {
+				e.printStackTrace();
 				
-				throw new DataMapperException(e);
-			}return null;
+				//throw new DataMapperException(e);
+			}
+	  return null;
   }
   public static Administrator findAdmin(int aid){
 	  try {
@@ -100,11 +129,13 @@ public class ToolFind {
 				administrator.setOrder(oid);
 				administrator.setPermission(permission);
 				return administrator;
-			}}
-			catch (SQLException e) {
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
 				
-				throw new DataMapperException(e);
-			}return null;
+			//throw new DataMapperException(e);
+		}
+	  return null;
   }
   public static Client findClient(int cid){
 	  try {
@@ -141,11 +172,13 @@ public class ToolFind {
 				client.setOrder(oid);
 				client.setPermission(permission);
 				return client;
-			}}
-			catch (SQLException e) {
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
 				
-				throw new DataMapperException(e);
-			}return null;
+			throw new DataMapperException(e);
+		}
+	  return null;
   }
   
   public static Order findOrder(int id){
@@ -175,11 +208,13 @@ public class ToolFind {
 				order.setUid(uid);
 				order.setApid(apid);					
 				return order;
-			}}
-			catch (SQLException e) {
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
 				
-				throw new DataMapperException(e);
-			}return null;
+			throw new DataMapperException(e);
+		}
+	  return null;
   }
   
   public static Apartment findApartment(int id){
@@ -212,11 +247,13 @@ public class ToolFind {
 				apartment.setApartmentName(apartmentName);
 				
 				return apartment;
-			}}
-			catch (SQLException e) {
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
 				
-				throw new DataMapperException(e);
-			}return null;
+			throw new DataMapperException(e);
+		}
+	  return null;
   }
   
   

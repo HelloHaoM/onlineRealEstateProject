@@ -14,6 +14,15 @@ import onlinerealestateproject.util.ToolUpdate;
 public class ClientMapperImpl implements ClientMapper {
 
 	@Override
+	public boolean isFind(String username, String password) {
+		// TODO Auto-generated method stub
+		ToolFind tf = new ToolFind();
+		if(tf.findByAccount(username, password))
+			return true;
+		return false;
+	}
+	
+	@Override
 	public Client find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
@@ -22,28 +31,37 @@ public class ClientMapperImpl implements ClientMapper {
 	}
 
 	@Override
-	public void insert(Client client) throws DataMapperException {
+	public boolean insert(Client client) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
-		ti.insertUAC(client.uid, client.firstName, client.lastName, client.userName, client.password, client.order, client.permission, "client");
+		if(ti.insertUAC(client.uid, client.firstName, client.lastName, client.userName, client.password, client.order, client.permission, "client"))
+			return true;
+		return false;
+		
 		
 	}
 
 	@Override
-	public void update(Client client) throws DataMapperException {
+	public boolean update(Client client) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolUpdate tu = new ToolUpdate();
-		tu.updateUAC(client.uid, client.firstName, client.lastName,
-				client.userName, client.password,client.order,client.permission, "client");
+		if(tu.updateUAC(client.uid, client.firstName, client.lastName,
+				client.userName, client.password,client.order,client.permission, "client"))
+			return true;
+		return false;
 	
 	}
 
 	@Override
-	public void delete(Client client) throws DataMapperException {
+	public boolean delete(Client client) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		td.delete(1, "client");
+		if(td.delete(1, "client"))
+			return true;
+		return false;
 	}
+
+
 	
 
 	

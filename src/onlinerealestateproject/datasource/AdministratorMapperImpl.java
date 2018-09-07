@@ -20,10 +20,10 @@ import onlinerealestateproject.util.ToolUpdate;
 public class AdministratorMapperImpl implements AdministratorMapper {
 
 	@Override
-	public Administrator find(String statement, String tablename) {
+	public Administrator find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
-		return tf.findAdmin("");
+		return tf.findAdmin(id);
 
 	}
 

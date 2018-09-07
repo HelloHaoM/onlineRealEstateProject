@@ -1,5 +1,11 @@
 package onlinerealestateproject.datasource;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
@@ -13,10 +19,40 @@ import onlinerealestateproject.util.ToolUpdate;
 public class OrderMapperImpl implements OrderMapper{
 
 	@Override
-	public Order find(String statement, String tablename) {
+	public List<Order> findAllOrders(int uid1) {
 		// TODO Auto-generated method stub
-		ToolFind tf = new ToolFind();
-		return tf.findOrder("");
+		List<Order> orders = new ArrayList<>();
+		try {
+			String statement = "select * from order where oid="+uid1;
+			MySQLConnection mysqlconnection = new MySQLConnection();
+			mysqlconnection.getDBConnection();
+			mysqlconnection.prepare(statement);
+			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			 
+			while(rs.next()) {
+				int oid = rs.getInt(1);
+				String inspStartTime = rs.getString(2);
+				String inspEndTime = rs.getString(3);
+				int id = rs.getInt(4);				
+				int apid = rs.getInt(5);								
+				Order order = new Order(oid, inspStartTime, 
+						inspEndTime,id,apid);
+				order.setOid(oid);
+				order.setInspStartTime(inspStartTime);
+				order.setInspEndTime(inspEndTime);
+				order.setUid(id);
+				order.setApid(apid);
+				orders.add(order);
+				
+			}	
+			
+		}catch (SQLException e) {
+			
+			throw new DataMapperException(e);
+		}
+		System.out.println(orders.size());
+		System.out.println("olala");
+		return orders;
 		
 	}
 	
@@ -43,6 +79,13 @@ public class OrderMapperImpl implements OrderMapper{
 		ToolDelete td = new ToolDelete();
 		td.delete(1, "order");
 		
+	}
+
+	@Override
+	public Order find(int id) {
+		// TODO Auto-generated method stub
+		ToolFind tf = new ToolFind();
+		return tf.findOrder(id);
 	}
 
 

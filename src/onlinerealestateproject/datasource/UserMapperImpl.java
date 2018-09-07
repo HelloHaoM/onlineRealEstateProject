@@ -12,10 +12,10 @@ import onlinerealestateproject.util.ToolUpdate;
 public class UserMapperImpl implements UserMapper {
 
 	@Override
-	public User find(String statement, String tablename) {
+	public User find(int id, String tablename) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
-		return tf.findUser("");
+		return tf.findUser(id);
 		
 		
 	}

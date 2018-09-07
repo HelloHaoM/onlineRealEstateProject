@@ -21,12 +21,12 @@ public class ToolFind {
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	findClient("SELECT * FROM client where userName= 'steve'");
+	findClient(1);
   }
   
-  public static User findUser(String statement){
+  public static User findUser(int uid){
 	  try {
-			String sql =statement;
+			String statement ="select * from user where id="+uid;
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
@@ -65,9 +65,9 @@ public class ToolFind {
 				throw new DataMapperException(e);
 			}return null;
   }
-  public static Administrator findAdmin(String statement){
+  public static Administrator findAdmin(int aid){
 	  try {
-			String sql =statement;
+		  	String statement ="select * from administrator where id="+aid;
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
@@ -106,9 +106,9 @@ public class ToolFind {
 				throw new DataMapperException(e);
 			}return null;
   }
-  public static Client findClient(String statement){
+  public static Client findClient(int cid){
 	  try {
-			String sql =statement;
+			String statement ="select * from client where id="+cid;
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
@@ -116,8 +116,8 @@ public class ToolFind {
 			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
 			if(rs.next()) {
-				int aid1 = rs.getInt(1);
-				System.out.println(aid1);
+				int id = rs.getInt(1);
+				System.out.println(id);
 				String fistName = rs.getString(2);
 				System.out.println(fistName);
 				String lastName = rs.getString(3);
@@ -131,9 +131,9 @@ public class ToolFind {
 				String permission = rs.getString(7);	
 //				System.out.println(permission);
 				System.out.println(permission);
-				Client client = new Client(aid1, fistName, 
+				Client client = new Client(id, fistName, 
 				lastName, userName, password, oid, permission);
-				client.setUid(aid1);				
+				client.setUid(id);				
 				client.setFirstName(fistName);
 				client.setLastName(lastName);
 				client.setUserName(userName);
@@ -148,9 +148,9 @@ public class ToolFind {
 			}return null;
   }
   
-  public static Order findOrder(String statement){
+  public static Order findOrder(int id){
 	  try {
-			String sql =statement;
+		  	String statement ="select * from order where oid="+id;
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
@@ -181,5 +181,43 @@ public class ToolFind {
 				throw new DataMapperException(e);
 			}return null;
   }
+  
+  public static Apartment findApartment(int id){
+	  try {
+		  	String statement ="select * from apartment where apid="+id;
+			MySQLConnection mysqlconnection = new MySQLConnection();
+			mysqlconnection.getDBConnection();
+			mysqlconnection.prepare(statement);
+			System.out.println("MySQL JDBC Driver Registered11!");
+			System.out.println("MySQL JDBC Driver Registered22!");
+			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			if(rs.next()) {
+				int apid = rs.getInt(1);
+				String startRentTime = rs.getString(2);			
+				String endRentTime = rs.getString(3);					
+				String availability = rs.getString(4);
+				int price = rs.getInt(5);
+				int acreage = rs.getInt(6);
+				String location = rs.getString(7);
+				String apartmentName = rs.getString(8);
+				
+				Apartment apartment = new Apartment(apid, startRentTime,endRentTime, availability,price,acreage,location, apartmentName);
+				apartment.setapid(apid);			
+				apartment.setStartRentTime(startRentTime);
+				apartment.setEndRentTime(endRentTime);
+				apartment.setAvailability(availability);
+				apartment.setPrice(price);
+				apartment.setAcreage(acreage);
+				apartment.setLocation(location);
+				apartment.setApartmentName(apartmentName);
+				
+				return apartment;
+			}}
+			catch (SQLException e) {
+				
+				throw new DataMapperException(e);
+			}return null;
+  }
+  
   
 }

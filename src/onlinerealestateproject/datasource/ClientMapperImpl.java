@@ -14,10 +14,10 @@ import onlinerealestateproject.util.ToolUpdate;
 public class ClientMapperImpl implements ClientMapper {
 
 	@Override
-	public Client find(String statement, String tablename) {
+	public Client find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
-		return tf.findClient("");
+		return tf.findClient(id);
 
 	}
 

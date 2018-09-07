@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.util.ToolDelete;
+import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
 import onlinerealestateproject.util.ToolUpdate;
 import onlinerealestateproject.*;
@@ -32,10 +33,10 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 //	find( "SELECT * FROM apartment");
 //  }
  
-  public List<Apartment> findAllApartments(String statement){
+  public List<Apartment> findAllApartments(int apid1){
 	  List<Apartment> apartments = new ArrayList<>();
 		try {
-			String sql = "SELECT * FROM apartment";
+			String statement = "select * from apartment where apid="+apid1;
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
@@ -105,5 +106,23 @@ public void delete(Apartment apartment) throws DataMapperException {
 	ToolDelete td = new ToolDelete();
 	td.delete(1, "apartment");
 }
+
+
+
+
+@Override
+public Apartment find(int id) {
+	// TODO Auto-generated method stub
+	ToolFind tf = new ToolFind();
+	return tf.findApartment(id);
+}
+
+
+
+
+
+
+
+
 
 }

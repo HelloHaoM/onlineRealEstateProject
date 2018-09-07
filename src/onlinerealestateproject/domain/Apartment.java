@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import onlinerealestateproject.datasource.ApartmentMapperImpl;
+import onlinerealestateproject.datasource.DataMapperException;
 
 /**
  * @author haomai
@@ -159,21 +161,37 @@ public class Apartment {
 	public static ArrayList<Apartment> getAvailableApartmentList(){
 		return null;
 	}
-	
-	public void addAppartment(Apartment apartment) {
-		return;
-	}
-	
-	public void updateApartment(Apartment apartment) {
-		return;
-	}
-	
-	public void deleteApartment(Apartment apartment) {
+	public Apartment find(int id) {
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		return apartmentMapperImpl.find(id);
 		
 	}
-	public List<Apartment> findAllApartments(String statement){
+	
+	
+	public void insert (Apartment apartment) throws DataMapperException{
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		apartmentMapperImpl.insert(apartment);
+	}
+	
+	
+	public void update (Apartment apartment) throws DataMapperException{
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		apartmentMapperImpl.delete(apartment);
+	}
+	
+	
+	public void delete (Apartment apartment) throws DataMapperException{
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		apartmentMapperImpl.delete(apartment);
+	}
+
+	public List<Apartment> findAllApartments(int id){
 		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
-		return apmi.findAllApartments(statement);
+		return apmi.findAllApartments(id);
 		
 	}
 

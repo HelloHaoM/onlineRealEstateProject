@@ -6,9 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import onlinerealestateproject.datasource.ClientMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.datasource.TestLogin;
 import onlinerealestateproject.datasource.TestRegister;
+import onlinerealestateproject.datasource.UserMapperImpl;
 
 /**
  * @author haomai
@@ -133,6 +135,33 @@ public class User {
 			
 		}
 		
+	}
+	public User find(int id) {
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		return userMapperImpl.find(id, "user");
+		
+	}
+	
+	
+	public void insert (User user) throws DataMapperException{
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		userMapperImpl.insert(user);;
+	}
+	
+	
+	public void update (User user) throws DataMapperException{
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		userMapperImpl.update(user);;
+	}
+	
+	
+	public void delete (User user) throws DataMapperException{
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		userMapperImpl.delete(user);;
 	}
 	
 			

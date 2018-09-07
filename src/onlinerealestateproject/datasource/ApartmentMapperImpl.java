@@ -5,11 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import Util.ToolDelete;
-import Util.ToolInsert;
-import Util.ToolUpdate;
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +13,9 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
+import onlinerealestateproject.util.ToolDelete;
+import onlinerealestateproject.util.ToolInsert;
+import onlinerealestateproject.util.ToolUpdate;
 import onlinerealestateproject.*;
 
 /**

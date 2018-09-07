@@ -2,11 +2,11 @@ package onlinerealestateproject.datasource;
 
 import java.awt.List;
 
-import Util.ToolDelete;
-import Util.ToolFind;
-import Util.ToolInsert;
-import Util.ToolUpdate;
 import onlinerealestateproject.domain.Client;
+import onlinerealestateproject.util.ToolDelete;
+import onlinerealestateproject.util.ToolFind;
+import onlinerealestateproject.util.ToolInsert;
+import onlinerealestateproject.util.ToolUpdate;
 /**
  * @author Junjie Huang
  * 

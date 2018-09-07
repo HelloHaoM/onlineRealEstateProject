@@ -1,4 +1,4 @@
-package Util;
+package onlinerealestateproject.util;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

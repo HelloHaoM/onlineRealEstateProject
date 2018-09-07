@@ -2,6 +2,9 @@ package onlinerealestateproject.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import onlinerealestateproject.datasource.ApartmentMapperImpl;
 
 /**
  * @author haomai
@@ -168,6 +171,10 @@ public class Apartment {
 	public void deleteApartment(Apartment apartment) {
 		
 	}
-	
+	public List<Apartment> findAllApartments(String statement){
+		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
+		return apmi.findAllApartments(statement);
+		
+	}
 
 }

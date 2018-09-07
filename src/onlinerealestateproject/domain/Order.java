@@ -8,113 +8,98 @@ import java.util.UUID;
  */
 public class Order {
 	
-	private UUID oid;
-	private int uid;
-	private int apid;
 	
-	private String orderDate;
-	private String inspStartTime;
-	private String inspEndTime;
-	private int id;
+	public int oid;
+	public int apid;
 	
-	private String inspectionTime;
 	
-	public Order(UUID oid, int uid, int apid, String orderDate, String inspectionTime) {
-		this.oid = oid;
-		this.uid = uid;
-		this.apid = apid;
-		this.orderDate = orderDate;
-		this.inspectionTime = inspectionTime;
-	}
+	public String inspStartTime;
+	public String inspEndTime;
+	public int uid;
 	
-	public Order(int aid1, String inspStartTime, String inspEndTime, int id, int apid2) {
+
+	
+	
+	public Order(int oid, String inspStartTime, String inspEndTime, int uid, int apid2) {
 		// TODO Auto-generated constructor stub
-		this.uid = aid1;
+		this.oid = oid;
 		this.apid = apid2;
 		this.inspStartTime = inspStartTime;
 		this.inspEndTime = inspEndTime;
-		this.id = id;
+		this.uid = uid;
 		
 	}
 
-	public String getInspStartTime() {
-		return inspStartTime;
+
+
+
+	public int getOid() {
+		return oid;
 	}
 
-	public void setInspStartTime(String inspStartTime) {
-		this.inspStartTime = inspStartTime;
-	}
 
-	public String getInspEndTime() {
-		return inspEndTime;
-	}
 
-	public void setInspEndTime(String inspEndTime) {
-		this.inspEndTime = inspEndTime;
-	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	private void load() {
-		
-	}
-
-	public UUID getOid() {
-		if(this.oid == null)
-			load();
-		return this.oid;
-	}
-
-	public void setOid(UUID oid) {
+	public void setOid(int oid) {
 		this.oid = oid;
 	}
 
-	public int getUid() {
-		if(this.uid == -1)
-			load();
-		return this.uid;
-	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
+
 
 	public int getApid() {
-		if(this.apid == -1)
-			load();
-		return this.apid;
+		return apid;
 	}
+
+
+
 
 	public void setApid(int apid) {
 		this.apid = apid;
 	}
 
-	public String getOrderDate() {
-		if(this.orderDate == null)
-			load();
-		return this.orderDate;
+
+
+
+	public String getInspStartTime() {
+		return inspStartTime;
 	}
 
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
+
+
+
+	public void setInspStartTime(String inspStartTime) {
+		this.inspStartTime = inspStartTime;
 	}
 
-	public String getInspectionTime() {
-		if(this.inspectionTime == null)
-			load();
-		return this.inspectionTime;
+
+
+
+	public String getInspEndTime() {
+		return inspEndTime;
 	}
 
-	public void setInspectionTime(String inspectionTime) {
-		this.inspectionTime = inspectionTime;
+
+
+
+	public void setInspEndTime(String inspEndTime) {
+		this.inspEndTime = inspEndTime;
 	}
-	
+
+
+
+
+	public int getUid() {
+		return uid;
+	}
+
+
+
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
 	
 	
 

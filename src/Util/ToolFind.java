@@ -148,4 +148,38 @@ public class ToolFind {
 			}return null;
   }
   
+  public static Order findOrder(String statement){
+	  try {
+			String sql =statement;
+			MySQLConnection mysqlconnection = new MySQLConnection();
+			mysqlconnection.getDBConnection();
+			mysqlconnection.prepare(statement);
+			System.out.println("MySQL JDBC Driver Registered11!");
+			System.out.println("MySQL JDBC Driver Registered22!");
+			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			if(rs.next()) {
+				int aid1 = rs.getInt(1);
+				System.out.println(aid1);
+				String inspStartTime = rs.getString(2);
+				System.out.println(inspStartTime);
+				String inspEndTime = rs.getString(3);
+				System.out.println(inspEndTime);				
+				int uid = rs.getInt(4);
+				System.out.println(uid);
+				int apid = rs.getInt(5);
+				System.out.println(apid);
+				Order order = new Order(aid1, inspStartTime,inspEndTime, uid,apid);
+				order.setUid(aid1);				
+				order.setInspStartTime(inspStartTime);
+				order.setInspEndTime(inspEndTime);
+				order.setUid(uid);
+				order.setApid(apid);					
+				return order;
+			}}
+			catch (SQLException e) {
+				
+				throw new DataMapperException(e);
+			}return null;
+  }
+  
 }

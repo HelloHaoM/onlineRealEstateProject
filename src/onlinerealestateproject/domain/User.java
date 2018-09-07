@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.datasource.ClientMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
-import onlinerealestateproject.datasource.TestLogin;
-import onlinerealestateproject.datasource.TestRegister;
 import onlinerealestateproject.datasource.UserMapperImpl;
+import onlinerealestateproject.util.ToolRegister;
+import onlinerealestateproject.util.ToolLogin;
 
 /**
  * @author haomai
@@ -117,7 +117,7 @@ public class User {
 	}
 	
 	public boolean findUP(String userName, String password) {
-		TestLogin tl1 = new TestLogin();
+		ToolLogin tl1 = new ToolLogin();
 		if(tl1.find(userName, password)) {
 			return true;
 		}
@@ -125,7 +125,7 @@ public class User {
 	}
 	
 	public boolean register(int Aid, String firstName, String lastName, String userName,String password) {
-		TestRegister tr1 = new TestRegister();
+		ToolRegister tr1 = new ToolRegister();
 		if(!tr1.find(userName)) {
 			tr1.insert(Aid,firstName,lastName,userName,password);
 			return true;
@@ -164,6 +164,12 @@ public class User {
 		userMapperImpl.delete(user);;
 	}
 	
-			
+	public boolean login(String username, String password) {
+		
+		ToolLogin tl = new ToolLogin();
+		return tl.find(username, password);
+	}
+	
+	
 			
 }

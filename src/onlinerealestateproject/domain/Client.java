@@ -53,4 +53,14 @@ public class Client extends User{
 		clientMapperImpl.delete(client);;
 	}
 	
+	public boolean register(String username, String password) {
+		
+		
+		
+		return true;
+		
+	}
+	
+	
+	
 }

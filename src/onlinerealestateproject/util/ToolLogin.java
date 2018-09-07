@@ -1,18 +1,20 @@
 
 
-package onlinerealestateproject.datasource;
+package onlinerealestateproject.util;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.MySQLConnection;
 import onlinerealestateproject.domain.Administrator;
 /**
  * @author Junjie Huang
  * 
  */
-public class TestLogin {
+public class ToolLogin {
 	
 	
 

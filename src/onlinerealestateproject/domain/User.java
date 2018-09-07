@@ -124,18 +124,7 @@ public class User {
 		return false;	
 	}
 	
-	public boolean register(int Aid, String firstName, String lastName, String userName,String password) {
-		ToolRegister tr1 = new ToolRegister();
-		if(!tr1.find(userName)) {
-			tr1.insert(Aid,firstName,lastName,userName,password);
-			return true;
-		}else {
-			System.out.print("username is not available");
-			return false;
-			
-		}
-		
-	}
+
 	public User find(int id) {
 		
 		UserMapperImpl userMapperImpl = new UserMapperImpl();
@@ -167,6 +156,12 @@ public class User {
 	public boolean login(String username, String password) {
 		
 		ToolLogin tl = new ToolLogin();
+		if(tl.find(username, password)) {
+			System.out.println("login succeded");
+		}else {
+			System.out.println("login failed");
+		}
+		
 		return tl.find(username, password);
 	}
 	

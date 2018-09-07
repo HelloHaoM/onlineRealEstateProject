@@ -3,6 +3,7 @@ package onlinerealestateproject.domain;
 
 import onlinerealestateproject.datasource.ClientMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.util.ToolRegister;
 
 /**
  * @author haomai
@@ -53,11 +54,16 @@ public class Client extends User{
 		clientMapperImpl.delete(client);;
 	}
 	
-	public boolean register(String username, String password) {
+	public void register(int id,String firstname, String lastname,String username, String password,int oid, String permission,String tablename) {
+		
+		ToolRegister tr = new ToolRegister();
+		if (tr.find(username)) {
+			tr.insert(id, firstname, lastname, username, password, oid, permission, tablename);
+		}else {
+			System.out.println("username existed");
+		}
 		
 		
-		
-		return true;
 		
 	}
 	

@@ -15,12 +15,12 @@ import onlinerealestateproject.domain.Client;
  */
 public class ToolRegister {
 
-  public static void main(String[] argv) {
-
-	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	find("steve");
-	insert(0,"rocket","aoki","k","123",3,"no","client");
-  }
+//  public static void main(String[] argv) {
+//
+//	System.out.println("-------- MySQL JDBC Connection Testing ------------");
+//	find("steve");
+//	insert(0,"rocket","aoki","k","123",3,"no","client");
+//  }
 
 public static boolean find(String a){
 	try {

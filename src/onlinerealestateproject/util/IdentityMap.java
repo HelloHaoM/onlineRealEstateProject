@@ -14,18 +14,20 @@ public class IdentityMap<E> {
 	User user = new User(0, "harry", "potter", "harry", "123", 0, "clinet");
 	IdentityMap<User> map = IdentityMap.getInstance(user);
 	user = map.get(1);
+	int id = 1;
+	
 	if (user == null) {
 		//read record from the database
-		User user1 = new User(0, "harry", "potter", "harry", "123", 0, "clinet");
+//		User user1 = new User(0, null, null, null, null, 0, null);
 		UserMapperImpl umi = new UserMapperImpl();
-		user1.setUid(umi.find(1, "user").getUid());
-		user1.setFirstName(umi.find(1, "user").getFirstName());
-		user1.setLastName(umi.find(1, "user").getLastName());
-		user1.setUserName(umi.find(1, "user").getUserName());
-		user1.setPassword(umi.find(1, "user").getPassword());
-		user1.setOrder(umi.find(1, "user").getOrder());
-		user1.setPermission(umi.find(1, "user").getPermission());
-		map.put(1, user1);
+		user.setUid(umi.find(id, "user").getUid());
+		user.setFirstName(umi.find(id, "user").getFirstName());
+		user.setLastName(umi.find(id, "user").getLastName());
+		user.setUserName(umi.find(id, "user").getUserName());
+		user.setPassword(umi.find(id, "user").getPassword());
+		user.setOrder(umi.find(id, "user").getOrder());
+		user.setPermission(umi.find(id, "user").getPermission());
+		map.put(id, user);
 		}
 	System.out.println("sky fall");
 	System.out.println(user);

@@ -33,14 +33,16 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 //	find( "SELECT * FROM apartment");
 //  }
  
-  public List<Apartment> findAllApartments(){
+  public List<Apartment> findAllApartments(int apid1){
 	  List<Apartment> apartments = new ArrayList<>();
 		try {
-			String statement = "select * from apartment ";
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+
+			String statement = "select * from apartment where apid="+apid1;
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+
 			 
 			while(rs.next()) {
 				int apid = rs.getInt(1);

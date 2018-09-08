@@ -18,13 +18,14 @@ import onlinerealestateproject.domain.User;
  */
 public class ToolInsert {
 
-  public static void main(String[] argv) {
+//  public static void main(String[] argv) {
 //
 //	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	insertUAC(999,"okok","okok","steve","123",3,"no","client");
+//	insertUAC(999,"okok","okok","steve","123",3,"no","client");
 //	insertAp(999,"08/09/2018","09/09/2018","yes",100,100,"parkvile","empirestatebuilding");
 //	insertOrder(0, "08/09/2018","09/09/2018", 1, 1);
-  }
+//  }
+  
   public static boolean insertOrder(int oid, String inspStartTime ,String inspEndTime , int id,int apid) {
 		// TODO Auto-generated method stub
 		try {

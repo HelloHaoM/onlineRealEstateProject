@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import onlinerealestateproject.service.UserService;
-import onlinerealestateproject.service.UserServiceImp;
+import onlinerealestateproject.service.imp.UserServiceImp;
 
 /**
  * Servlet implementation class LoginController

@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-import onlinerealestateproject.datasource.ApartmentMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 
 /**
  * @author haomai

@@ -2,7 +2,7 @@
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.datasource.*" %>
+    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,6 +139,7 @@
                                 	<form class="realestate-order" action="/onlinerealestateproject/ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
                                 		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
+                                		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
                     					<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
                     				</form>
                     			</span>
@@ -190,7 +191,9 @@
                                 	<form class="realestate-order" action="/onlinerealestateproject/ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
                                 		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
+                                		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
                     					<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
+                    				</form>
                     			</span>
 
                             </div>

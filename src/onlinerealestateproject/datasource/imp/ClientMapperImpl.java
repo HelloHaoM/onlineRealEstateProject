@@ -1,7 +1,9 @@
-package onlinerealestateproject.datasource;
+package onlinerealestateproject.datasource.imp;
 
 import java.awt.List;
 
+import onlinerealestateproject.datasource.ClientMapper;
+import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Client;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;

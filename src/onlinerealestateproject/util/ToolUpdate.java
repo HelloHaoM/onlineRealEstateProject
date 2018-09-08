@@ -117,7 +117,7 @@ public static boolean updateOrder(int oid, String inspStartTime, String inspEndT
 		try {
 			
 				Order order = new Order(oid, inspStartTime, inspEndTime,id, apid);
-				String statement = "update order set oid=?, StartRentTime=?, inspStartTime=?, id=?,apid=? where oid="+oid;
+				String statement = "update order set oid=?, inspStartTime=?, inspEndTime=?, id=?,apid=? where oid="+oid;
 				PreparedStatement dbStatement = MySQLConnection.prepare(statement);
 				System.out.println("MySQL JDBC Driver Registered11!");
 				System.out.println("MySQL JDBC Driver Registered22!");
@@ -134,6 +134,25 @@ public static boolean updateOrder(int oid, String inspStartTime, String inspEndT
 				return false;
 			}
 		return true;
+}
+
+public static boolean updateOrderInspectionTime(int oid, String inspectionTime){
+	try {
+		
+			String statement = "update inspection_order set inspStartTime=?, inspEndTime=? where oid="+oid;
+			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			System.out.println("MySQL JDBC Driver Registered11!");
+			System.out.println("MySQL JDBC Driver Registered22!");
+			dbStatement.setString(1, inspectionTime);
+			dbStatement.setString(2, inspectionTime);
+			dbStatement.executeUpdate();
+		}catch (SQLException e) {
+
+			e.printStackTrace();
+			//throw new DataMapperException(e);
+			return false;
+		}
+	return true;
 }
 
 }

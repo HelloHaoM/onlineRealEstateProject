@@ -1,4 +1,4 @@
-package onlinerealestateproject.datasource;
+package onlinerealestateproject.datasource.imp;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +18,9 @@ import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
 import onlinerealestateproject.util.ToolUpdate;
 import onlinerealestateproject.*;
+import onlinerealestateproject.datasource.ApartmentMapper;
+import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.MySQLConnection;
 
 /**
  * @author Junjie Huang

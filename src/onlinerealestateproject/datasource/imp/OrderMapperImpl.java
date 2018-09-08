@@ -1,10 +1,13 @@
-package onlinerealestateproject.datasource;
+package onlinerealestateproject.datasource.imp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.MySQLConnection;
+import onlinerealestateproject.datasource.OrderMapper;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.util.ToolDelete;
@@ -74,7 +77,16 @@ public class OrderMapperImpl implements OrderMapper{
 		if(tu.updateOrder(order.oid,order.inspStartTime,order.inspEndTime,order.uid,order.apid))
 			return true;
 		return false;
-		
+	}
+	
+	@Override
+	public boolean updateOrderInspectionTime(int oid, String inspectionTime) throws DataMapperException {
+		// TODO Auto-generated method stub
+		ToolUpdate tu = new ToolUpdate();
+		if(tu.updateOrderInspectionTime(oid, inspectionTime))
+			return true;
+
+		return false;
 	}
 
 	@Override
@@ -103,6 +115,7 @@ public class OrderMapperImpl implements OrderMapper{
 		ToolFind tf = new ToolFind();
 		return tf.findOrder(id);
 	}
+
 
 
 }

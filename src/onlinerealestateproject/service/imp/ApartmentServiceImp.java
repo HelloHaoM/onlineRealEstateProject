@@ -1,8 +1,9 @@
-package onlinerealestateproject.service;
+package onlinerealestateproject.service.imp;
 
 import java.util.ArrayList;
 
 import onlinerealestateproject.domain.Apartment;
+import onlinerealestateproject.service.ApartmentService;
 
 /**
  * @author haomai

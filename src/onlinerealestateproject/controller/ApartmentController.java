@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.service.OrderService;
-import onlinerealestateproject.service.OrderServiceImp;
+import onlinerealestateproject.service.imp.OrderServiceImp;
 
 /**
  * Servlet implementation class ApartmentController
@@ -44,9 +44,10 @@ public class ApartmentController extends ActionServlet {
 		//doGet(request, response);
 		int uid = Integer.parseInt(request.getParameter("client-id"));
 		int apid = Integer.parseInt(request.getParameter("apartment-id"));
+		String inspectionTime = request.getParameter("inspection-time");
 		System.out.println(uid);
 		System.out.println(apid);
-		if(orderService.makeOrder(uid, apid)) {
+		if(orderService.makeOrder(uid, apid, inspectionTime)) {
 			response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 		}
 		

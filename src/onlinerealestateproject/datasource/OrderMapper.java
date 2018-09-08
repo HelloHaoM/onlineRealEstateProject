@@ -17,6 +17,7 @@ public interface OrderMapper {
 	public ArrayList<Order> findAllOrders(int id);
 	public boolean insert (Order order) throws DataMapperException;
 	public boolean update (Order order) throws DataMapperException;
+	public boolean updateOrderInspectionTime (int oid, String inspectionTime) throws DataMapperException;
 	public boolean delete (Order order) throws DataMapperException;
 	public boolean delete (int oid) throws DataMapperException;
 

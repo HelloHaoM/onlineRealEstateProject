@@ -9,7 +9,8 @@ import onlinerealestateproject.domain.Order;
 
 public interface OrderService {
 	
-	public boolean makeOrder(int uid, int apid);
+	public boolean makeOrder(int uid, int apid, String inspectionTime);
 	public boolean deleteOrder(int uid, int oid);
+	public boolean updateOrder(int oid, String inspectionTime);
 
 }

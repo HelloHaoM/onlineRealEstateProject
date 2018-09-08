@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySQLConnection {
-	public static final String SQL_URL = "jdbc:mysql://localhost:3306/softwarearchitecture?serverTimezone=Australia/Melbourne";
+	public static final String SQL_URL = "jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
 	public static final String USER_NAME = "root";
-	public static final String PASSWORD = "123";
+	public static final String PASSWORD = "19950110maihao";
 	
 	public static PreparedStatement prepare(String stm) {
 		 

@@ -10,7 +10,9 @@ import java.util.UUID;
 import onlinerealestateproject.datasource.AdministratorMapper;
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Administrator;
+import onlinerealestateproject.domain.Client;
 import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
@@ -21,11 +23,17 @@ import onlinerealestateproject.util.ToolUpdate;
  */
 public class AdministratorMapperImpl implements AdministratorMapper {
 
+	Administrator administrator = new Administrator(0, null, null, null, null, 0, null);
+	IdentityMap<Administrator> map = IdentityMap.getInstance(administrator);
+	
 	@Override
 	public Administrator find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
-		return tf.findAdmin(id);
+		map.put(id, tf.findAdmin(id));
+		return map.get(id);
+		
+
 
 	}
 
@@ -34,7 +42,10 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
 		if(ti.insertUAC(administrator.uid, administrator.firstName, administrator.lastName, administrator.userName, administrator.password, administrator.order, administrator.permission, "administrator"))
+		{
+			map.put(administrator.getUid(),administrator);
 			return true;
+			}
 		return false;
 		
 	}
@@ -43,20 +54,30 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	public boolean update(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolUpdate tu = new ToolUpdate();
-		if(tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
+		if(map.get(administrator.getUid())!=null){
+			map.put(administrator.getUid(), administrator);
+		
+			if(tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
 				administrator.userName, administrator.password,administrator.order, administrator.permission, "administrator"))
-			return true;
+				return true;
+		return false;
+		}
 		return false;
 	}
+
 
 	@Override
 	public boolean delete(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		if(td.delete(administrator.getUid(), "administator"))
+		if(map.get(administrator.getUid())!=null){
+			map.put(administrator.getUid(), null);
+			if(td.delete(administrator.getUid(), "administator"))
 			return true;
 		return false;
 	}
-
+	
+	return false;
+}
 
 }

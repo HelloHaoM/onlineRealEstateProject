@@ -1,5 +1,7 @@
+<%@page import="onlinerealestateproject.domain.Apartment"%>
+<%@page import="onlinerealestateproject.domain.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,10 @@
 <title>Inspection Cart</title>
 </head>
 <body>
+<%
+	int uid = Integer.parseInt(request.getParameter("id"));
+	System.out.println(uid);
+%>
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">RealEstate Inspection Cart</h1>
@@ -25,62 +31,46 @@
                     <thead>
                         <tr>
                             <th scope="col"> </th>
-                            <th scope="col">Product</th>
+                            <th scope="col">Apartment</th>
                             <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
+                            <th scope="col" class="text-center">Inspection Time</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                    	<%
+                    		OrderMapper orderMapper = new OrderMapperImpl();
+                    		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+                    		ArrayList<Order> orderList = orderMapper.findAllOrders(uid);
+                    		
+                    		for(Order order : orderList){
+                    			Apartment apartment = apartmentMapper.find(order.getApid());
+                    	%>
+                    		<tr>
+                    		<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                    		<td><%= apartment.getApartmentName() %></td>
+                            <td><%= apartment.getAvailability() %></td>
+                            <form action="/onlinerealestateproject/InspectionCartController" method="post">
+                            	<td><input class="form-control" type="text" value="<%= order.getInspEndTime() %>" /></td>
+                            	<td class="text-right">
+                            	<input type="hidden" name="id" value="<%= order.getUid() %>"></input>
+                            	<input type="hidden" name="order-id" value="<%= order.getOid() %>"></input>
+                          		<input class="btn btn-sm btn-danger" type="submit" name="delete" value="Delete"> </input> 
+                          		</td>
+                          	</form>
+                            </tr>
+                    	<% 
+                    		}
+                    		
+                    	%>
+  <!--                       <tr>
                             <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
                             <td>Product Name Dada</td>
                             <td>In stock</td>
                             <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 €</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Toto</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">33,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Titi</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">70,00 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-<!--                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Sub-Total</td>
-                            <td class="text-right">255,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Shipping</td>
-                            <td class="text-right">6,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
                         </tr> -->
+                        
                     </tbody>
                 </table>
             </div>
@@ -89,11 +79,13 @@
             <div class="row">
                 <div class="col-sm-12  col-md-6">
                 	<form class="cart-back" action="/onlinerealestateproject/InspectionCartController" method="post">
+                		<input type="hidden" name="id" value="<%= uid %>"></input>
                     	<input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input>
                     </form>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                 	<form class="cart-confirm" action="/onlinerealestateproject/InspectionCartController" method="post">
+                		<input type="hidden" name="id" value="<%= uid %>"></input>
                     	<input type="submit" name="confirm" value="Confirm" class="btn btn-lg btn-block btn-success text-uppercase" ></input>
                     </form>
                 </div>
@@ -101,6 +93,5 @@
         </div>
     </div>
 </div>
-<jsp:include page="../Share/Footer.jsp"></jsp:include>
 </body>
 </html>

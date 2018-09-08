@@ -23,6 +23,13 @@ public class ClientMapperImpl implements ClientMapper {
 	}
 	
 	@Override
+	public int findIdByAccount(String username, String password) {
+		// TODO Auto-generated method stub
+		ToolFind tf = new ToolFind();
+		return tf.findIdByAccount(username, password);
+	}
+	
+	@Override
 	public Client find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();

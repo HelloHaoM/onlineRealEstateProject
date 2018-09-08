@@ -1,5 +1,8 @@
 package onlinerealestateproject.service;
 
+import onlinerealestateproject.datasource.OrderMapper;
+import onlinerealestateproject.datasource.OrderMapperImpl;
+import onlinerealestateproject.domain.Client;
 import onlinerealestateproject.domain.Order;
 
 /**
@@ -9,12 +12,23 @@ import onlinerealestateproject.domain.Order;
 
 public class OrderServiceImp implements OrderService{
 	
-	public String makeOrder(int uid, Order order) {
-		return null;
+	
+	public boolean makeOrder(int uid, int apid) {
+		Order order = new Order(0, "8:00", "8:30", uid, apid);
+		
+		OrderMapper orderMapper = new OrderMapperImpl();
+		if(orderMapper.insert(order))
+			return true;
+		
+		return false;
 	}
 	
-	public String deleteOrder(int uid, Order order) {
-		return null;
+	public boolean deleteOrder(int uid, int oid) {
+		OrderMapper orderMapper = new OrderMapperImpl();
+		if(orderMapper.delete(oid)) {
+			return true;
+		}
+		return false;
 	}
 
 }

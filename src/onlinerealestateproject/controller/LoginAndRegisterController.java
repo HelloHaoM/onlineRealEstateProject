@@ -53,8 +53,9 @@ public class LoginAndRegisterController extends ActionServlet {
 			System.out.println(request.getParameter("username"));
 			String userName = request.getParameter("username");
 			String password = request.getParameter("password");
-			if(userService.Login(userName, password)) {
-				response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+			if(userService.login(userName, password)) {
+				int id = userService.findUserId(userName, password);
+				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id+"&userName="+userName);
 			}
 			else {
 				request.setAttribute("info", "Wrong User Name or Wrong Password");
@@ -69,7 +70,8 @@ public class LoginAndRegisterController extends ActionServlet {
 			String userName = request.getParameter("register-username");
 			String password = request.getParameter("register-password");
 			if(userService.register(firstName, lastName, userName, password)) {
-				response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+				int id = userService.findUserId(userName, password);
+				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id+"&userName="+userName);
 			}else {
 				request.setAttribute("info", "Register Failed");
 				//request.getRequestDispatcher("LoginAndRegisterPage.jsp").forward(request, response);

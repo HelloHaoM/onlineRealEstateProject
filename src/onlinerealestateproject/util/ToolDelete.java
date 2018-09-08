@@ -13,13 +13,30 @@ import onlinerealestateproject.domain.Administrator;
  * 
  */
 public class ToolDelete {
+	
+	
 
   public static void main(String[] argv) {
 
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	delete(1,"order1");
+	deleteOrder(1,"inspection_order");
   }
- 
+  
+	public static boolean deleteOrder(int oid, String tablename) throws DataMapperException{
+		try {
+			String statement = "delete from "+tablename+ " where oid=?";
+			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			dbStatement.setInt(1, oid);
+			dbStatement.executeUpdate();
+			return true;
+		
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			//throw new DataMapperException( e);
+			return false;
+		}
+	}
   
 
 public static boolean delete(int id, String tablename) throws DataMapperException {
@@ -39,6 +56,7 @@ public static boolean delete(int id, String tablename) throws DataMapperExceptio
 	}
 	
 }
+
 
   
 }

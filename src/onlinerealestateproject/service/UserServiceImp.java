@@ -12,7 +12,12 @@ import onlinerealestateproject.realestate.UserFactory;
  */
 public class UserServiceImp implements UserService {
 	
-	public boolean Login(String userName, String password) {
+	public int findUserId(String userName, String password) {
+		ClientMapper clientMapper = new ClientMapperImpl();
+		return clientMapper.findIdByAccount(userName, password);
+	}
+	
+	public boolean login(String userName, String password) {
 		// create a new client using factory
 		Client client = (Client) UserFactory.createSimpleUser("client", userName, password);
 		ClientMapper clientMapper = new ClientMapperImpl();

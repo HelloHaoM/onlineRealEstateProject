@@ -52,7 +52,7 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 				int price = rs.getInt(5);
 				int acreage = rs.getInt(6);				
 				String location = rs.getString(7);								
-				String apartmentName = rs.getString(7);					
+				String apartmentName = rs.getString(8);					
 				Apartment apartment = new Apartment(apid, startRentTime, 
 				endRentTime, availability, price, acreage, location, apartmentName);
 				apartment.setapid(apid);;

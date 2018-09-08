@@ -16,6 +16,13 @@
 <%
 	int uid = Integer.parseInt(request.getParameter("id"));
 	System.out.println(uid);
+	
+	String info = (String) request.getAttribute("info");
+	if(info != null){
+%>
+	<script type="text/javascript">alert("<%= info %>")</script>
+<% 
+	}
 %>
 <section class="jumbotron text-center">
     <div class="container">
@@ -51,10 +58,11 @@
                     		<td><%= apartment.getApartmentName() %></td>
                             <td><%= apartment.getAvailability() %></td>
                             <form action="/onlinerealestateproject/InspectionCartController" method="post">
-                            	<td><input class="form-control" type="text" value="<%= order.getInspEndTime() %>" /></td>
+                            	<td><input class="form-control" type="text" name="inspection-time" value="<%= order.getInspEndTime() %>" /></td>
                             	<td class="text-right">
                             	<input type="hidden" name="id" value="<%= order.getUid() %>"></input>
                             	<input type="hidden" name="order-id" value="<%= order.getOid() %>"></input>
+                            	<input class="btn btn-sm btn-success" type="submit" name="update" value="Update"> </input>
                           		<input class="btn btn-sm btn-danger" type="submit" name="delete" value="Delete"> </input> 
                           		</td>
                           	</form>

@@ -139,6 +139,10 @@ section {
     color: #535353;
 }
 
+.form-control{
+	margin-bottom: 10px;
+}
+
 /**** MEDIA QUERIES ****/
 @media only screen and (max-width: 991px) {
     #property-listings .property-listing {

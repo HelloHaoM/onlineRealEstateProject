@@ -74,7 +74,16 @@ public class OrderMapperImpl implements OrderMapper{
 		if(tu.updateOrder(order.oid,order.inspStartTime,order.inspEndTime,order.uid,order.apid))
 			return true;
 		return false;
-		
+	}
+	
+	@Override
+	public boolean updateOrderInspectionTime(int oid, String inspectionTime) throws DataMapperException {
+		// TODO Auto-generated method stub
+		ToolUpdate tu = new ToolUpdate();
+		if(tu.updateOrderInspectionTime(oid, inspectionTime))
+			return true;
+
+		return false;
 	}
 
 	@Override
@@ -103,6 +112,7 @@ public class OrderMapperImpl implements OrderMapper{
 		ToolFind tf = new ToolFind();
 		return tf.findOrder(id);
 	}
+
 
 
 }

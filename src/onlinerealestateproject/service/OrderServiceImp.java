@@ -13,8 +13,8 @@ import onlinerealestateproject.domain.Order;
 public class OrderServiceImp implements OrderService{
 	
 	
-	public boolean makeOrder(int uid, int apid) {
-		Order order = new Order(0, "8:00", "8:30", uid, apid);
+	public boolean makeOrder(int uid, int apid, String inspectionTime) {
+		Order order = new Order(0, inspectionTime, inspectionTime, uid, apid);
 		
 		OrderMapper orderMapper = new OrderMapperImpl();
 		if(orderMapper.insert(order))
@@ -28,6 +28,14 @@ public class OrderServiceImp implements OrderService{
 		if(orderMapper.delete(oid)) {
 			return true;
 		}
+		return false;
+	}
+	
+	public boolean updateOrder(int oid, String inspectionTime) {
+		OrderMapper orderMapper = new OrderMapperImpl();
+		
+		if(orderMapper.updateOrderInspectionTime(oid, inspectionTime))
+			return true;
 		return false;
 	}
 

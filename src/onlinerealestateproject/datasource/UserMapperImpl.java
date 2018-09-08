@@ -21,28 +21,34 @@ public class UserMapperImpl implements UserMapper {
 	}
 
 	@Override
-	public void insert(User user) throws DataMapperException {
+	public boolean insert(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
-		ti.insertUAC(user.uid, user.firstName, user.lastName, user.userName, user.password, user.order, user.permission, "user");
+		if(ti.insertUAC(user.uid, user.firstName, user.lastName, user.userName, user.password, user.order, user.permission, "user"))
+			return true;
+		return false;
 		
 		
 	}
 
 	@Override
-	public void update(User user) throws DataMapperException {
+	public boolean update(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolUpdate tu = new ToolUpdate();
-		tu.updateUAC(user.uid, user.firstName, user.lastName,
-				user.userName, user.password,user.order,user.permission, "user");
+		if(tu.updateUAC(user.uid, user.firstName, user.lastName,
+				user.userName, user.password,user.order,user.permission, "user"))
+			return true;
+		return false;
 	
 	}
 
 	@Override
-	public void delete(User user) throws DataMapperException {
+	public boolean delete(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		td.delete(user.getUid(), "user");
+		if(td.delete(user.getUid(), "user"))
+			return true;
+		return false;
 	}
 
 }

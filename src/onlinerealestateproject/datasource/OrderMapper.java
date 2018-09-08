@@ -14,9 +14,9 @@ public interface OrderMapper {
 	
 	public Order find(int id);
 	public List<Order> findAllOrders(int id);
-	public void insert (Order order) throws DataMapperException;
-	public void update (Order order) throws DataMapperException;
-	public void delete (Order order) throws DataMapperException;
+	public boolean insert (Order order) throws DataMapperException;
+	public boolean update (Order order) throws DataMapperException;
+	public boolean delete (Order order) throws DataMapperException;
 
 
 }

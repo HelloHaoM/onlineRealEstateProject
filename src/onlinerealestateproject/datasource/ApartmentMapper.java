@@ -11,9 +11,9 @@ import onlinerealestateproject.domain.Apartment;
 public interface ApartmentMapper {
 	public Apartment find(int id);
 	public List<Apartment> findAllApartments(int id);
-	public void insert (Apartment apartment) throws DataMapperException;
-	public void update (Apartment apartment) throws DataMapperException;
-	public void delete (Apartment apartment) throws DataMapperException;
+	public boolean insert (Apartment apartment) throws DataMapperException;
+	public boolean update (Apartment apartment) throws DataMapperException;
+	public boolean delete (Apartment apartment) throws DataMapperException;
 	
 
 }

@@ -186,25 +186,25 @@ public class Apartment {
 		
 	}
 	
-	public void insert (Apartment apartment) throws DataMapperException{
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		apartmentMapperImpl.insert(apartment);
-	}
-	
-	
-	public void update (Apartment apartment) throws DataMapperException{
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		apartmentMapperImpl.delete(apartment);
-	}
-	
-	
-	public void delete (Apartment apartment) throws DataMapperException{
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		apartmentMapperImpl.delete(apartment);
-	}
+//	public void insert (Apartment apartment) throws DataMapperException{
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.insert(apartment);
+//	}
+//	
+//	
+//	public void update (Apartment apartment) throws DataMapperException{
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.delete(apartment);
+//	}
+//	
+//	
+//	public void delete (Apartment apartment) throws DataMapperException{
+//		
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.delete(apartment);
+//	}
 
 	public List<Apartment> findAllApartments(int id){
 		ApartmentMapperImpl apmi = new ApartmentMapperImpl();

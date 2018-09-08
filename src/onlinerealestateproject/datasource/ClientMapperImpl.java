@@ -56,7 +56,7 @@ public class ClientMapperImpl implements ClientMapper {
 	public boolean delete(Client client) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		if(td.delete(1, "client"))
+		if(td.delete(client.getUid(), "client"))
 			return true;
 		return false;
 	}

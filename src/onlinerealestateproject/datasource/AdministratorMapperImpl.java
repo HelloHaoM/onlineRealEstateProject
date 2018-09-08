@@ -28,26 +28,32 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	}
 
 	@Override
-	public void insert(Administrator administrator) throws DataMapperException {
+	public boolean insert(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
-		ti.insertUAC(administrator.uid, administrator.firstName, administrator.lastName, administrator.userName, administrator.password, administrator.order, administrator.permission, "administrator");
+		if(ti.insertUAC(administrator.uid, administrator.firstName, administrator.lastName, administrator.userName, administrator.password, administrator.order, administrator.permission, "administrator"))
+			return true;
+		return false;
 		
 	}
 
 	@Override
-	public void update(Administrator administrator) throws DataMapperException {
+	public boolean update(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolUpdate tu = new ToolUpdate();
-		tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
-				administrator.userName, administrator.password,administrator.order, administrator.permission, "administrator");
+		if(tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
+				administrator.userName, administrator.password,administrator.order, administrator.permission, "administrator"))
+			return true;
+		return false;
 	}
 
 	@Override
-	public void delete(Administrator administrator) throws DataMapperException {
+	public boolean delete(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		td.delete(administrator.getUid(), "administator");
+		if(td.delete(administrator.getUid(), "administator"))
+			return true;
+		return false;
 	}
 
 

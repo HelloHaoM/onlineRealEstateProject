@@ -163,21 +163,21 @@ public class User {
 	public void insert (User user) throws DataMapperException{
 		
 		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.insert(user);;
+		userMapperImpl.insert(user);
 	}
 	
 	
 	public void update (User user) throws DataMapperException{
 		
 		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.update(user);;
+		userMapperImpl.update(user);
 	}
 	
 	
 	public void delete (User user) throws DataMapperException{
 		
 		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.delete(user);;
+		userMapperImpl.delete(user);
 	}
 	
 	public boolean login(String username, String password) {

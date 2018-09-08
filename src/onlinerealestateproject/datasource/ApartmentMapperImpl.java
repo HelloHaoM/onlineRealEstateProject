@@ -81,30 +81,36 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 
 
 @Override
-public void insert(Apartment apartment) throws DataMapperException {
+public boolean insert(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolInsert ti = new ToolInsert();
-	ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
-			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName);
+	if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
+			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName))
+		return true;
+	return false;
 
 	
 }
 
 
 @Override
-public void update(Apartment apartment) throws DataMapperException {
+public boolean update(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolUpdate tu = new ToolUpdate();
-	tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
-			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName);
+	if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
+			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName))
+		return true;
+	return false;
 	}
 
 
 @Override
-public void delete(Apartment apartment) throws DataMapperException {
+public boolean delete(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolDelete td = new ToolDelete();
-	td.delete(apartment.getapid(), "apartment");
+	if(td.delete(apartment.getapid(), "apartment"))
+		return true;
+	return false;
 }
 
 

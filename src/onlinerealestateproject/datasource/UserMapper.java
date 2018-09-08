@@ -7,8 +7,8 @@ import onlinerealestateproject.domain.User;;
  */
 public interface UserMapper {
 	public User find(int id, String tablename);
-	public void insert (User user) throws DataMapperException;
-	public void update (User user) throws DataMapperException;
-	public void delete (User user) throws DataMapperException;
+	public boolean insert (User user) throws DataMapperException;
+	public boolean update (User user) throws DataMapperException;
+	public boolean delete (User user) throws DataMapperException;
 
 }

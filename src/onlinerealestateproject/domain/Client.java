@@ -41,21 +41,21 @@ public class Client extends User{
 	public void insert (Client client) throws DataMapperException{
 		
 		ClientMapperImpl clientMapperImpl = new ClientMapperImpl();
-		clientMapperImpl.insert(client);;
+		clientMapperImpl.insert(client);
 	}
 	
 	
 	public void update (Client client) throws DataMapperException{
 		
 		ClientMapperImpl clientMapperImpl = new ClientMapperImpl();
-		clientMapperImpl.update(client);;
+		clientMapperImpl.update(client);
 	}
 	
 	
 	public void delete (Client client) throws DataMapperException{
 		
 		ClientMapperImpl clientMapperImpl = new ClientMapperImpl();
-		clientMapperImpl.delete(client);;
+		clientMapperImpl.delete(client);
 	}
 	
 	public boolean register(int id,String firstname, String lastname,String username, String password,int oid, String permission,String tablename) {

@@ -18,10 +18,10 @@
                 <div class="register-body">
                     <label>Register </label>
                     <form class="register" action="/onlinerealestateproject/LoginAndRegisterController" method="post"> 
-                    	<input type="text" name="register-firstname" placeholder="First Name" />
-                    	<input type="text" name="register-lastname" placeholder="Last Name" />
-                    	<input type="text" name="register-username" placeholder="Username" />
-                    	<input type="password" name="register-password" placeholder="Password" />
+                    	<input type="text" name="register-firstname" placeholder="First Name" required="required" />
+                    	<input type="text" name="register-lastname" placeholder="Last Name" required="required" />
+                    	<input type="text" name="register-username" placeholder="Username" required="required" />
+                    	<input type="password" name="register-password" placeholder="Password" required="required" />
                     	<input type="submit" name="submit" value="register" class="register-submit btn btn-success btn-sm" />
                     </form>  
                 </div>
@@ -38,8 +38,8 @@
 					%>
                 </p>
                 <form class="login" action="/onlinerealestateproject/LoginAndRegisterController" method="post">
-                <input type="text" name="username" placeholder="Username" />
-                <input type="password" name="password" placeholder="Password" />
+                <input type="text" name="username" placeholder="Username" required="required" />
+                <input type="password" name="password" placeholder="Password" required="required" />
                 <input type="submit" name="submit" value="login" class="btn btn-success btn-sm" />
                 <div class="remember-register">
                     <div class="row">

@@ -31,7 +31,7 @@ public class UserMapperImpl implements UserMapper {
 	public boolean insert(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
-		if(ti.insertUAC(user.uid, user.firstName, user.lastName, user.userName, user.password, user.order, user.permission, "user"))
+		if(ti.insertUAC(user.uid, user.firstName, user.lastName, user.userName, user.password, user.order, user.permission, "users"))
 		{
 			map.put(user.getUid(),user);
 			return true;
@@ -48,7 +48,7 @@ public class UserMapperImpl implements UserMapper {
 		if(map.get(user.getUid())!=null){
 			map.put(user.getUid(), user);
 			if(tu.updateUAC(user.uid, user.firstName, user.lastName,
-				user.userName, user.password,user.order,user.permission, "user"))
+				user.userName, user.password,user.order,user.permission, "users"))
 			return true;
 		return false;
 		}
@@ -64,7 +64,7 @@ public class UserMapperImpl implements UserMapper {
 		if(map.get(user.getUid())!=null){
 			map.put(user.getUid(), null);
 		
-			if(td.delete(user.getUid(), "user"))
+			if(td.delete(user.getUid(), "users"))
 				return true;
 			return false;
 		}

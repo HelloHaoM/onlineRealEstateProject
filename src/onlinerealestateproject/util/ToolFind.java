@@ -27,7 +27,7 @@ public class ToolFind {
   public static boolean findByAccount(String username, String password) {
 	  try {
 			int aid1=0;
-			String statement = "SELECT * FROM user where userName='"+username+"' and password="+password;
+			String statement = "SELECT * FROM users where userName='"+username+"' and password="+password;
 			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
@@ -54,7 +54,7 @@ public class ToolFind {
   public static int findIdByAccount(String username, String password) {
 	  try {
 			int aid1=0;
-			String statement = "SELECT * FROM user where userName='"+username+"' and password="+password;
+			String statement = "SELECT * FROM users where userName='"+username+"' and password="+password;
 			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
@@ -80,7 +80,7 @@ public class ToolFind {
   
   public static User findUser(int uid){
 	  try {
-			String statement ="select * from user where id="+uid;
+			String statement ="select * from users where id="+uid;
 //			MySQLConnection mysqlconnection = new MySQLConnection();
 //			mysqlconnection.getDBConnection();
 //			mysqlconnection.prepare(statement);

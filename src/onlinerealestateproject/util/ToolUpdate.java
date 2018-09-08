@@ -46,7 +46,7 @@ public static boolean updateUAC(int id, String firstName, String lastName, Strin
 			break;
 		case "user":
 			User user = new User(id, firstName, lastName,userName, password,oid,permission);
-			String statement1 = "update user set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
+			String statement1 = "update users set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
 			PreparedStatement dbStatement1 = MySQLConnection.prepare(statement1);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");

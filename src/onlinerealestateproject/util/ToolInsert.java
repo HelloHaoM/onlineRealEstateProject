@@ -88,7 +88,7 @@ public class ToolInsert {
 	  try {
 		  switch(tablename) {
 		  case "administrator":
-			  String statement1 = "insert into user ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+			  String statement1 = "insert into users ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
 			  PreparedStatement dbStatement1 = MySQLConnection.prepare(statement1);
 			  System.out.println(dbStatement1);	
 			  dbStatement1.setString(1, firstName);
@@ -115,7 +115,7 @@ public class ToolInsert {
 
 				
 			case "client":
-				String statement3 = "insert into user ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+				String statement3 = "insert into users ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
 				PreparedStatement dbStatement3 = MySQLConnection.prepare(statement3);
 				System.out.println(dbStatement3);	
 				dbStatement3.setString(1, firstName);

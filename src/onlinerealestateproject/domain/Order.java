@@ -3,9 +3,9 @@ package onlinerealestateproject.domain;
 import java.util.List;
 import java.util.UUID;
 
-import onlinerealestateproject.datasource.ApartmentMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
-import onlinerealestateproject.datasource.OrderMapperImpl;
+import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
+import onlinerealestateproject.datasource.imp.OrderMapperImpl;
 
 
 /**

@@ -1,4 +1,4 @@
-package onlinerealestateproject.datasource;
+package onlinerealestateproject.datasource.imp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
+import onlinerealestateproject.datasource.AdministratorMapper;
+import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.util.ToolDelete;

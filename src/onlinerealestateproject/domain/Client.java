@@ -1,8 +1,8 @@
 package onlinerealestateproject.domain;
 
 
-import onlinerealestateproject.datasource.ClientMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.imp.ClientMapperImpl;
 import onlinerealestateproject.util.ToolRegister;
 
 /**

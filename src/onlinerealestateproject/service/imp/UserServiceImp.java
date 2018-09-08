@@ -1,10 +1,11 @@
-package onlinerealestateproject.service;
+package onlinerealestateproject.service.imp;
 
 import onlinerealestateproject.datasource.ClientMapper;
-import onlinerealestateproject.datasource.ClientMapperImpl;
+import onlinerealestateproject.datasource.imp.ClientMapperImpl;
 import onlinerealestateproject.domain.Client;
 import onlinerealestateproject.domain.User;
-import onlinerealestateproject.realestate.UserFactory;
+import onlinerealestateproject.service.UserService;
+import onlinerealestateproject.util.UserFactory;
 
 /**
  * @author haomai

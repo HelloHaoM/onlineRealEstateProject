@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.service.OrderService;
-import onlinerealestateproject.service.OrderServiceImp;
+import onlinerealestateproject.service.imp.OrderServiceImp;
 
 /**
  * Servlet implementation class ApartmentController

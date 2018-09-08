@@ -1,4 +1,4 @@
-package onlinerealestateproject.realestate;
+package onlinerealestateproject.util;
 
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Client;

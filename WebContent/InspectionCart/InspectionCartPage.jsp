@@ -1,7 +1,7 @@
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="onlinerealestateproject.domain.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*"%>
+    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
 <!DOCTYPE html>
 <html>
 <head>

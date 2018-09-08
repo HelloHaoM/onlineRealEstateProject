@@ -2,8 +2,8 @@ package onlinerealestateproject.domain;
 
 import java.util.ArrayList;
 
-import onlinerealestateproject.datasource.AdministratorMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.imp.AdministratorMapperImpl;
 
 /**
  * @author haomai

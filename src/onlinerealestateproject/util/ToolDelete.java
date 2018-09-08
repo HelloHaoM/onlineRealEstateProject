@@ -25,7 +25,7 @@ public class ToolDelete {
 	public static boolean deleteOrder(int oid, String tablename) throws DataMapperException{
 		try {
 			String statement = "delete from "+tablename+ " where oid=?";
-			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, oid);
 			dbStatement.executeUpdate();
 			return true;
@@ -43,7 +43,7 @@ public static boolean delete(int id, String tablename) throws DataMapperExceptio
 	// TODO Auto-generated method stub
 	try {
 			String statement = "delete from "+tablename+ " where id=?";
-			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, id);
 			dbStatement.executeUpdate();
 			return true;

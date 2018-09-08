@@ -27,10 +27,10 @@ public class ToolLogin {
 public boolean find(String username, String password){
 	try {
 		int aid1=0;
-		MySQLConnection mysqlconnection = new MySQLConnection();
-		mysqlconnection.getDBConnection();
+//		MySQLConnection mysqlconnection = new MySQLConnection();
+//		mysqlconnection.getDBConnection();
 		String statement = "SELECT * FROM administrator where userName='"+username+"' and password="+password;
-		PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+		PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 		System.out.println("MySQL JDBC Driver Registered11!");
 		System.out.println("MySQL JDBC Driver Registered22!");
 		ResultSet rs = dbStatement.executeQuery();

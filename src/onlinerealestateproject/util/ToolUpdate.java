@@ -32,7 +32,7 @@ public static boolean updateUAC(int id, String firstName, String lastName, Strin
 		case "administrator":
 			Administrator administrator = new Administrator(id, firstName, lastName,userName, password,oid,permission);
 			String statement = "update administrator set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
-			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
 			dbStatement.setInt(1, administrator.getUid());
@@ -47,7 +47,7 @@ public static boolean updateUAC(int id, String firstName, String lastName, Strin
 		case "user":
 			User user = new User(id, firstName, lastName,userName, password,oid,permission);
 			String statement1 = "update users set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
-			PreparedStatement dbStatement1 = MySQLConnection.prepare(statement1);
+			PreparedStatement dbStatement1 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement1);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
 			dbStatement1.setInt(1, user.getUid());
@@ -63,7 +63,7 @@ public static boolean updateUAC(int id, String firstName, String lastName, Strin
 		case "client":
 			Client client = new Client(id, firstName, lastName,userName, password,oid,permission);
 			String statement2 = "update client set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
-			PreparedStatement dbStatement2 = MySQLConnection.prepare(statement2);
+			PreparedStatement dbStatement2 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement2);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
 			dbStatement2.setInt(1, client.getUid());
@@ -92,7 +92,7 @@ public static boolean updateAp(int apid, String StartRentTime, String EndRentTim
 			
 				Apartment apartment = new Apartment(apid, StartRentTime, EndRentTime,Availability, price,acreage,location,apartmentName);
 				String statement = "update apartment set apid=?, StartRentTime=?, EndRentTime=?, Availability=?,price=?,acreage=?,location = ?, apartmentName =? where apid="+apid;
-				PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 				System.out.println("MySQL JDBC Driver Registered11!");
 				System.out.println("MySQL JDBC Driver Registered22!");
 				dbStatement.setInt(1, apartment.getapid());
@@ -118,7 +118,7 @@ public static boolean updateOrder(int oid, String inspStartTime, String inspEndT
 			
 				Order order = new Order(oid, inspStartTime, inspEndTime,id, apid);
 				String statement = "update order set oid=?, inspStartTime=?, inspEndTime=?, id=?,apid=? where oid="+oid;
-				PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 				System.out.println("MySQL JDBC Driver Registered11!");
 				System.out.println("MySQL JDBC Driver Registered22!");
 				dbStatement.setInt(1, order.getUid());
@@ -140,7 +140,7 @@ public static boolean updateOrderInspectionTime(int oid, String inspectionTime){
 	try {
 		
 			String statement = "update inspection_order set inspStartTime=?, inspEndTime=? where oid="+oid;
-			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
 			dbStatement.setString(1, inspectionTime);

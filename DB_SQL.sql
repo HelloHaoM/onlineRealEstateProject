@@ -4,6 +4,7 @@ drop table if exists inspection_order;
 drop table if exists apartment;
 drop table if exists client;
 drop table if exists administrator;
+drop table if exists users;
 
 drop sequence if exists sql_au_inc_users ;
 create sequence sql_au_inc_users increment by 1 minvalue 1 no maxvalue start with 1;

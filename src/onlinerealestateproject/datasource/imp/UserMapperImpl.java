@@ -2,7 +2,9 @@ package onlinerealestateproject.datasource.imp;
 
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.datasource.UserMapper;
+import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.User;
+import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
@@ -12,12 +14,15 @@ import onlinerealestateproject.util.ToolUpdate;
  * 
  */
 public class UserMapperImpl implements UserMapper {
+	User user = new User(0, null, null, null, null, 0, null);
+	IdentityMap<User> map = IdentityMap.getInstance(user);
 
 	@Override
 	public User find(int id, String tablename) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
-		return tf.findUser(id);
+		map.put(id, tf.findUser(id));
+		return map.get(id);
 		
 		
 	}
@@ -27,7 +32,10 @@ public class UserMapperImpl implements UserMapper {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
 		if(ti.insertUAC(user.uid, user.firstName, user.lastName, user.userName, user.password, user.order, user.permission, "user"))
+		{
+			map.put(user.getUid(),user);
 			return true;
+			}
 		return false;
 		
 		

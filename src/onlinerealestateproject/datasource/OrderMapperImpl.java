@@ -77,7 +77,7 @@ public class OrderMapperImpl implements OrderMapper{
 	public void delete(Order order) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		td.delete(1, "order");
+		td.delete(order.getOid(), "order");
 		
 	}
 

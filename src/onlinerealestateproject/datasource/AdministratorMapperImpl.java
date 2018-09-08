@@ -47,7 +47,7 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	public void delete(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		td.delete(1, "administator");
+		td.delete(administrator.getUid(), "administator");
 	}
 
 

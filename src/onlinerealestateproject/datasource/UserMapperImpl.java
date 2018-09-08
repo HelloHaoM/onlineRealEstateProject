@@ -42,7 +42,7 @@ public class UserMapperImpl implements UserMapper {
 	public void delete(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		td.delete(1, "user");
+		td.delete(user.getUid(), "user");
 	}
 
 }

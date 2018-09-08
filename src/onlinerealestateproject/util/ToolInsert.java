@@ -18,13 +18,13 @@ import onlinerealestateproject.domain.User;
  */
 public class ToolInsert {
 
-//  public static void main(String[] argv) {
+  public static void main(String[] argv) {
 //
 //	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-//	insertUAC(999,"steve","aoki","steve","123",3,"no","user");
+	insertUAC(999,"okok","okok","steve","123",3,"no","client");
 //	insertAp(999,"08/09/2018","09/09/2018","yes",100,100,"parkvile","empirestatebuilding");
 //	insertOrder(0, "08/09/2018","09/09/2018", 1, 1);
-//  }
+  }
   public static boolean insertOrder(int oid, String inspStartTime ,String inspEndTime , int id,int apid) {
 		// TODO Auto-generated method stub
 		try {
@@ -114,16 +114,16 @@ public class ToolInsert {
 
 				
 			case "client":
-//				String statement3 = "insert into user ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
-//				PreparedStatement dbStatement3 = MySQLConnection.prepare(statement3);
-//				System.out.println(dbStatement3);	
-//				dbStatement3.setString(1, firstName);
-//				dbStatement3.setString(2, lastName);
-//				dbStatement3.setString(3, userName);
-//				dbStatement3.setString(4, password);	
-//				dbStatement3.setInt(5, oid);	
-//				dbStatement3.setString(6, permission);		
-//				dbStatement3.executeUpdate();
+				String statement3 = "insert into user ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+				PreparedStatement dbStatement3 = MySQLConnection.prepare(statement3);
+				System.out.println(dbStatement3);	
+				dbStatement3.setString(1, firstName);
+				dbStatement3.setString(2, lastName);
+				dbStatement3.setString(3, userName);
+				dbStatement3.setString(4, password);	
+				dbStatement3.setInt(5, oid);	
+				dbStatement3.setString(6, permission);		
+				dbStatement3.executeUpdate();
 					
 				Client client = new Client(id, firstName, lastName, userName, password, oid, permission);			
 				String statement2 = "insert into client ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";	

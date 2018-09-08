@@ -104,7 +104,7 @@ public void update(Apartment apartment) throws DataMapperException {
 public void delete(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolDelete td = new ToolDelete();
-	td.delete(1, "apartment");
+	td.delete(apartment.getapid(), "apartment");
 }
 
 

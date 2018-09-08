@@ -3,7 +3,7 @@ package onlinerealestateproject.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import onlinerealestateproject.datasource.imp.UserMapperImpl;
+import onlinerealestateproject.datasource.UserMapperImpl;
 import onlinerealestateproject.domain.User;
 
 public class IdentityMap<E> {
@@ -29,13 +29,6 @@ public class IdentityMap<E> {
 	}else {
 		System.out.print("no ok");
 	}
-
-	System.out.println(map.get(id1).uid);
-	System.out.println(map.get(id1).lastName);
-	System.out.println(map.get(id1).userName);
-	System.out.println(map.get(id1).password);
-	System.out.println(map.get(id1).getOrder());
-	System.out.println(map.get(id1).permission);
 	
   }
 	

@@ -117,25 +117,25 @@ public class Order {
 		
 	}
 	
-	public void insert (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.insert(order);
-	}
-	
-	
-	public void update (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.delete(order);
-	}
-	
-	
-	public void delete (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.delete(order);
-	}
+//	public void insert (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.insert(order);
+//	}
+//	
+//	
+//	public void update (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.delete(order);
+//	}
+//	
+//	
+//	public void delete (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.delete(order);
+//	}
 
 	public List<Order> findAllOrders(int id){
 		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();

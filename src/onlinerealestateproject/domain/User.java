@@ -159,26 +159,26 @@ public class User {
 		return userMapperImpl.find(id, "user");
 		
 	}	
-	
-	public void insert (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.insert(user);
-	}
-	
-	
-	public void update (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.update(user);
-	}
-	
-	
-	public void delete (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.delete(user);
-	}
+//	
+//	public void insert (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.insert(user);
+//	}
+//	
+//	
+//	public void update (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.update(user);
+//	}
+//	
+//	
+//	public void delete (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.delete(user);
+//	}
 	
 	public boolean login(String username, String password) {
 		

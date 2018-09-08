@@ -45,7 +45,31 @@ public class Apartment {
 	}
 
 	private void load() {
-		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		Apartment record = apartmentMapperImpl.find(this.getApid()); 
+		if (this.apid == -1) {
+			this.apid = record.getapid(); }
+			if (this.startRentTime == null) {
+			this.startRentTime = record.getStartRentTime();
+			}
+			if (this.endRentTime == null) {
+			this.endRentTime = record.getEndRentTime();
+			}
+			if (this.availability == null) {
+				this.availability = record.getAvailability();
+				}
+			if (this.price == -1) {
+				this.price = record.getPrice();
+				}
+			if (this.acreage == -1) {
+				this.acreage = record.getAcreage();
+				}
+			if (this.location == null) {
+				this.location = record.getLocation();
+				}
+			if (this.apartmentName == null) {
+				this.apartmentName = record.getApartmentName();
+				}
 	}
 	
 	public int getapid() {
@@ -155,37 +179,37 @@ public class Apartment {
 	}
 	
 	
-//	public Apartment find(int id) {
-//		
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		return apartmentMapperImpl.find(id);
-//		
-//	}
-//	
-//	public void insert (Apartment apartment) throws DataMapperException{
-//		
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.insert(apartment);
-//	}
-//	
-//	
-//	public void update (Apartment apartment) throws DataMapperException{
-//		
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.delete(apartment);
-//	}
-//	
-//	
-//	public void delete (Apartment apartment) throws DataMapperException{
-//		
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.delete(apartment);
-//	}
-//
-//	public List<Apartment> findAllApartments(int id){
-//		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
-//		return apmi.findAllApartments(id);
-//		
-//	}
+	public Apartment find(int id) {
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		return apartmentMapperImpl.find(id);
+		
+	}
+	
+	public void insert (Apartment apartment) throws DataMapperException{
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		apartmentMapperImpl.insert(apartment);
+	}
+	
+	
+	public void update (Apartment apartment) throws DataMapperException{
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		apartmentMapperImpl.delete(apartment);
+	}
+	
+	
+	public void delete (Apartment apartment) throws DataMapperException{
+		
+		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+		apartmentMapperImpl.delete(apartment);
+	}
+
+	public List<Apartment> findAllApartments(int id){
+		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
+		return apmi.findAllApartments(id);
+		
+	}
 
 }

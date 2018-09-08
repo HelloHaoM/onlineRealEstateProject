@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.datasource.ClientMapperImpl;
 import onlinerealestateproject.datasource.DataMapperException;
+import onlinerealestateproject.datasource.OrderMapperImpl;
 import onlinerealestateproject.datasource.UserMapperImpl;
 import onlinerealestateproject.util.ToolRegister;
 import onlinerealestateproject.util.ToolLogin;
@@ -46,7 +47,36 @@ public class User {
 		this.permission = permission;
 	}
 	
+	private void load() {
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		User record = userMapperImpl.find(this.getUid(),"user"); 
+		if (this.uid == -1) {
+			this.uid = record.getUid(); 
+			}
+			if (this.firstName == null) {
+			this.firstName = record.getFirstName();
+			}
+			if (this.lastName == null) {
+			this.lastName = record.getLastName();
+			}
+			if (this.userName == null) {
+				this.userName = record.getUserName();
+				}
+			if (this.password == null) {
+				this.password = record.getPassword();
+				}
+			if (this.order == -1) {
+				this.order = record.getOrder(); 
+				}
+			if (this.permission == null) {
+				this.permission = record.getPermission(); 
+				}
+	}
+	
+	
 	public int getOrder() {
+		if(this.order == -1)
+			load();
 		return order;
 	}
 
@@ -55,15 +85,13 @@ public class User {
 	}
 
 	public String getPermission() {
+		if(this.permission == null)
+			load();
 		return permission;
 	}
 
 	public void setPermission(String permission) {
 		this.permission = permission;
-	}
-
-	private void load() {
-		
 	}
 
 	public int getUid() {
@@ -125,44 +153,44 @@ public class User {
 		return false;	
 	}
 	
-//	public User find(int id) {
-//		
-//		UserMapperImpl userMapperImpl = new UserMapperImpl();
-//		return userMapperImpl.find(id, "user");
-//		
-//	}	
-//	
-//	public void insert (User user) throws DataMapperException{
-//		
-//		UserMapperImpl userMapperImpl = new UserMapperImpl();
-//		userMapperImpl.insert(user);;
-//	}
-//	
-//	
-//	public void update (User user) throws DataMapperException{
-//		
-//		UserMapperImpl userMapperImpl = new UserMapperImpl();
-//		userMapperImpl.update(user);;
-//	}
-//	
-//	
-//	public void delete (User user) throws DataMapperException{
-//		
-//		UserMapperImpl userMapperImpl = new UserMapperImpl();
-//		userMapperImpl.delete(user);;
-//	}
-//	
-//	public boolean login(String username, String password) {
-//		
-//		ToolLogin tl = new ToolLogin();
-//		if(tl.find(username, password)) {
-//			System.out.println("login succeded");
-//		}else {
-//			System.out.println("login failed");
-//		}
-//		
-//		return tl.find(username, password);
-//	}
+	public User find(int id) {
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		return userMapperImpl.find(id, "user");
+		
+	}	
+	
+	public void insert (User user) throws DataMapperException{
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		userMapperImpl.insert(user);;
+	}
+	
+	
+	public void update (User user) throws DataMapperException{
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		userMapperImpl.update(user);;
+	}
+	
+	
+	public void delete (User user) throws DataMapperException{
+		
+		UserMapperImpl userMapperImpl = new UserMapperImpl();
+		userMapperImpl.delete(user);;
+	}
+	
+	public boolean login(String username, String password) {
+		
+		ToolLogin tl = new ToolLogin();
+		if(tl.find(username, password)) {
+			System.out.println("login succeded");
+		}else {
+			System.out.println("login failed");
+		}
+		
+		return tl.find(username, password);
+	}
 	
 	
 			

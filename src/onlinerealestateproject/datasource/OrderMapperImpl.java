@@ -19,11 +19,11 @@ import onlinerealestateproject.util.ToolUpdate;
 public class OrderMapperImpl implements OrderMapper{
 
 	@Override
-	public List<Order> findAllOrders(int uid1) {
+	public ArrayList<Order> findAllOrders(int uid1) {
 		// TODO Auto-generated method stub
-		List<Order> orders = new ArrayList<>();
+		ArrayList<Order> orders = new ArrayList<>();
 		try {
-			String statement = "select * from order where oid="+uid1;
+			String statement = "select * from inspection_order where id="+uid1;
 			MySQLConnection mysqlconnection = new MySQLConnection();
 			mysqlconnection.getDBConnection();
 			mysqlconnection.prepare(statement);
@@ -81,8 +81,18 @@ public class OrderMapperImpl implements OrderMapper{
 	public boolean delete(Order order) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		if(td.delete(order.getOid(), "order"))
+		if(td.deleteOrder(order.getOid(), "inspection_order"))
 			return true;
+		return false;
+		
+	}
+	
+	public boolean delete(int oid) throws DataMapperException {
+		// TODO Auto-generated method stub
+		ToolDelete td = new ToolDelete();
+		if(td.deleteOrder(oid, "order_has_admin"))
+			if(td.deleteOrder(oid, "inspection_order"))
+				return true;
 		return false;
 		
 	}

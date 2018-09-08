@@ -32,7 +32,7 @@ public class ToolInsert {
 			
 //				MySQLConnection mysqlconnection = new MySQLConnection();		
 				Order order = new Order(oid, inspStartTime , inspEndTime ,  id, apid);			
-				String statement = "insert into Order1 ( inspStartTime , inspEndTime ,  id, apid)  values (  ?,?,?,?)";
+				String statement = "insert into inspection_order ( inspStartTime , inspEndTime ,  id, apid)  values (  ?,?,?,?)";
 //				mysqlconnection.getDBConnection();
 				System.out.println("hello");
 				PreparedStatement dbStatement = MySQLConnection.prepare(statement);

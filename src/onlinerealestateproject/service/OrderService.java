@@ -9,7 +9,7 @@ import onlinerealestateproject.domain.Order;
 
 public interface OrderService {
 	
-	public String makeOrder(int uid, Order order);
-	public String deleteOrder(int uid, Order order);
+	public boolean makeOrder(int uid, int apid);
+	public boolean deleteOrder(int uid, int oid);
 
 }

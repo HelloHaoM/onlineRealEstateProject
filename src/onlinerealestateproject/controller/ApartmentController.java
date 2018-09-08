@@ -7,12 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.service.OrderService;
+import onlinerealestateproject.service.OrderServiceImp;
+
 /**
  * Servlet implementation class ApartmentController
  */
 @WebServlet("/ApartmentController")
 public class ApartmentController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static OrderService orderService = new OrderServiceImp();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,7 +41,16 @@ public class ApartmentController extends ActionServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		int uid = Integer.parseInt(request.getParameter("client-id"));
+		int apid = Integer.parseInt(request.getParameter("apartment-id"));
+		System.out.println(uid);
+		System.out.println(apid);
+		if(orderService.makeOrder(uid, apid)) {
+			response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
+		}
+		
+		
 	}
 
 }

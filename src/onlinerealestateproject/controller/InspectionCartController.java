@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.tools.DocumentationTool.Location;
+
+import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.service.OrderService;
+import onlinerealestateproject.service.OrderServiceImp;
 
 /**
  * Servlet implementation class InspectionCartController
@@ -14,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/InspectionCartController")
 public class InspectionCartController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
+	private static OrderService orderService = new OrderServiceImp();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,9 +50,24 @@ public class InspectionCartController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		if(request.getParameter("back").equals("Back")) {
-			response.sendRedirect("./RealEstate/RealEstatePage.jsp");
+		
+		if(request.getParameter("back") != null) {
+			int uid = Integer.parseInt(request.getParameter("id"));
+			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}
+		else if(request.getParameter("delete") != null) {
+			System.out.println("delete order");
+			int uid = Integer.parseInt(request.getParameter("id"));
+			int oid = Integer.parseInt(request.getParameter("order-id"));
+			if(orderService.deleteOrder(uid, oid)) {
+				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
+				System.out.println("Delete Successful");
+			}
+		}else if(request.getParameter("confirm") != null) {
+			int uid = Integer.parseInt(request.getParameter("id"));
+			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
+		}
+		
 	}
 
 }

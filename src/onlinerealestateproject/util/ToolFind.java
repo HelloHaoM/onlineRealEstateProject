@@ -51,6 +51,33 @@ public class ToolFind {
 		}
   }
   
+  public static int findIdByAccount(String username, String password) {
+	  try {
+			int aid1=0;
+			String statement = "SELECT * FROM user where userName='"+username+"' and password="+password;
+			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			System.out.println("MySQL JDBC Driver Registered11!");
+			System.out.println("MySQL JDBC Driver Registered22!");
+			ResultSet rs = dbStatement.executeQuery();
+			while(rs.next()) {
+				aid1 = rs.getInt(1);
+			}
+			if(aid1!=0) {
+				System.out.print("yes");
+				return aid1;
+			}
+			else {
+				System.out.print("No");
+				return -1;
+			}
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+			//throw new DataMapperException(e);
+			return -1;
+		}
+  }
+  
   public static User findUser(int uid){
 	  try {
 			String statement ="select * from user where id="+uid;

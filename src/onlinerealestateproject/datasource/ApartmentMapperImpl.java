@@ -33,8 +33,8 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 //	find( "SELECT * FROM apartment");
 //  }
  
-  public List<Apartment> findAllApartments(){
-	  List<Apartment> apartments = new ArrayList<>();
+  public ArrayList<Apartment> findAllApartments(){
+	  ArrayList<Apartment> apartments = new ArrayList<>();
 		try {
 
 			String statement = "select * from apartment";

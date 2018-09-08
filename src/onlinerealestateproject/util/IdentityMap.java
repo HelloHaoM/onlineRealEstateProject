@@ -3,7 +3,7 @@ package onlinerealestateproject.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import onlinerealestateproject.datasource.UserMapperImpl;
+import onlinerealestateproject.datasource.imp.UserMapperImpl;
 import onlinerealestateproject.domain.User;
 
 public class IdentityMap<E> {

@@ -13,8 +13,9 @@ public class IdentityMap<E> {
 	System.out.println("-------- MySQL JDBC Connection Testing ------------");
 	User user = new User(0, "harry", "potter", "harry", "123", 0, "clinet");
 	IdentityMap<User> map = IdentityMap.getInstance(user);
-	user = map.get(1);
-	int id = 1;
+	user = map.get(2);
+	int id = 2;
+	int id2 = 1;
 	
 	if (user == null) {
 		//read record from the database
@@ -27,10 +28,12 @@ public class IdentityMap<E> {
 		user.setPassword(umi.find(id, "user").getPassword());
 		user.setOrder(umi.find(id, "user").getOrder());
 		user.setPermission(umi.find(id, "user").getPermission());
-		map.put(id, user);
+		map.put(id2, user);
 		}
 	System.out.println("sky fall");
+//	System.out.println(map.get(1));
 	System.out.println(user);
+	
 	
 	
   }

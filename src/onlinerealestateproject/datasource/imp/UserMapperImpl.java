@@ -45,20 +45,32 @@ public class UserMapperImpl implements UserMapper {
 	public boolean update(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolUpdate tu = new ToolUpdate();
-		if(tu.updateUAC(user.uid, user.firstName, user.lastName,
+		if(map.get(user.getUid())!=null){
+			map.put(user.getUid(), user);
+			if(tu.updateUAC(user.uid, user.firstName, user.lastName,
 				user.userName, user.password,user.order,user.permission, "user"))
 			return true;
 		return false;
+		}
+		return false;
 	
 	}
+	
 
 	@Override
 	public boolean delete(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-		if(td.delete(user.getUid(), "user"))
-			return true;
+		if(map.get(user.getUid())!=null){
+			map.put(user.getUid(), null);
+		
+			if(td.delete(user.getUid(), "user"))
+				return true;
+			return false;
+		}
 		return false;
 	}
+	
+
 
 }

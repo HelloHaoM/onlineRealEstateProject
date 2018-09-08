@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
+import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
@@ -27,7 +28,8 @@ import onlinerealestateproject.datasource.MySQLConnection;
  * 
  */
 public class ApartmentMapperImpl implements ApartmentMapper {
-	
+	Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
+	IdentityMap<Apartment> map = IdentityMap.getInstance(apartment);
 	
 
 //  public static void main(String[] argv) {
@@ -86,48 +88,68 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 
 
 @Override
+
 public boolean insert(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolInsert ti = new ToolInsert();
-	if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
-			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName))
+	if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+			apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
+	{
+		map.put(apartment.getapid(),apartment);
 		return true;
+		}
 	return false;
-
 	
 }
 
 
 @Override
+
+
 public boolean update(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolUpdate tu = new ToolUpdate();
-	if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, 
-			apartment.availability, apartment.price, apartment.acreage, apartment.location,apartment.apartmentName))
-		return true;
-	return false;
+	if(map.get(apartment.getapid())!=null){
+		map.put(apartment.getapid(), apartment);
+	
+		if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+				apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
+			return true;
+		return false;
 	}
+	return false;
+}
 
 
 @Override
+
 public boolean delete(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
 	ToolDelete td = new ToolDelete();
-	if(td.delete(apartment.getapid(), "apartment"))
+	if(map.get(apartment.getapid())!=null){
+		map.put(apartment.getapid(), null);
+		if(td.delete(apartment.getapid(), "apartment"))
 		return true;
 	return false;
+}
+
+return false;
 }
 
 
 
 
 @Override
+
 public Apartment find(int id) {
 	// TODO Auto-generated method stub
 	ToolFind tf = new ToolFind();
-	return tf.findApartment(id);
-}
+	map.put(id, tf.findApartment(id));
+	return map.get(id);
+	
 
+
+}
 
 
 

@@ -62,20 +62,20 @@ public class ToolFind {
 			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
-				System.out.println(id);
+//				System.out.println(id);
 				String fistName = rs.getString(2);
-				System.out.println(fistName);
+//				System.out.println(fistName);
 				String lastName = rs.getString(3);
-				System.out.println(lastName);
+//				System.out.println(lastName);
 				String userName = rs.getString(4);
-				System.out.println(userName);
+//				System.out.println(userName);
 				String password = rs.getString(5);
-				System.out.println(password);
+//				System.out.println(password);
 				int oid = rs.getInt(6);
-				System.out.println(oid);
+//				System.out.println(oid);
 				String permission = rs.getString(7);	
 //				System.out.println(permission);
-				System.out.println(permission);
+//				System.out.println(permission);
 				User user = new User(id, fistName, 
 				lastName, userName, password, oid, permission);
 				user.setUid(id);				

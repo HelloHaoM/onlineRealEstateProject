@@ -37,10 +37,10 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 	  List<Apartment> apartments = new ArrayList<>();
 		try {
 			String statement = "select * from apartment where apid="+apid1;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			 
 			while(rs.next()) {
 				int apid = rs.getInt(1);

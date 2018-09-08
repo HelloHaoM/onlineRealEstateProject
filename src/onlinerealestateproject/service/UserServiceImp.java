@@ -13,9 +13,11 @@ import onlinerealestateproject.realestate.UserFactory;
 public class UserServiceImp implements UserService {
 	
 	public boolean Login(String userName, String password) {
+		// create a new client using factory
 		Client client = (Client) UserFactory.createSimpleUser("client", userName, password);
 		ClientMapper clientMapper = new ClientMapperImpl();
 		
+		// find by client mapper
 		if(clientMapper.isFind(userName, password)) {
 			return true;
 		}
@@ -24,9 +26,11 @@ public class UserServiceImp implements UserService {
 	}
 	
 	public boolean register(String firstName, String lastName, String userName, String password) {
-		Client client = (Client) UserFactory.createUser("client", -1, firstName, lastName, userName, password, 0, "client");
+		// create a client and the id and oid is defined to 999 and 0(which are default)
+		Client client = (Client) UserFactory.createUser("client", 999, firstName, lastName, userName, password, 0, "client");
 		ClientMapper clientMapper = new ClientMapperImpl();
 		
+		// insert by client mapper
 		if(clientMapper.insert(client)) {
 			return true;
 		}

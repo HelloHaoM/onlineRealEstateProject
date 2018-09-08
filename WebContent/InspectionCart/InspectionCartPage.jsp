@@ -57,7 +57,7 @@
                     		<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
                     		<td><%= apartment.getApartmentName() %></td>
                             <td><%= apartment.getAvailability() %></td>
-                            <form action="/onlinerealestateproject/InspectionCartController" method="post">
+                            <form action="../InspectionCartController" method="post">
                             	<td><input class="form-control" type="text" name="inspection-time" value="<%= order.getInspEndTime() %>" /></td>
                             	<td class="text-right">
                             	<input type="hidden" name="id" value="<%= order.getUid() %>"></input>
@@ -86,13 +86,13 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                	<form class="cart-back" action="/onlinerealestateproject/InspectionCartController" method="post">
+                	<form class="cart-back" action="../InspectionCartController" method="post">
                 		<input type="hidden" name="id" value="<%= uid %>"></input>
                     	<input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input>
                     </form>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                	<form class="cart-confirm" action="/onlinerealestateproject/InspectionCartController" method="post">
+                	<form class="cart-confirm" action="../InspectionCartController" method="post">
                 		<input type="hidden" name="id" value="<%= uid %>"></input>
                     	<input type="submit" name="confirm" value="Confirm" class="btn btn-lg btn-block btn-success text-uppercase" ></input>
                     </form>

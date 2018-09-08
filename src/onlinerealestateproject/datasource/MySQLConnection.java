@@ -8,9 +8,12 @@ import java.sql.Statement;
 
 public class MySQLConnection {
 	public static final String SQL_URL = "jdbc:postgresql://localhost:5432/postgres";
+			//"jdbc:postgresql://ec2-107-21-98-165.compute-1.amazonaws.com:5432/d102mvg3lomse";
 			//"jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
 	public static final String USER_NAME = "postgres";
+	//"vyvqoseqjkvkge";
 	public static final String PASSWORD = "";
+	//"5eea646076c4e537db7c4167fc1585437bf105fe6c8bf484220d93c98b6cb232";
 	
 	public static PreparedStatement prepare(String stm) {
 		 
@@ -59,6 +62,10 @@ public class MySQLConnection {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static void main(String args[]) {
+		MySQLConnection.prepare("select * from users");
 	}
 
 }

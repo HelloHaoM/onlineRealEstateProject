@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySQLConnection {
-	public static final String SQL_URL = "jdbc:mysql://localhost:3306/softwarearchitecture?serverTimezone=Australia/Melbourne";
-	public static final String USER_NAME = "root";
-	public static final String PASSWORD = "123";
+	public static final String SQL_URL = "jdbc:postgresql://localhost:5432/postgres";
+			//"jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
+	public static final String USER_NAME = "postgres";
+	public static final String PASSWORD = "";
 	
 	public static PreparedStatement prepare(String stm) {
 		 
@@ -35,7 +36,8 @@ public class MySQLConnection {
 	public static Connection getDBConnection() {
 		// TODO Auto-generated method stub
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 			
 			System.out.println("MySql Driver Loading Successful");
 		} catch (ClassNotFoundException e) {

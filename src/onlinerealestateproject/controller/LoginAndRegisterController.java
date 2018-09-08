@@ -51,8 +51,6 @@ public class LoginAndRegisterController extends ActionServlet {
 		//doGet(request, response);
 		if(request.getParameter("submit").equals("login")) {
 			System.out.println(request.getParameter("username"));
-			//request.getRequestDispatcher("./RealEstate/RealEstatePage.jsp").forward(request, response);
-			//forward("/RealEstatePage.jsp", request, response);
 			String userName = request.getParameter("username");
 			String password = request.getParameter("password");
 			if(userService.Login(userName, password)) {

@@ -54,12 +54,12 @@ public class ToolFind {
   public static User findUser(int uid){
 	  try {
 			String statement ="select * from user where id="+uid;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
 				System.out.println(id);
@@ -97,12 +97,12 @@ public class ToolFind {
   public static Administrator findAdmin(int aid){
 	  try {
 		  	String statement ="select * from administrator where id="+aid;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
 				System.out.println(id);
@@ -140,12 +140,12 @@ public class ToolFind {
   public static Client findClient(int cid){
 	  try {
 			String statement ="select * from client where id="+cid;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
 				System.out.println(id);
@@ -184,12 +184,12 @@ public class ToolFind {
   public static Order findOrder(int id){
 	  try {
 		  	String statement ="select * from order where oid="+id;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			if(rs.next()) {
 				int aid1 = rs.getInt(1);
 				System.out.println(aid1);
@@ -220,12 +220,12 @@ public class ToolFind {
   public static Apartment findApartment(int id){
 	  try {
 		  	String statement ="select * from apartment where apid="+id;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
 			if(rs.next()) {
 				int apid = rs.getInt(1);
 				String startRentTime = rs.getString(2);			

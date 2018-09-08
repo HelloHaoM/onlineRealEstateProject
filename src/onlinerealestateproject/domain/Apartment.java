@@ -206,9 +206,9 @@ public class Apartment {
 //		apartmentMapperImpl.delete(apartment);
 //	}
 
-	public List<Apartment> findAllApartments(int id){
+	public List<Apartment> findAllApartments(){
 		ApartmentMapperImpl apmi = new ApartmentMapperImpl();
-		return apmi.findAllApartments(id);
+		return apmi.findAllApartments();
 		
 	}
 

@@ -1,7 +1,7 @@
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*" %>
+    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.datasource.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +47,10 @@
                 
                 <% 
                 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-                	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments(1);
+                	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments();
+           			for(Apartment apartment : apartList){
+           				System.out.println(apartment.getApartmentName());
+           			}
                 	
                 %>
 

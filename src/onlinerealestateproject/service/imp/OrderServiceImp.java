@@ -15,9 +15,11 @@ public class OrderServiceImp implements OrderService{
 	
 	
 	public boolean makeOrder(int uid, int apid, String inspectionTime) {
+		// create an new order
 		Order order = new Order(0, inspectionTime, inspectionTime, uid, apid);
 		
 		OrderMapper orderMapper = new OrderMapperImpl();
+		// insert into the databse by orderMapper
 		if(orderMapper.insert(order))
 			return true;
 		
@@ -26,6 +28,8 @@ public class OrderServiceImp implements OrderService{
 	
 	public boolean deleteOrder(int uid, int oid) {
 		OrderMapper orderMapper = new OrderMapperImpl();
+		
+		// delete the order from the database by an oid
 		if(orderMapper.delete(oid)) {
 			return true;
 		}
@@ -35,6 +39,7 @@ public class OrderServiceImp implements OrderService{
 	public boolean updateOrder(int oid, String inspectionTime) {
 		OrderMapper orderMapper = new OrderMapperImpl();
 		
+		// update a specific order
 		if(orderMapper.updateOrderInspectionTime(oid, inspectionTime))
 			return true;
 		return false;

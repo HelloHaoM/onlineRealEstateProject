@@ -41,11 +41,11 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	public boolean insert(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
-		if(ti.insertUAC(administrator.uid, administrator.firstName, administrator.lastName, administrator.userName, administrator.password, administrator.order, administrator.permission, "administrator"))
-		{
+		if(ti.insertUAC(administrator.uid, administrator.firstName, administrator.lastName, 
+				administrator.userName, administrator.password, administrator.order, administrator.permission, "administrator")){
 			map.put(administrator.getUid(),administrator);
 			return true;
-			}
+		}
 		return false;
 		
 	}
@@ -60,7 +60,7 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 			if(tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
 				administrator.userName, administrator.password,administrator.order, administrator.permission, "administrator"))
 				return true;
-		return false;
+			return false;
 		}
 		return false;
 	}

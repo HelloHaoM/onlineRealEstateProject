@@ -6,6 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Make an singleton db connection
+ * @author haomai
+ *
+ */
 public class MySQLConnection {
 	private static MySQLConnection singleMySQLConnection = new MySQLConnection();
 	private Connection dbConnection;
@@ -34,25 +39,6 @@ public class MySQLConnection {
 	public Connection getConnection() {
 		return dbConnection;
 	}
-	
-	public PreparedStatement prepare(String stm) {
-		 
-		PreparedStatement preparedStatement = null;
-		try {	
-	
-	       	//Connection dbConnection = getDBConnection();
-				
-			preparedStatement = dbConnection.prepareStatement(stm);
-			
-		} catch (SQLException e) {
-
-			System.out.println(e.getMessage());
-
-		
-		}
-
-		return preparedStatement;
-	} 
 	
 	
 	// Get a mysql connection
@@ -84,8 +70,5 @@ public class MySQLConnection {
 		}
 	}
 	
-	public static void main(String args[]) throws SQLException {
-		
-	}
 
 }

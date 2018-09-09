@@ -8,29 +8,6 @@ import onlinerealestateproject.domain.User;
 
 public class IdentityMap<E> {
 	private Map<Long, E> map = new HashMap<Long, E>();
-
-//  public static void main(String[] argv) {
-//	 int id1 = 1;
-//	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-//	UserMapperImpl umi = new UserMapperImpl();
-//	User user = new User(0, null, null, null, null, id1, null);
-//	user.setUid(umi.find(id1, "user").getUid());
-//	user.setFirstName(umi.find(id1, "user").getFirstName());
-//	user.setLastName(umi.find(id1, "user").getLastName());
-//	user.setUserName(umi.find(id1, "user").getUserName());
-//	user.setPassword(umi.find(id1, "user").getPassword());
-//	user.setOrder(umi.find(id1, "user").getOrder());
-//	user.setPermission(umi.find(id1, "user").getPermission());
-//	IdentityMap<User> map = IdentityMap.getInstance(user);
-//	map.put(id1, user);
-//	System.out.print("----------"+map.get(id1).getFirstName());
-//	if(user.getUid() == umi.find(id1, "user").getUid()) {
-//		System.out.print("ok");
-//	}else {
-//		System.out.print("no ok");
-//	}
-//	
-//  }
 	
 	private static Map<Class, IdentityMap> singletons = new HashMap<Class, IdentityMap>();
 	

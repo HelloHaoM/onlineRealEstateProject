@@ -54,10 +54,12 @@ public class InspectionCartController extends ActionServlet {
 		//doGet(request, response);
 		
 		if(request.getParameter("back") != null) {
+			// back to main page
 			int uid = Integer.parseInt(request.getParameter("id"));
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}
 		else if(request.getParameter("delete") != null) {
+			// delete an order
 			System.out.println("delete order");
 			int uid = Integer.parseInt(request.getParameter("id"));
 			int oid = Integer.parseInt(request.getParameter("order-id"));
@@ -66,17 +68,17 @@ public class InspectionCartController extends ActionServlet {
 				System.out.println("Delete Successful");
 			}
 		}else if(request.getParameter("confirm") != null) {
+			// confirm and back to main page
 			int uid = Integer.parseInt(request.getParameter("id"));
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}else if(request.getParameter("update") != null) {
+			// update an order
 			int uid = Integer.parseInt(request.getParameter("id"));
 			int oid = Integer.parseInt(request.getParameter("order-id"));
 			String inspectionTime = request.getParameter("inspection-time");
 			if(orderService.updateOrder(oid, inspectionTime)) {
 				request.setAttribute("info", "Update Successfully");
-				//request.getRequestDispatcher("LoginAndRegisterPage.jsp").forward(request, response);
 				forward("./InspectionCart/InspectionCartPage.jsp?id="+uid, request, response);
-				//response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 			}
 		}
 		

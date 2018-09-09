@@ -17,19 +17,18 @@ import onlinerealestateproject.domain.User;
  */
 public class ToolFind {
 
-  public static void main(String[] argv) {
+	
+	public static void main(String[] argv) {
 
-	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	findClient(1);
-  }
+		System.out.println("-------- MySQL JDBC Connection Testing ------------");
+		findClient(1);
+	}
   
-  public static boolean findByAccount(String username, String password) {
-	  try {
+	public static boolean findByAccount(String username, String password) {
+		try {
 			int aid1=0;
 			String statement = "SELECT * FROM users where username='"+username+"' and password='"+password+"'";
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			System.out.println(dbStatement);
 			ResultSet rs = dbStatement.executeQuery();
 			while(rs.next()) {
@@ -49,15 +48,13 @@ public class ToolFind {
 			//throw new DataMapperException(e);
 			return false;
 		}
-  }
+	}
   
-  public static int findIdByAccount(String username, String password) {
-	  try {
+	public static int findIdByAccount(String username, String password) {
+		try {
 			int aid1=0;
 			String statement = "SELECT * FROM users where userName='"+username+"' and password='"+password+"'";
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = dbStatement.executeQuery();
 			while(rs.next()) {
 				aid1 = rs.getInt(1);
@@ -76,16 +73,11 @@ public class ToolFind {
 			//throw new DataMapperException(e);
 			return -1;
 		}
-  }
+	}
   
-  public static User findUser(int uid){
-	  try {
+	public static User findUser(int uid){
+		try {
 			String statement ="select * from users where id="+uid;
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
@@ -118,17 +110,13 @@ public class ToolFind {
 				e.printStackTrace();
 				
 				//throw new DataMapperException(e);
-			}
-	  return null;
-  }
-  public static Administrator findAdmin(int aid){
-	  try {
+		}
+		return null;
+	}
+	
+	public static Administrator findAdmin(int aid){
+		try {
 		  	String statement ="select * from administrator where id="+aid;
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
@@ -162,16 +150,12 @@ public class ToolFind {
 				
 			//throw new DataMapperException(e);
 		}
-	  return null;
-  }
-  public static Client findClient(int cid){
-	  try {
+		return null;
+	}
+	
+	public static Client findClient(int cid){
+		try {
 			String statement ="select * from client where id="+cid;
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
@@ -203,19 +187,14 @@ public class ToolFind {
 		}catch (SQLException e) {
 			e.printStackTrace();
 				
-			throw new DataMapperException(e);
+			//throw new DataMapperException(e);
 		}
-	  return null;
-  }
+		return null;
+	}
   
-  public static Order findOrder(int id){
-	  try {
+	public static Order findOrder(int id){
+		try {
 		  	String statement ="select * from order where oid="+id;
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int aid1 = rs.getInt(1);
@@ -239,19 +218,14 @@ public class ToolFind {
 		}catch (SQLException e) {
 			e.printStackTrace();
 				
-			throw new DataMapperException(e);
+			//throw new DataMapperException(e);
 		}
-	  return null;
-  }
+		return null;
+	}
   
-  public static Apartment findApartment(int id){
-	  try {
+	public static Apartment findApartment(int id){
+		try {
 		  	String statement ="select * from apartment where apid="+id;
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
-			System.out.println("MySQL JDBC Driver Registered11!");
-			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int apid = rs.getInt(1);
@@ -278,10 +252,10 @@ public class ToolFind {
 		}catch (SQLException e) {
 			e.printStackTrace();
 				
-			throw new DataMapperException(e);
+			//throw new DataMapperException(e);
 		}
-	  return null;
-  }
+		return null;
+	}
   
   
 }

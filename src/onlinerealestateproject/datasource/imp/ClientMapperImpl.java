@@ -50,11 +50,10 @@ public class ClientMapperImpl implements ClientMapper {
 		// TODO Auto-generated method stub
 		ToolInsert ti = new ToolInsert();
 		
-		if(ti.insertUAC(client.uid, client.firstName, client.lastName, client.userName, client.password, client.order, client.permission, "client"))
-			{
+		if(ti.insertUAC(client.uid, client.firstName, client.lastName, client.userName, client.password, client.order, client.permission, "client")){
 			map.put(client.getUid(),client);
 			return true;
-			}
+		}
 		return false;
 		
 		

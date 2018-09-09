@@ -121,39 +121,39 @@ public class Order {
 		
 	}
 
-	public Order find(int id) {
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		return orderMapperImpl.find(id);
-		
-	}
-	
-	public void insert (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.insert(order);
-	}
-	
-	
-	public void update (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.update(order);
-		
-	}
-	
-	
-	public void delete (Order order) throws DataMapperException{
-		
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		orderMapperImpl.delete(order);
-	}
-
-	public List<Order> findAllOrders(int id){
-		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-		return orderMapperImpl.findAllOrders(id);
-		
-	}
+//	public Order find(int id) {
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		return orderMapperImpl.find(id);
+//		
+//	}
+//	
+//	public void insert (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.insert(order);
+//	}
+//	
+//	
+//	public void update (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.update(order);
+//		
+//	}
+//	
+//	
+//	public void delete (Order order) throws DataMapperException{
+//		
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		orderMapperImpl.delete(order);
+//	}
+//
+//	public List<Order> findAllOrders(int id){
+//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+//		return orderMapperImpl.findAllOrders(id);
+//		
+//	}
 	
 
 	

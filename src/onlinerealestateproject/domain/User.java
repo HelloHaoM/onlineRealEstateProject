@@ -10,8 +10,6 @@ import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.datasource.imp.ClientMapperImpl;
 import onlinerealestateproject.datasource.imp.OrderMapperImpl;
 import onlinerealestateproject.datasource.imp.UserMapperImpl;
-import onlinerealestateproject.util.ToolRegister;
-import onlinerealestateproject.util.ToolLogin;
 
 /**
  * @author haomai
@@ -145,52 +143,52 @@ public class User {
 	}
 	
 	
-	public boolean findUP(String userName, String password) {
-		ToolLogin tl1 = new ToolLogin();
-		if(tl1.find(userName, password)) {
-			return true;
-		}
-		return false;	
-	}
-	
-	public User find(int id) {
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		return userMapperImpl.find(id, "user");
-		
-	}	
-	
-	public void insert (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.insert(user);
-	}
-	
-	
-	public void update (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.update(user);
-	}
-	
-	
-	public void delete (User user) throws DataMapperException{
-		
-		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		userMapperImpl.delete(user);
-	}
-	
-	public boolean login(String username, String password) {
-		
-		ToolLogin tl = new ToolLogin();
-		if(tl.find(username, password)) {
-			System.out.println("login succeded");
-		}else {
-			System.out.println("login failed");
-		}
-		
-		return tl.find(username, password);
-	}
+//	public boolean findUP(String userName, String password) {
+//		ToolLogin tl1 = new ToolLogin();
+//		if(tl1.find(userName, password)) {
+//			return true;
+//		}
+//		return false;	
+//	}
+//	
+//	public User find(int id) {
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		return userMapperImpl.find(id, "user");
+//		
+//	}	
+//	
+//	public void insert (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.insert(user);
+//	}
+//	
+//	
+//	public void update (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.update(user);
+//	}
+//	
+//	
+//	public void delete (User user) throws DataMapperException{
+//		
+//		UserMapperImpl userMapperImpl = new UserMapperImpl();
+//		userMapperImpl.delete(user);
+//	}
+//	
+//	public boolean login(String username, String password) {
+//		
+//		ToolLogin tl = new ToolLogin();
+//		if(tl.find(username, password)) {
+//			System.out.println("login succeded");
+//		}else {
+//			System.out.println("login failed");
+//		}
+//		
+//		return tl.find(username, password);
+//	}
 	
 	
 			

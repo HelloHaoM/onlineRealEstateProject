@@ -59,7 +59,6 @@ public class LoginAndRegisterController extends ActionServlet {
 			}
 			else {
 				request.setAttribute("info", "Wrong User Name or Wrong Password");
-				//request.getRequestDispatcher("LoginAndRegisterPage.jsp").forward(request, response);
 				forward("LoginAndRegisterPage.jsp", request, response);
 			}
 			
@@ -74,7 +73,6 @@ public class LoginAndRegisterController extends ActionServlet {
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id+"&userName="+userName);
 			}else {
 				request.setAttribute("info", "Register Failed");
-				//request.getRequestDispatcher("LoginAndRegisterPage.jsp").forward(request, response);
 				forward("LoginAndRegisterPage.jsp", request, response);
 			}
 		}

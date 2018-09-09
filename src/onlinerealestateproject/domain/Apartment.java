@@ -201,49 +201,49 @@ public class Apartment {
 		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 	
-	
-	public Apartment find(int id) {
-		
-		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-		return apartmentMapperImpl.find(id);
-		
-	}
-	
-	public void insert (Apartment apartment) throws DataMapperException{
-		UnitofWorkApartment.newCurrent();
-		if(map.get(apartment.getapid())==null){
+//	
+//	public Apartment find(int id) {
+//		
 //		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.insert(apartment);
-			map.put(apartment.getapid(), apartment);
-			UnitofWorkApartment.getCurrent().registerNew(map.get(apartment.getapid()));
-			UnitofWorkApartment.getCurrent().commit();
-		}
-	}
-	
-	
-	public void update (Apartment apartment) throws DataMapperException{
-		UnitofWorkApartment.newCurrent();
-		if(map.get(apartment.getapid())!=null){
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.update(apartment);
-			map.put(apartment.getapid(), apartment);
-			UnitofWorkApartment.getCurrent().registerDirty(map.get(apartment.getapid()));
-			UnitofWorkApartment.getCurrent().commit();
-		}
-		
-	}
-	
-	
-	public void delete (Apartment apartment) throws DataMapperException{
-		UnitofWorkApartment.newCurrent();
-		if(map.get(apartment.getapid())!=null){
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.delete(apartment);
-			map.put(apartment.getApid(), null);
-			UnitofWorkApartment.getCurrent().registerDeleted(map.get(apartment.getapid()));
-			UnitofWorkApartment.getCurrent().commit();
-		}
-	}
+//		return apartmentMapperImpl.find(id);
+//		
+//	}
+//	
+//	public void insert (Apartment apartment) throws DataMapperException{
+//		UnitofWorkApartment.newCurrent();
+//		if(map.get(apartment.getapid())==null){
+////		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+////		apartmentMapperImpl.insert(apartment);
+//			map.put(apartment.getapid(), apartment);
+//			UnitofWorkApartment.getCurrent().registerNew(map.get(apartment.getapid()));
+//			UnitofWorkApartment.getCurrent().commit();
+//		}
+//	}
+//	
+//	
+//	public void update (Apartment apartment) throws DataMapperException{
+//		UnitofWorkApartment.newCurrent();
+//		if(map.get(apartment.getapid())!=null){
+////		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+////		apartmentMapperImpl.update(apartment);
+//			map.put(apartment.getapid(), apartment);
+//			UnitofWorkApartment.getCurrent().registerDirty(map.get(apartment.getapid()));
+//			UnitofWorkApartment.getCurrent().commit();
+//		}
+//		
+//	}
+//	
+//	
+//	public void delete (Apartment apartment) throws DataMapperException{
+//		UnitofWorkApartment.newCurrent();
+//		if(map.get(apartment.getapid())!=null){
+////		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+////		apartmentMapperImpl.delete(apartment);
+//			map.put(apartment.getApid(), null);
+//			UnitofWorkApartment.getCurrent().registerDeleted(map.get(apartment.getapid()));
+//			UnitofWorkApartment.getCurrent().commit();
+//		}
+//	}
 
 
 	public ArrayList<Apartment> findAllApartments(){

@@ -29,9 +29,6 @@ import onlinerealestateproject.datasource.DataMapperException;
  * 
  */
 	public class ApartmentMapperImpl implements ApartmentMapper {
-		//Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
-
-	
  
 		public ArrayList<Apartment> findAllApartments(){
 			ArrayList<Apartment> apartments = new ArrayList<>();
@@ -67,75 +64,53 @@ import onlinerealestateproject.datasource.DataMapperException;
 			throw new DataMapperException(e);
 		}
 		System.out.println(apartments.size());
-		System.out.println("olala");
 		return apartments;
-		
-		
 		
 	}
 
-
-
-
-		@Override
-
+	@Override
 	public boolean insert(Apartment apartment) throws DataMapperException {
-	// TODO Auto-generated method stub
-	
-			ToolInsert ti = new ToolInsert();
-			
-				if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
-						apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
-				{
-					
-					return true;
-				}
-				return false;
-			
-	
+		// TODO Auto-generated method stub
+		ToolInsert ti = new ToolInsert();
+		if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+				apartment.price, apartment.acreage, apartment.location, apartment.apartmentName)){
+				return true;
 		}
+		return false;
+	}
 
 
-@Override
-
-
+	@Override
 	public boolean update(Apartment apartment) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolUpdate tu = new ToolUpdate();
-			
-			if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
-				apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
-				return true;
-			return false;
-		}
+		if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+			apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
+			return true;
+		return false;
+	}
 		
 
 
-@Override
-
+	@Override
 	public boolean delete(Apartment apartment) throws DataMapperException {
 		// TODO Auto-generated method stub
 		ToolDelete td = new ToolDelete();
-
-			if(td.delete(apartment.getapid(), "apartment"))
-				return true;
-			return false;
-		}
+		if(td.delete(apartment.getapid(), "apartment"))
+			return true;
+		return false;
+	}
 
 
 
 
 
 	@Override
-
 	public Apartment find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
 		
 		return tf.findApartment(id);
-	
-
-
 	}
 
 

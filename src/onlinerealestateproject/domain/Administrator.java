@@ -34,25 +34,25 @@ public class Administrator extends User{
 	}
 	
 	
-	public void insert (Administrator administrator) throws DataMapperException{
-		
-		AdministratorMapperImpl administratorMapperImpl = new AdministratorMapperImpl();
-		administratorMapperImpl.insert(administrator);
-	}
-	
-	
-	public void update (Administrator administrator) throws DataMapperException{
-		
-		AdministratorMapperImpl administratorMapperImpl = new AdministratorMapperImpl();
-		administratorMapperImpl.update(administrator);
-	}
-	
-	
-	public void delete (Administrator administrator) throws DataMapperException{
-		
-		AdministratorMapperImpl administratorMapperImpl = new AdministratorMapperImpl();
-		administratorMapperImpl.delete(administrator);
-	}
+//	public void insert (Administrator administrator) throws DataMapperException{
+//		
+//		AdministratorMapperImpl administratorMapperImpl = new AdministratorMapperImpl();
+//		administratorMapperImpl.insert(administrator);
+//	}
+//	
+//	
+//	public void update (Administrator administrator) throws DataMapperException{
+//		
+//		AdministratorMapperImpl administratorMapperImpl = new AdministratorMapperImpl();
+//		administratorMapperImpl.update(administrator);
+//	}
+//	
+//	
+//	public void delete (Administrator administrator) throws DataMapperException{
+//		
+//		AdministratorMapperImpl administratorMapperImpl = new AdministratorMapperImpl();
+//		administratorMapperImpl.delete(administrator);
+//	}
 
 
 	

@@ -38,23 +38,23 @@ public class ToolDelete {
 	}
   
 
-public static boolean delete(int id, String tablename) throws DataMapperException {
-	// TODO Auto-generated method stub
-	try {
+	public static boolean delete(int id, String tablename) throws DataMapperException {
+		// TODO Auto-generated method stub
+		try {
 			String statement = "delete from "+tablename+ " where id=?";
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, id);
 			dbStatement.executeUpdate();
 			return true;
 		
-	} catch (SQLException e) {
+		} catch (SQLException e) {
 		
-		e.printStackTrace();
+			e.printStackTrace();
 			//throw new DataMapperException( e);
-		return false;
-	}
+			return false;
+		}
 	
-}
+	}
 
 
   

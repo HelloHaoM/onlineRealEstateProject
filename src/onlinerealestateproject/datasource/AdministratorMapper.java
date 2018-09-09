@@ -7,9 +7,13 @@ import onlinerealestateproject.domain.Administrator;
  */
 public interface AdministratorMapper {
 	
+	// find an administrator by an id
 	public Administrator find(int id);
+	// insert an administrator
 	public boolean insert (Administrator administrator) throws DataMapperException;
+	// update an administrator
 	public boolean update (Administrator administrator) throws DataMapperException;
+	// delete an administrator
 	public boolean delete (Administrator administrator) throws DataMapperException;
 	
 

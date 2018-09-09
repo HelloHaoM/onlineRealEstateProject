@@ -45,8 +45,7 @@ public class ApartmentController extends ActionServlet {
 		int uid = Integer.parseInt(request.getParameter("client-id"));
 		int apid = Integer.parseInt(request.getParameter("apartment-id"));
 		String inspectionTime = request.getParameter("inspection-time");
-		System.out.println(uid);
-		System.out.println(apid);
+		// make an order via orderService
 		if(orderService.makeOrder(uid, apid, inspectionTime)) {
 			response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 		}

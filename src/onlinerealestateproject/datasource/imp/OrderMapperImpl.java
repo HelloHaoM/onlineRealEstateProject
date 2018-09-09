@@ -27,9 +27,7 @@ public class OrderMapperImpl implements OrderMapper{
 		ArrayList<Order> orders = new ArrayList<>();
 		try {
 			String statement = "select * from inspection_order where id="+uid1;
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
+
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			 
 			while(rs.next()) {
@@ -38,8 +36,7 @@ public class OrderMapperImpl implements OrderMapper{
 				String inspEndTime = rs.getString(3);
 				int id = rs.getInt(4);				
 				int apid = rs.getInt(5);								
-				Order order = new Order(oid, inspStartTime, 
-						inspEndTime,id,apid);
+				Order order = new Order(oid, inspStartTime, inspEndTime,id,apid);
 				order.setOid(oid);
 				order.setInspStartTime(inspStartTime);
 				order.setInspEndTime(inspEndTime);
@@ -54,7 +51,6 @@ public class OrderMapperImpl implements OrderMapper{
 			throw new DataMapperException(e);
 		}
 		System.out.println(orders.size());
-		System.out.println("olala");
 		return orders;
 		
 	}

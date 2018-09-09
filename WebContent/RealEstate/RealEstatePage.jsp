@@ -136,7 +136,7 @@
                                 	Building Name: <% out.print(apartList.get(i).getApartmentName()); %> 
                                 </p>
                                 <span class="fnt-smaller fnt-lighter fnt-arial text-right">                               
-                                	<form class="realestate-order" action="/onlinerealestateproject/ApartmentController", method="post">
+                                	<form class="realestate-order" action="../ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
                                 		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
                                 		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
@@ -188,7 +188,7 @@
                                 	Building Name: <% out.print(apartList.get(i).getApartmentName()); %> 
                                 </p>
                                 <span class="fnt-smaller fnt-lighter fnt-arial text-right">                               
-                                	<form class="realestate-order" action="/onlinerealestateproject/ApartmentController", method="post">
+                                	<form class="realestate-order" action="../ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
                                 		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
                                 		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>

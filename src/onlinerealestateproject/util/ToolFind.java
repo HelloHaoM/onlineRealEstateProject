@@ -27,10 +27,11 @@ public class ToolFind {
   public static boolean findByAccount(String username, String password) {
 	  try {
 			int aid1=0;
-			String statement = "SELECT * FROM users where userName='"+username+"' and password="+password;
-			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			String statement = "SELECT * FROM users where username='"+username+"' and password='"+password+"'";
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
+			System.out.println(dbStatement);
 			ResultSet rs = dbStatement.executeQuery();
 			while(rs.next()) {
 				aid1 = rs.getInt(1);
@@ -54,8 +55,8 @@ public class ToolFind {
   public static int findIdByAccount(String username, String password) {
 	  try {
 			int aid1=0;
-			String statement = "SELECT * FROM users where userName='"+username+"' and password="+password;
-			PreparedStatement dbStatement = MySQLConnection.prepare(statement);
+			String statement = "SELECT * FROM users where userName='"+username+"' and password='"+password+"'";
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
 			ResultSet rs = dbStatement.executeQuery();
@@ -86,7 +87,7 @@ public class ToolFind {
 //			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
 //				System.out.println(id);
@@ -129,7 +130,7 @@ public class ToolFind {
 //			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
 				System.out.println(id);
@@ -172,7 +173,7 @@ public class ToolFind {
 //			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
 				System.out.println(id);
@@ -216,7 +217,7 @@ public class ToolFind {
 //			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int aid1 = rs.getInt(1);
 				System.out.println(aid1);
@@ -252,7 +253,7 @@ public class ToolFind {
 //			mysqlconnection.prepare(statement);
 			System.out.println("MySQL JDBC Driver Registered11!");
 			System.out.println("MySQL JDBC Driver Registered22!");
-			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int apid = rs.getInt(1);
 				String startRentTime = rs.getString(2);			

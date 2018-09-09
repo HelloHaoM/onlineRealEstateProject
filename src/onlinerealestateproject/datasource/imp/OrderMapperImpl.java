@@ -27,10 +27,10 @@ public class OrderMapperImpl implements OrderMapper{
 		ArrayList<Order> orders = new ArrayList<>();
 		try {
 			String statement = "select * from inspection_order where id="+uid1;
-			MySQLConnection mysqlconnection = new MySQLConnection();
-			mysqlconnection.getDBConnection();
-			mysqlconnection.prepare(statement);
-			ResultSet rs = mysqlconnection.prepare(statement).executeQuery();
+//			MySQLConnection mysqlconnection = new MySQLConnection();
+//			mysqlconnection.getDBConnection();
+//			mysqlconnection.prepare(statement);
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			 
 			while(rs.next()) {
 				int oid = rs.getInt(1);

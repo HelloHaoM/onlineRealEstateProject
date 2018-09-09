@@ -17,7 +17,7 @@
             <div class="pr-wrap">
                 <div class="register-body">
                     <label>Register </label>
-                    <form class="register" action="/onlinerealestateproject/LoginAndRegisterController" method="post"> 
+                    <form class="register" action="LoginAndRegisterController" method="post"> 
                     	<input type="text" name="register-firstname" placeholder="First Name" required="required" />
                     	<input type="text" name="register-lastname" placeholder="Last Name" required="required" />
                     	<input type="text" name="register-username" placeholder="Username" required="required" />
@@ -37,7 +37,7 @@
 							out.print(info);
 					%>
                 </p>
-                <form class="login" action="/onlinerealestateproject/LoginAndRegisterController" method="post">
+                <form class="login" action="LoginAndRegisterController" method="post">
                 <input type="text" name="username" placeholder="Username" required="required" />
                 <input type="password" name="password" placeholder="Password" required="required" />
                 <input type="submit" name="submit" value="login" class="btn btn-success btn-sm" />

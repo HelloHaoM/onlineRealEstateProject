@@ -46,7 +46,7 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 //			MySQLConnection mysqlconnection = new MySQLConnection();
 //			mysqlconnection.getDBConnection();
 //			mysqlconnection.prepare(statement);
-			ResultSet rs = MySQLConnection.prepare(statement).executeQuery();
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 
 			 
 			while(rs.next()) {

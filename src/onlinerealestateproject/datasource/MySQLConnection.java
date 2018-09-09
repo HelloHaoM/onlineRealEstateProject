@@ -7,16 +7,40 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySQLConnection {
-	public static final String SQL_URL = "jdbc:mysql://localhost:3306/softwarearchitecture?serverTimezone=Australia/Melbourne";
-	public static final String USER_NAME = "root";
-	public static final String PASSWORD = "123";
+	private static MySQLConnection singleMySQLConnection = new MySQLConnection();
+	private Connection dbConnection;
+	private int count;
 	
-	public static PreparedStatement prepare(String stm) {
+	public static final String SQL_URL = //"jdbc:postgresql://localhost:5432/postgres";
+			"jdbc:postgresql://ec2-107-21-98-165.compute-1.amazonaws.com:5432/d102mvg3lomse";
+			//"jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
+	public static final String USER_NAME = //"postgres";
+	"vyvqoseqjkvkge";
+	public static final String PASSWORD = //"";
+	"5eea646076c4e537db7c4167fc1585437bf105fe6c8bf484220d93c98b6cb232";
+	
+	private MySQLConnection() {
+		this.dbConnection = this.getDBConnection();
+		count++;
+		System.out.println("Add one Connection");
+	}
+	
+	public static MySQLConnection getSingleMySQLConnection() {
+		if(singleMySQLConnection == null)
+			singleMySQLConnection = new MySQLConnection();
+		return singleMySQLConnection;
+	}
+	
+	public Connection getConnection() {
+		return dbConnection;
+	}
+	
+	public PreparedStatement prepare(String stm) {
 		 
 		PreparedStatement preparedStatement = null;
 		try {	
 	
-	       	Connection dbConnection = getDBConnection();
+	       	//Connection dbConnection = getDBConnection();
 				
 			preparedStatement = dbConnection.prepareStatement(stm);
 			
@@ -32,10 +56,11 @@ public class MySQLConnection {
 	
 	
 	// Get a mysql connection
-	public static Connection getDBConnection() {
+	public Connection getDBConnection() {
 		// TODO Auto-generated method stub
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 			
 			System.out.println("MySql Driver Loading Successful");
 		} catch (ClassNotFoundException e) {
@@ -57,6 +82,10 @@ public class MySQLConnection {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static void main(String args[]) throws SQLException {
+		
 	}
 
 }

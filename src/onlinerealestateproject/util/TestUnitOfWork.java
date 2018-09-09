@@ -4,7 +4,7 @@ import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.domain.Apartment;
 
-public class TestMain {
+public class TestUnitOfWork {
 	public static void main(String args[]) {
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 		int apid = 0;

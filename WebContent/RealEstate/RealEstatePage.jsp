@@ -1,3 +1,4 @@
+<%@page import="onlinerealestateproject.util.UnitofWorkApartment"%>
 <%@page import="onlinerealestateproject.domain.Client"%>
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="java.util.ArrayList"%>
@@ -104,6 +105,7 @@
                 <div class="col-sm-6"> 
                 
                 <% 
+                	UnitofWorkApartment.newCurrent();
                 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
                 	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments();
            			for(int i = 0; i < apartList.size() / 2; i++){

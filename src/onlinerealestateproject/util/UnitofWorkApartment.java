@@ -28,7 +28,8 @@ import onlinerealestateproject.domain.*;
 			setCurrent(new UnitofWorkApartment());
 		}
 		public static void setCurrent(UnitofWorkApartment uow) 
-		{ current.set(uow);
+		{ 
+			current.set(uow);
 		}
 		public static UnitofWorkApartment getCurrent() { 
 			return (UnitofWorkApartment) current.get();
@@ -43,9 +44,8 @@ import onlinerealestateproject.domain.*;
 			if (!dirtyObjects.contains(obj) && !newObjects.contains(obj)) {
 				dirtyObjects.add(obj);
 			}
-	    	}
-		public void registerDeleted(Apartment obj) 
-			{ 
+	    }
+		public void registerDeleted(Apartment obj) { 
 //			Assert.notNull(obj.getId(), "id is null");
 	    	if (newObjects.remove(obj)) 
 	    		return; 
@@ -54,7 +54,7 @@ import onlinerealestateproject.domain.*;
 	    	{ 
 	    		deletedObjects.add(obj);
 	    	} 
-	    	}
+	    }
 		
 
 	

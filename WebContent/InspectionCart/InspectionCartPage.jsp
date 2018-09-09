@@ -1,3 +1,4 @@
+<%@page import="onlinerealestateproject.util.UnitofWorkApartment"%>
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="onlinerealestateproject.domain.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -46,6 +47,7 @@
                     </thead>
                     <tbody>
                     	<%
+                    		UnitofWorkApartment.newCurrent();
                     		OrderMapper orderMapper = new OrderMapperImpl();
                     		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
                     		ArrayList<Order> orderList = orderMapper.findAllOrders(uid);

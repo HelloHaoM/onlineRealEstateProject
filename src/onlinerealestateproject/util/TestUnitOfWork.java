@@ -6,6 +6,7 @@ import onlinerealestateproject.domain.Apartment;
 
 public class TestUnitOfWork {
 	public static void main(String args[]) {
+		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 		int apid = 0;
 		String startRentTime = "test1";

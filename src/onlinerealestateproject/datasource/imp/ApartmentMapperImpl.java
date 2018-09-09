@@ -18,6 +18,7 @@ import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
 import onlinerealestateproject.util.ToolUpdate;
+import onlinerealestateproject.util.UnitofWorkApartment;
 import onlinerealestateproject.*;
 import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.DataMapperException;
@@ -27,28 +28,17 @@ import onlinerealestateproject.datasource.MySQLConnection;
  * @author Junjie Huang
  * 
  */
-public class ApartmentMapperImpl implements ApartmentMapper {
-	Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
-	IdentityMap<Apartment> map = IdentityMap.getInstance(apartment);
-	
+	public class ApartmentMapperImpl implements ApartmentMapper {
+		Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
 
-//  public static void main(String[] argv) {
-//
-//	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-//	find( "SELECT * FROM apartment");
-//  }
+	
  
-  public ArrayList<Apartment> findAllApartments(){
-	  ArrayList<Apartment> apartments = new ArrayList<>();
-		try {
+		public ArrayList<Apartment> findAllApartments(){
+			ArrayList<Apartment> apartments = new ArrayList<>();
+			try {
 
 			String statement = "select * from apartment";
-//			MySQLConnection mysqlconnection = new MySQLConnection();
-//			mysqlconnection.getDBConnection();
-//			mysqlconnection.prepare(statement);
-			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
-
-			 
+			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();			 
 			while(rs.next()) {
 				int apid = rs.getInt(1);
 				String startRentTime = rs.getString(2);
@@ -87,69 +77,66 @@ public class ApartmentMapperImpl implements ApartmentMapper {
 
 
 
-@Override
+		@Override
 
-public boolean insert(Apartment apartment) throws DataMapperException {
+	public boolean insert(Apartment apartment) throws DataMapperException {
 	// TODO Auto-generated method stub
-	ToolInsert ti = new ToolInsert();
-	if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
-			apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
-	{
-		map.put(apartment.getapid(),apartment);
-		return true;
+	
+			ToolInsert ti = new ToolInsert();
+			
+				if(ti.insertAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+						apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
+				{
+					
+					return true;
+				}
+				return false;
+			
+	
 		}
-	return false;
-	
-}
 
 
 @Override
 
 
-public boolean update(Apartment apartment) throws DataMapperException {
-	// TODO Auto-generated method stub
-	ToolUpdate tu = new ToolUpdate();
-	if(map.get(apartment.getapid())!=null){
-		map.put(apartment.getapid(), apartment);
-	
-		if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+	public boolean update(Apartment apartment) throws DataMapperException {
+		// TODO Auto-generated method stub
+		ToolUpdate tu = new ToolUpdate();
+			
+			if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
 				apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
-			return true;
-		return false;
-	}
-	return false;
-}
+				return true;
+			return false;
+		}
+		
 
 
 @Override
 
-public boolean delete(Apartment apartment) throws DataMapperException {
-	// TODO Auto-generated method stub
-	ToolDelete td = new ToolDelete();
-	if(map.get(apartment.getapid())!=null){
-		map.put(apartment.getapid(), null);
-		if(td.delete(apartment.getapid(), "apartment"))
-		return true;
-	return false;
-}
+	public boolean delete(Apartment apartment) throws DataMapperException {
+		// TODO Auto-generated method stub
+		ToolDelete td = new ToolDelete();
 
-return false;
-}
+			if(td.delete(apartment.getapid(), "apartment"))
+				return true;
+			return false;
+		}
 
 
 
 
-@Override
 
-public Apartment find(int id) {
-	// TODO Auto-generated method stub
-	ToolFind tf = new ToolFind();
-	map.put(id, tf.findApartment(id));
-	return map.get(id);
+	@Override
+
+	public Apartment find(int id) {
+		// TODO Auto-generated method stub
+		ToolFind tf = new ToolFind();
+		
+		return tf.findApartment(id);
 	
 
 
-}
+	}
 
 
 

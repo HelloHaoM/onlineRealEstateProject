@@ -6,12 +6,16 @@ import java.util.List;
 
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
+import onlinerealestateproject.util.IdentityMap;
+import onlinerealestateproject.util.UnitofWorkApartment;
 
 /**
  * @author haomai
  * A object of Apartment information
  */
 public class Apartment {
+	Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
+	IdentityMap<Apartment> map = IdentityMap.getInstance(apartment);
 	
 	public int apid;
 	
@@ -41,6 +45,7 @@ public class Apartment {
 		this.location = location;
 		this.acreage = acreage;
 		this.apartmentName = apartmentName;
+		UnitofWorkApartment.getCurrent().registerNew(this);
 	}
 
 	private void load() {
@@ -50,24 +55,31 @@ public class Apartment {
 			this.apid = record.getapid(); }
 			if (this.startRentTime == null) {
 			this.startRentTime = record.getStartRentTime();
+			UnitofWorkApartment.getCurrent().registerDirty(this);
 			}
 			if (this.endRentTime == null) {
 			this.endRentTime = record.getEndRentTime();
+			UnitofWorkApartment.getCurrent().registerDirty(this);
 			}
 			if (this.availability == null) {
 				this.availability = record.getAvailability();
+				UnitofWorkApartment.getCurrent().registerDirty(this);
 				}
 			if (this.price == -1) {
 				this.price = record.getPrice();
+				UnitofWorkApartment.getCurrent().registerDirty(this);
 				}
 			if (this.acreage == -1) {
 				this.acreage = record.getAcreage();
+				UnitofWorkApartment.getCurrent().registerDirty(this);
 				}
 			if (this.location == null) {
 				this.location = record.getLocation();
+				UnitofWorkApartment.getCurrent().registerDirty(this);
 				}
 			if (this.apartmentName == null) {
 				this.apartmentName = record.getApartmentName();
+				UnitofWorkApartment.getCurrent().registerDirty(this);
 				}
 	}
 	
@@ -79,6 +91,7 @@ public class Apartment {
 
 	public void setapid(int apid) {
 		apid = apid;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public String getStartRentTime() {
@@ -89,6 +102,7 @@ public class Apartment {
 
 	public void setStartRentTime(String startRentTime) {
 		this.startRentTime = startRentTime;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public String getEndRentTime() {
@@ -99,6 +113,7 @@ public class Apartment {
 
 	public void setEndRentTime(String endRentTime) {
 		this.endRentTime = endRentTime;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public String getAvailableDate() {
@@ -109,6 +124,7 @@ public class Apartment {
 
 	public void setAvailableDate(String availableDate) {
 		this.availableDate = availableDate;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public ArrayList<String> getInspectionTimeList() {
@@ -119,6 +135,7 @@ public class Apartment {
 
 	public void setInspectionTimeList(ArrayList<String> inspectionTimeList) {
 		this.inspectionTimeList = new ArrayList<String>(inspectionTimeList);
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public String getAvailability() {
@@ -129,6 +146,7 @@ public class Apartment {
 
 	public void setAvailability(String availability) {
 		this.availability = availability;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public int getPrice() {
@@ -139,6 +157,7 @@ public class Apartment {
 
 	public void setPrice(int price) {
 		this.price = price;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public int getApid() {
@@ -147,6 +166,7 @@ public class Apartment {
 
 	public void setApid(int apid) {
 		this.apid = apid;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public String getApartmentName() {
@@ -155,6 +175,7 @@ public class Apartment {
 
 	public void setApartmentName(String apartmentName) {
 		this.apartmentName = apartmentName;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	} 
 
 	public String getLocation() {
@@ -165,16 +186,19 @@ public class Apartment {
 
 	public void setLocation(String location) {
 		this.location = location;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 
 	public int getAcreage() {
 		if(this.acreage == -1)
 			load();
+		
 		return this.acreage;
 	}
 
 	public void setAcreage(int acreage) {
 		this.acreage = acreage;
+		UnitofWorkApartment.getCurrent().registerDirty(this);
 	}
 	
 	
@@ -185,25 +209,41 @@ public class Apartment {
 		
 	}
 	
-//	public void insert (Apartment apartment) throws DataMapperException{
-//		
+	public void insert (Apartment apartment) throws DataMapperException{
+		UnitofWorkApartment.newCurrent();
+		if(map.get(apartment.getapid())==null){
 //		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
 //		apartmentMapperImpl.insert(apartment);
-//	}
-//	
-//	
-//	public void update (Apartment apartment) throws DataMapperException{
-//		
+			map.put(apartment.getapid(), apartment);
+			UnitofWorkApartment.getCurrent().registerNew(map.get(apartment.getapid()));
+			UnitofWorkApartment.getCurrent().commit();
+		}
+	}
+	
+	
+	public void update (Apartment apartment) throws DataMapperException{
+		UnitofWorkApartment.newCurrent();
+		if(map.get(apartment.getapid())!=null){
+//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
+//		apartmentMapperImpl.update(apartment);
+			map.put(apartment.getapid(), apartment);
+			UnitofWorkApartment.getCurrent().registerDirty(map.get(apartment.getapid()));
+			UnitofWorkApartment.getCurrent().commit();
+		}
+		
+	}
+	
+	
+	public void delete (Apartment apartment) throws DataMapperException{
+		UnitofWorkApartment.newCurrent();
+		if(map.get(apartment.getapid())!=null){
 //		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
 //		apartmentMapperImpl.delete(apartment);
-//	}
-//	
-//	
-//	public void delete (Apartment apartment) throws DataMapperException{
-//		
-//		ApartmentMapperImpl apartmentMapperImpl = new ApartmentMapperImpl();
-//		apartmentMapperImpl.delete(apartment);
-//	}
+			map.put(apartment.getApid(), null);
+			UnitofWorkApartment.getCurrent().registerDeleted(map.get(apartment.getapid()));
+			UnitofWorkApartment.getCurrent().commit();
+		}
+	}
 
 
 	public ArrayList<Apartment> findAllApartments(){

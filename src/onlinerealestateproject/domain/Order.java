@@ -8,6 +8,7 @@ import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.datasource.imp.OrderMapperImpl;
 
 
+
 /**
  * @author haomai
  * A object of order storing 
@@ -34,24 +35,29 @@ public class Order {
 		this.inspEndTime = inspEndTime;
 		this.uid = uid;
 		
+		
 	}
 	private void load() {
 		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
 		Order record = orderMapperImpl.find(this.getOid()); 
 		if (this.oid == -1) {
 			this.oid = record.getOid(); 
+			
 			}
 			if (this.inspStartTime == null) {
 			this.inspStartTime = record.getInspStartTime();
+			
 			}
 			if (this.inspEndTime == null) {
 			this.inspEndTime = record.getInspEndTime();
+			
 			}
 			if (this.uid == -1) {
 				this.uid = record.getUid();
 				}
 			if (this.apid == -1) {
 				this.apid = record.getApid();
+				
 				}
 	}
 	
@@ -62,6 +68,7 @@ public class Order {
 
 	public void setOid(int oid) {
 		this.oid = oid;
+		
 	}
 
 	public int getApid() {
@@ -72,6 +79,7 @@ public class Order {
 
 	public void setApid(int apid) {
 		this.apid = apid;
+		
 	}
 
 
@@ -84,6 +92,7 @@ public class Order {
 
 	public void setInspStartTime(String inspStartTime) {
 		this.inspStartTime = inspStartTime;
+		
 	}
 
 
@@ -96,6 +105,7 @@ public class Order {
 
 	public void setInspEndTime(String inspEndTime) {
 		this.inspEndTime = inspEndTime;
+		
 	}
 
 
@@ -108,6 +118,7 @@ public class Order {
 
 	public void setUid(int uid) {
 		this.uid = uid;
+		
 	}
 
 	public Order find(int id) {
@@ -117,25 +128,26 @@ public class Order {
 		
 	}
 	
-//	public void insert (Order order) throws DataMapperException{
-//		
-//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-//		orderMapperImpl.insert(order);
-//	}
-//	
-//	
-//	public void update (Order order) throws DataMapperException{
-//		
-//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-//		orderMapperImpl.delete(order);
-//	}
-//	
-//	
-//	public void delete (Order order) throws DataMapperException{
-//		
-//		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
-//		orderMapperImpl.delete(order);
-//	}
+	public void insert (Order order) throws DataMapperException{
+		
+		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+		orderMapperImpl.insert(order);
+	}
+	
+	
+	public void update (Order order) throws DataMapperException{
+		
+		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+		orderMapperImpl.update(order);
+		
+	}
+	
+	
+	public void delete (Order order) throws DataMapperException{
+		
+		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();
+		orderMapperImpl.delete(order);
+	}
 
 	public List<Order> findAllOrders(int id){
 		OrderMapperImpl orderMapperImpl = new OrderMapperImpl();

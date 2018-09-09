@@ -9,7 +9,7 @@ import onlinerealestateproject.domain.Apartment;
  * A apartment service interface
  */
 public interface ApartmentService {
-	public Apartment getApartment(int Apid);
+	public Apartment getApartment(int apid);
 	public ArrayList<Apartment> getAvailableApartmentList();
 
 }

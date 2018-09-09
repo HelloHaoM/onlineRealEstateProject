@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import onlinerealestateproject.datasource.DataMapperException;
-import onlinerealestateproject.datasource.MySQLConnection;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.domain.Client;

@@ -14,8 +14,8 @@ import onlinerealestateproject.util.UnitofWorkApartment;
  * A object of Apartment information
  */
 public class Apartment {
-	Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
-	IdentityMap<Apartment> map = IdentityMap.getInstance(apartment);
+	//Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
+	IdentityMap<Apartment> map = IdentityMap.getInstance(this);
 	
 	public int apid;
 	

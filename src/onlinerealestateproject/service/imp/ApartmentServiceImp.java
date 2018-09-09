@@ -2,6 +2,8 @@ package onlinerealestateproject.service.imp;
 
 import java.util.ArrayList;
 
+import onlinerealestateproject.datasource.ApartmentMapper;
+import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.service.ApartmentService;
 
@@ -12,12 +14,14 @@ import onlinerealestateproject.service.ApartmentService;
 
 public class ApartmentServiceImp implements ApartmentService{
 	
-	public Apartment getApartment(int Apid) {
-		return null;
+	public Apartment getApartment(int apid) {
+		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		return apartmentMapper.find(apid);
 	}
 	
 	public ArrayList<Apartment> getAvailableApartmentList(){
-		return null;
+		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		return apartmentMapper.findAllApartments();
 	}
 
 }

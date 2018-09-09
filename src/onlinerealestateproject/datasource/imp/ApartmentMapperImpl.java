@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.util.IdentityMap;
+import onlinerealestateproject.util.MySQLConnection;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;
@@ -22,14 +23,13 @@ import onlinerealestateproject.util.UnitofWorkApartment;
 import onlinerealestateproject.*;
 import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.DataMapperException;
-import onlinerealestateproject.datasource.MySQLConnection;
 
 /**
  * @author Junjie Huang
  * 
  */
 	public class ApartmentMapperImpl implements ApartmentMapper {
-		Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
+		//Apartment apartment = new Apartment(0, null, null, null, 0, 0, null, null);
 
 	
  

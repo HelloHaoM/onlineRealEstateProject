@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import onlinerealestateproject.datasource.DataMapperException;
-import onlinerealestateproject.datasource.MySQLConnection;
 import onlinerealestateproject.datasource.OrderMapper;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.util.MySQLConnection;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
 import onlinerealestateproject.util.ToolInsert;

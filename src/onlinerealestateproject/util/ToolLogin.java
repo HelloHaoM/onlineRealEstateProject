@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import onlinerealestateproject.datasource.DataMapperException;
-import onlinerealestateproject.datasource.MySQLConnection;
 import onlinerealestateproject.domain.Administrator;
 /**
  * @author Junjie Huang

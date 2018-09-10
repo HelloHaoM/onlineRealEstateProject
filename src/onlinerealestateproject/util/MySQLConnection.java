@@ -16,18 +16,18 @@ public class MySQLConnection {
 	private Connection dbConnection;
 	private int count;
 	
-	public static final String SQL_URL = "jdbc:postgresql://localhost:5432/postgres";
-			//"jdbc:postgresql://ec2-107-21-98-165.compute-1.amazonaws.com:5432/d102mvg3lomse";
+	public static final String SQL_URL = //"jdbc:postgresql://localhost:5432/postgres";
+			"jdbc:postgresql://ec2-107-21-98-165.compute-1.amazonaws.com:5432/d102mvg3lomse";
 			//"jdbc:mysql://localhost:3306/onlineRealEstate?serverTimezone=Australia/Melbourne";
-	public static final String USER_NAME = "postgres";
-	//"vyvqoseqjkvkge";
-	public static final String PASSWORD = "";
-	//"5eea646076c4e537db7c4167fc1585437bf105fe6c8bf484220d93c98b6cb232";
+	public static final String USER_NAME = //"postgres";
+	"vyvqoseqjkvkge";
+	public static final String PASSWORD = //"";
+	"5eea646076c4e537db7c4167fc1585437bf105fe6c8bf484220d93c98b6cb232";
 	
 	private MySQLConnection() {
-		this.dbConnection = this.getDBConnection();
+		//this.dbConnection = this.getDBConnection();
 		count++;
-		System.out.println("Add one Connection");
+		//System.out.println("Add one Connection");
 	}
 	
 	public static MySQLConnection getSingleMySQLConnection() {
@@ -37,12 +37,26 @@ public class MySQLConnection {
 	}
 	
 	public Connection getConnection() {
+		//this.dbConnection = this.getConnection();
+		System.out.println("Connection Established");
 		return dbConnection;
+	}
+	
+	public void closeConnection() {
+		try {
+			if(this.dbConnection != null) {
+				this.dbConnection.close();
+				System.out.println("Connection Closed");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
 	// Get a mysql connection
-	public Connection getDBConnection() {
+	public void establishDBConnection() {
 		// TODO Auto-generated method stub
 		try {
 			//Class.forName("com.mysql.cj.jdbc.Driver");
@@ -61,12 +75,11 @@ public class MySQLConnection {
 //			while (resultSet.next()) {
 //				System.out.println(resultSet.getString("name"));
 //			}
+			this.dbConnection = connection;
 			System.out.println("DB Connect Successfully");
-			return connection;
 
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
 		}
 	}
 	

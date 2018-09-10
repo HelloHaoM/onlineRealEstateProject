@@ -30,6 +30,7 @@ public class ToolUpdate {
 			case "administrator":
 				Administrator administrator = new Administrator(id, firstName, lastName,userName, password,oid,permission);
 				String statement = "update administrator set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 				dbStatement.setInt(1, administrator.getUid());
 				dbStatement.setString(2, administrator.getFirstName());
@@ -39,10 +40,12 @@ public class ToolUpdate {
 				dbStatement.setInt(6, administrator.getOrder());	
 				dbStatement.setString(7, administrator.getPermission());
 				dbStatement.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				break;
 			case "user":
 				User user = new User(id, firstName, lastName,userName, password,oid,permission);
 				String statement1 = "update users set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement1 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement1);
 				dbStatement1.setInt(1, user.getUid());
 				dbStatement1.setString(2, user.getFirstName());
@@ -52,11 +55,13 @@ public class ToolUpdate {
 				dbStatement1.setInt(6, user.getOrder());	
 				dbStatement1.setString(7, user.getPermission());	
 				dbStatement1.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				break;
 		
 			case "client":
 				Client client = new Client(id, firstName, lastName,userName, password,oid,permission);
 				String statement2 = "update client set id=?, firstName=?, lastName=?, userName=?,password=?,oid=?,permission = ? where id="+id;
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement2 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement2);
 				dbStatement2.setInt(1, client.getUid());
 				dbStatement2.setString(2, client.getFirstName());
@@ -66,6 +71,8 @@ public class ToolUpdate {
 				dbStatement2.setInt(6, client.getOrder());	
 				dbStatement2.setString(7, client.getPermission());	
 				dbStatement2.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
+				break;
 			
 			
 			}
@@ -80,6 +87,7 @@ public class ToolUpdate {
 		try {
 			Apartment apartment = new Apartment(apid, StartRentTime, EndRentTime,Availability, price,acreage,location,apartmentName);
 			String statement = "update apartment set apid=?, StartRentTime=?, EndRentTime=?, Availability=?,price=?,acreage=?,location = ?, apartmentName =? where apid="+apid;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, apartment.getapid());
 			dbStatement.setString(2, apartment.getStartRentTime());
@@ -90,6 +98,7 @@ public class ToolUpdate {
 			dbStatement.setString(7, apartment.getLocation());
 			dbStatement.setString(8, apartment.getApartmentName());
 			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 		}catch (SQLException e) {
 			e.printStackTrace();
 			//throw new DataMapperException(e);
@@ -102,6 +111,7 @@ public class ToolUpdate {
 		try {
 			Order order = new Order(oid, inspStartTime, inspEndTime,id, apid);
 			String statement = "update order set oid=?, inspStartTime=?, inspEndTime=?, id=?,apid=? where oid="+oid;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, order.getUid());
 			dbStatement.setString(2, order.getInspStartTime());
@@ -109,6 +119,7 @@ public class ToolUpdate {
 			dbStatement.setInt(4, order.getUid());
 			dbStatement.setInt(5, order.getApid());
 			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 		}catch (SQLException e) {
 			e.printStackTrace();
 			//throw new DataMapperException(e);
@@ -120,10 +131,12 @@ public class ToolUpdate {
 	public static boolean updateOrderInspectionTime(int oid, String inspectionTime){
 		try {
 			String statement = "update inspection_order set inspStartTime=?, inspEndTime=? where oid="+oid;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setString(1, inspectionTime);
 			dbStatement.setString(2, inspectionTime);
 			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 		}catch (SQLException e) {
 			e.printStackTrace();
 			//throw new DataMapperException(e);

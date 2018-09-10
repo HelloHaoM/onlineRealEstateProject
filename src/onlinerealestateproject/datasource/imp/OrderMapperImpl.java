@@ -27,7 +27,7 @@ public class OrderMapperImpl implements OrderMapper{
 		ArrayList<Order> orders = new ArrayList<>();
 		try {
 			String statement = "select * from inspection_order where id="+uid1;
-
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			 
 			while(rs.next()) {
@@ -45,6 +45,7 @@ public class OrderMapperImpl implements OrderMapper{
 				orders.add(order);
 				
 			}	
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			
 		}catch (SQLException e) {
 			

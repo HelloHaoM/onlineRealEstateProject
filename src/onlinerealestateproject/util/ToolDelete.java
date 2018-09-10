@@ -24,9 +24,11 @@ public class ToolDelete {
 	public static boolean deleteOrder(int oid, String tablename) throws DataMapperException{
 		try {
 			String statement = "delete from "+tablename+ " where oid=?";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, oid);
 			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			return true;
 		
 		} catch (SQLException e) {
@@ -42,9 +44,11 @@ public class ToolDelete {
 		// TODO Auto-generated method stub
 		try {
 			String statement = "delete from "+tablename+ " where id=?";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			dbStatement.setInt(1, id);
 			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			return true;
 		
 		} catch (SQLException e) {

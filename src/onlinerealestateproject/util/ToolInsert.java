@@ -31,6 +31,7 @@ public class ToolInsert {
 			Order order = new Order(oid, inspStartTime , inspEndTime ,  id, apid);			
 			String statement = "insert into inspection_order ( inspStartTime , inspEndTime ,  id, apid)  values (  ?,?,?,?)";
 			System.out.println("hello");
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println(dbStatement);	
 			dbStatement.setString(1, inspStartTime);
@@ -38,7 +39,7 @@ public class ToolInsert {
 			dbStatement.setInt(3,id);
 			dbStatement.setInt(4, apid);	
 			dbStatement.executeUpdate();
-				
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			return true;
 		
 		}catch (SQLException e) {
@@ -55,6 +56,7 @@ public class ToolInsert {
 			Apartment apartment = new Apartment(apid, StartRentTime, EndRentTime,  Availability,  price, acreage, location, apartmentName);			
 			String statement = "insert into apartment ( StartRentTime, EndRentTime,  Availability,  price, acreage, location, apartmentName)  values ( ?, ?, ?, ?,?,?,?)";
 			System.out.println("hello");
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println(dbStatement);	
 			dbStatement.setString(1, StartRentTime);
@@ -65,7 +67,7 @@ public class ToolInsert {
 			dbStatement.setString(6, location);
 			dbStatement.setString(7, apartmentName);
 			dbStatement.executeUpdate();
-				
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			return true;
 		
 		}catch (SQLException e) {
@@ -84,6 +86,7 @@ public class ToolInsert {
 			switch(tablename) {
 			case "administrator":
 				String statement1 = "insert into users ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement1 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement1);
 				System.out.println(dbStatement1);	
 				dbStatement1.setString(1, firstName);
@@ -93,9 +96,11 @@ public class ToolInsert {
 				dbStatement1.setInt(5, oid);	
 				dbStatement1.setString(6, permission);		
 				dbStatement1.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 			  		
 				Administrator administrator = new Administrator(id, firstName, lastName, userName, password, oid, permission);			
 				String statement = "insert into administrator ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 				System.out.println(dbStatement);	
 				dbStatement.setString(1, firstName);
@@ -104,13 +109,15 @@ public class ToolInsert {
 				dbStatement.setString(4, password);		
 				dbStatement.setInt(5, oid);	
 				dbStatement.setString(6, permission);	
-				dbStatement.executeUpdate();  
+				dbStatement.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				break;
 			
 
 				
 			case "client":
 				String statement3 = "insert into users ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement3 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement3);
 				System.out.println(dbStatement3);	
 				dbStatement3.setString(1, firstName);
@@ -120,9 +127,11 @@ public class ToolInsert {
 				dbStatement3.setInt(5, oid);	
 				dbStatement3.setString(6, permission);		
 				dbStatement3.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 					
 				Client client = new Client(id, firstName, lastName, userName, password, oid, permission);			
-				String statement2 = "insert into client ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";	
+				String statement2 = "insert into client ( firstName, lastName, userName, password,oid,permission)  values ( ?, ?, ?, ?,?,?)";
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement2 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement2);
 				System.out.println(dbStatement2);	
 				dbStatement2.setString(1, firstName);	
@@ -132,6 +141,7 @@ public class ToolInsert {
 				dbStatement2.setInt(5, oid);		
 				dbStatement2.setString(6, permission);	
 				dbStatement2.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				break;
 		
 		}

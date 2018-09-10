@@ -35,6 +35,7 @@ import onlinerealestateproject.datasource.DataMapperException;
 			try {
 
 			String statement = "select * from apartment";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();			 
 			while(rs.next()) {
 				int apid = rs.getInt(1);
@@ -58,6 +59,7 @@ import onlinerealestateproject.datasource.DataMapperException;
 				apartments.add(apartment);
 				
 			}	
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			
 		}catch (SQLException e) {
 			

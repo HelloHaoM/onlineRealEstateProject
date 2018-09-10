@@ -28,12 +28,14 @@ public class ToolFind {
 		try {
 			int aid1=0;
 			String statement = "SELECT * FROM users where username='"+username+"' and password='"+password+"'";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println(dbStatement);
 			ResultSet rs = dbStatement.executeQuery();
 			while(rs.next()) {
 				aid1 = rs.getInt(1);
 			}
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			if(aid1!=0) {
 				System.out.print("yes");
 				return true;
@@ -54,11 +56,13 @@ public class ToolFind {
 		try {
 			int aid1=0;
 			String statement = "SELECT * FROM users where userName='"+username+"' and password='"+password+"'";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			ResultSet rs = dbStatement.executeQuery();
 			while(rs.next()) {
 				aid1 = rs.getInt(1);
 			}
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			if(aid1!=0) {
 				System.out.print("yes");
 				return aid1;
@@ -78,6 +82,7 @@ public class ToolFind {
 	public static User findUser(int uid){
 		try {
 			String statement ="select * from users where id="+uid;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
@@ -104,6 +109,7 @@ public class ToolFind {
 				user.setPassword(password);	
 				user.setOrder(oid);
 				user.setPermission(permission);
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				return user;
 			}
 		}catch (SQLException e) {
@@ -117,6 +123,7 @@ public class ToolFind {
 	public static Administrator findAdmin(int aid){
 		try {
 		  	String statement ="select * from administrator where id="+aid;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
@@ -143,6 +150,7 @@ public class ToolFind {
 				administrator.setPassword(password);	
 				administrator.setOrder(oid);
 				administrator.setPermission(permission);
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				return administrator;
 			}
 		}catch (SQLException e) {
@@ -156,6 +164,7 @@ public class ToolFind {
 	public static Client findClient(int cid){
 		try {
 			String statement ="select * from client where id="+cid;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int id = rs.getInt(1);
@@ -182,6 +191,7 @@ public class ToolFind {
 				client.setPassword(password);	
 				client.setOrder(oid);
 				client.setPermission(permission);
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				return client;
 			}
 		}catch (SQLException e) {
@@ -195,6 +205,7 @@ public class ToolFind {
 	public static Order findOrder(int id){
 		try {
 		  	String statement ="select * from order where oid="+id;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int aid1 = rs.getInt(1);
@@ -212,7 +223,8 @@ public class ToolFind {
 				order.setInspStartTime(inspStartTime);
 				order.setInspEndTime(inspEndTime);
 				order.setUid(uid);
-				order.setApid(apid);					
+				order.setApid(apid);
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				return order;
 			}
 		}catch (SQLException e) {
@@ -226,6 +238,7 @@ public class ToolFind {
 	public static Apartment findApartment(int id){
 		try {
 		  	String statement ="select * from apartment where apid="+id;
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			ResultSet rs = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement).executeQuery();
 			if(rs.next()) {
 				int apid = rs.getInt(1);
@@ -246,7 +259,7 @@ public class ToolFind {
 				apartment.setAcreage(acreage);
 				apartment.setLocation(location);
 				apartment.setApartmentName(apartmentName);
-				
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
 				return apartment;
 			}
 		}catch (SQLException e) {

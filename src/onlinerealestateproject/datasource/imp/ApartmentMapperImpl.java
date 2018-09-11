@@ -102,6 +102,14 @@ import onlinerealestateproject.datasource.DataMapperException;
 			return true;
 		return false;
 	}
+	
+	public boolean delete(int apid) throws DataMapperException {
+		// TODO Auto-generated method stub
+		ToolDelete td = new ToolDelete();
+		if(td.deleteApartment(apid))
+			return true;
+		return false;
+	}
 
 
 

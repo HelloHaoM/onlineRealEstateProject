@@ -11,21 +11,22 @@ create sequence sql_au_inc_users increment by 1 minvalue 1 no maxvalue start wit
 
 drop table if exists users;
 create table users (id int not null UNIQUE default nextval('sql_au_inc_users'),firstName varchar(255),lastName varchar(255),userName varchar(255),password varchar(255), oid int, permission varchar(255),  primary key(id));
-insert into users(firstName,lastName,userName,password,oid,permission) values ('kkk','dd','u1','123',1,'ok');
+insert into users(firstName,lastName,userName,password,oid,permission) values ('kkk','dd','u1','123',1,'client');
+insert into users(firstName,lastName,userName,password,oid,permission) values ('a1','a1','a1','123',1,'administrator');
 
 drop sequence if exists sql_au_inc_adm;
 create sequence sql_au_inc_adm increment by 1 minvalue 1 no maxvalue start with 1;
 
 drop table if exists administrator;
 create table administrator (id int not null UNIQUE default nextval('sql_au_inc_adm'),firstName varchar(255),lastName varchar(255),userName varchar(255),password varchar(255), oid int, permission varchar(255),  primary key(id),foreign key(id) references users(id));
-insert into administrator(firstName,lastName,userName,password,oid,permission) values ('kkk','dd','u1','123',1,'ok');
+insert into administrator(firstName,lastName,userName,password,oid,permission) values ('a1','a1','a1','123',1,'administrator');
 
 drop sequence if exists sql_au_inc_cli;
 create sequence sql_au_inc_cli increment by 1 minvalue 1 no maxvalue start with 1;
 
 drop table if exists client;
 create table client (id int not null UNIQUE default nextval('sql_au_inc_cli'),firstName varchar(255),lastName varchar(255),userName varchar(255),password varchar(255), oid int, permission varchar(255),  primary key(id),foreign key(id) references users(id));
-insert into client(firstName,lastName,userName,password,oid,permission) values ('kkk','dd','u1','123',1,'ok');
+insert into client(firstName,lastName,userName,password,oid,permission) values ('kkk','dd','u1','123',1,'client');
 
 drop sequence if exists sql_au_inc_apa;
 create sequence sql_au_inc_apa increment by 1 minvalue 1 no maxvalue start with 1;

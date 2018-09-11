@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.row
+{
+	margin-right:0px !important;
+	margin-left:0px !important;	
+}
+
+#sitefooter
+{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+}
+
+.table td, .table th
+{
+	vertical-align: middle !important;
+}

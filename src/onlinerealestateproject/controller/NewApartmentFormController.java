@@ -7,26 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.service.ApartmentService;
-import onlinerealestateproject.service.OrderService;
 import onlinerealestateproject.service.imp.ApartmentServiceImp;
-import onlinerealestateproject.service.imp.OrderServiceImp;
+import onlinerealestateproject.util.UnitofWorkApartment;
 
 /**
- * Servlet implementation class ApartmentController
+ * Servlet implementation class NewApartmentFormController
  */
-@WebServlet("/ApartmentController")
-public class ApartmentController extends ActionServlet {
+@WebServlet("/NewApartmentFormController")
+public class NewApartmentFormController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static OrderService orderService = new OrderServiceImp();
 	private static ApartmentService apartmentService = new ApartmentServiceImp();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApartmentController() {
+    public NewApartmentFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,27 +43,27 @@ public class ApartmentController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		int uid = Integer.parseInt(request.getParameter("client-id"));
-		int apid = Integer.parseInt(request.getParameter("apartment-id"));
-		String userName = request.getParameter("username");
-		String inspectionTime = request.getParameter("inspection-time");
-		// make an order via orderService
-		if(request.getParameter("book") != null) {
-			if(orderService.makeOrder(uid, apid, inspectionTime)) {
-				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
+		int id = Integer.parseInt(request.getParameter("id"));
+		if(request.getParameter("back") != null) {
+			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
+		}
+		else if(request.getParameter("create") != null) {
+			String startRentTime = request.getParameter("startRentTime");
+			String endRentTime = request.getParameter("endRentTime");
+			String availability = request.getParameter("availability");
+			int price = Integer.parseInt(request.getParameter("price"));
+			int acreage = Integer.parseInt(request.getParameter("acreage"));
+			String location = request.getParameter("location");
+			String apartmentName = request.getParameter("apartmentName");
+			
+			UnitofWorkApartment.newCurrent();
+			Apartment apartment = new Apartment(0, startRentTime, endRentTime, 
+					availability, price, acreage, location, apartmentName);
+			if(apartmentService.addApartment(apartment)) {
+				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
 			}
+			
 		}
-		else if(request.getParameter("update") != null) {
-			response.sendRedirect("./ApartmentForm/ApartmentFormPage.jsp?id="+uid+"&apid="+apid);
-		}
-		else if(request.getParameter("delete") != null) {
-			if(apartmentService.deleteApartment(apid)) {
-				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
-			}
-		}
-		
-		
-		
 	}
 
 }

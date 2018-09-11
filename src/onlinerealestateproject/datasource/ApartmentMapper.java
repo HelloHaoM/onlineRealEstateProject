@@ -21,6 +21,8 @@ public interface ApartmentMapper {
 	public boolean update (Apartment apartment) throws DataMapperException;
 	// delete an apartment
 	public boolean delete (Apartment apartment) throws DataMapperException;
+	// delete an apartment via apid
+	public boolean delete(int apid) throws DataMapperException;
 	
 
 }

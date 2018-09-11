@@ -17,15 +17,22 @@
 <body>
 
 <%
+	String permission;
 	String userName = request.getParameter("userName");
 	String id = request.getParameter("id");
 	String navHref = "./LoginAndRegisterPage.jsp";
+	UserMapper userMapper = new UserMapperImpl();
 	if(userName == null){
-		ClientMapper clientMapper = new ClientMapperImpl();
-		userName = clientMapper.find(Integer.parseInt(id)).getUserName();
+/* 		ClientMapper clientMapper = new ClientMapperImpl();
+		userName = clientMapper.find(Integer.parseInt(id)).getUserName(); */
+
+		userName = userMapper.find(Integer.parseInt(id)).getUserName();
 	}
 	if(userName != null)
 		navHref = "./InspectionCart/InspectionCartPage.jsp";
+	
+	permission = userMapper.find(Integer.parseInt(id)).getPermission();
+	System.out.println(permission);
 		
 %>
 
@@ -62,8 +69,16 @@
                 			<% out.print(userName);
                 		}
                 	%></a>
-        					
-                    
+        					</li>
+        			<%
+                		if(permission.equals("administrator")){
+                	%>
+                			<li class="page-scroll">
+                			<a href="../ApartmentForm/NewApartmentFormPage.jsp?id=<%= id%>">Add Apartment</a>
+                			</li>
+                	<% 
+                		}
+                	%>
                 
                 <li class="page-scroll">
                     <a href="../LoginAndRegisterPage.jsp">Log Out</a>
@@ -108,8 +123,7 @@
                 	UnitofWorkApartment.newCurrent();
                 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
                 	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments();
-           			for(int i = 0; i < apartList.size() / 2; i++){
-           				System.out.println(apartList.get(i).getApartmentName());
+           			for(int i = 0; i < apartList.size() / 2 + 1; i++){
            		%>
            			<!-- Begin Listing-->
                     <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
@@ -140,9 +154,26 @@
                                 <span class="fnt-smaller fnt-lighter fnt-arial text-right">                               
                                 	<form class="realestate-order" action="../ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
+                                		<input type="hidden" name="username" value="<%= userName %>"></input>
                                 		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
                                 		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
-                    					<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
+                                		<%
+                                			if(permission.equals("client")){
+                                		%>
+                                			<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
+                                		<%
+                                			}
+                                		%>
+                                		
+                                		<%
+                                			if(permission.equals("administrator")){
+                                		%>
+                                			<input type="submit" name="update" value="Update" class="btn btn-success" ></input>
+                                			<input type="submit" name="delete" value="Delete" class="btn btn-danger" ></input>
+                                		<%
+                                			}
+                                		%>
+                    					
                     				</form>
                     			</span>
 
@@ -160,7 +191,7 @@
                 
                 	<% 
                 	
-           				for(int i = apartList.size() / 2; i < apartList.size(); i++){
+           				for(int i = apartList.size() / 2 + 1; i < apartList.size(); i++){
            					System.out.println(apartList.get(i).getApartmentName());
            			%>
            			<!-- Begin Listing-->
@@ -192,9 +223,25 @@
                                 <span class="fnt-smaller fnt-lighter fnt-arial text-right">                               
                                 	<form class="realestate-order" action="../ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
+                                		<input type="hidden" name="username" value="<%= userName %>"></input>
                                 		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
                                 		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
-                    					<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
+                    					                                		<%
+                                			if(permission.equals("client")){
+                                		%>
+                                			<input type="submit" name="book" value="Book" class="btn btn-success" ></input>
+                                		<%
+                                			}
+                                		%>
+                                		
+                                		<%
+                                			if(permission.equals("administrator")){
+                                		%>
+                                			<input type="submit" name="update" value="Update" class="btn btn-success" ></input>
+                                			<input type="submit" name="delete" value="Delete" class="btn btn-danger" ></input>
+                                		<%
+                                			}
+                                		%>
                     				</form>
                     			</span>
 

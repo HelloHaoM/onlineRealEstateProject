@@ -23,11 +23,11 @@ public class ToolFind {
 		System.out.println("-------- MySQL JDBC Connection Testing ------------");
 		findClient(1);
 	}
-  
-	public static boolean findByAccount(String username, String password) {
+	
+	public static boolean findAdmByAccount(String username, String password) {
 		try {
 			int aid1=0;
-			String statement = "SELECT * FROM users where username='"+username+"' and password='"+password+"'";
+			String statement = "SELECT * FROM administrator where username='"+username+"' and password='"+password+"'";
 			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println(dbStatement);
@@ -37,11 +37,35 @@ public class ToolFind {
 			}
 			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			if(aid1!=0) {
-				System.out.print("yes");
 				return true;
 			}
 			else {
-				System.out.print("No");
+				return false;
+			}
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+			//throw new DataMapperException(e);
+			return false;
+		}
+	}
+	
+	public static boolean findByAccount(String username, String password) {
+		try {
+			int aid1=0;
+			String statement = "SELECT * FROM client where username='"+username+"' and password='"+password+"'";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
+			System.out.println(dbStatement);
+			ResultSet rs = dbStatement.executeQuery();
+			while(rs.next()) {
+				aid1 = rs.getInt(1);
+			}
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			if(aid1!=0) {
+				return true;
+			}
+			else {
 				return false;
 			}
 		}	

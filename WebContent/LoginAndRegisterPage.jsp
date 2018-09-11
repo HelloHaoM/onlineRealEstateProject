@@ -56,6 +56,9 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                	<a href="AdmLoginPage.jsp">Administrator Log In</a>
+                </div>
                 </form>
             </div>
         </div>

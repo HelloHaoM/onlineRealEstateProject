@@ -47,7 +47,7 @@ public class User {
 	
 	private void load() {
 		UserMapperImpl userMapperImpl = new UserMapperImpl();
-		User record = userMapperImpl.find(this.getUid(),"user"); 
+		User record = userMapperImpl.find(this.getUid()); 
 		if (this.uid == -1) {
 			this.uid = record.getUid(); 
 			}

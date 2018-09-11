@@ -38,6 +38,31 @@ public class ToolDelete {
 			return false;
 		}
 	}
+	
+	public static boolean deleteApartment(int apid) throws DataMapperException{
+		try {
+			String statement = "delete from inspection_order where apid=?";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
+			dbStatement.setInt(1, apid);
+			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			
+			String statement_1 = "delete from apartment where apid=?";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement_1 = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement_1);
+			dbStatement_1.setInt(1, apid);
+			dbStatement_1.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			return true;
+		
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			//throw new DataMapperException( e);
+			return false;
+		}
+	}
   
 
 	public static boolean delete(int id, String tablename) throws DataMapperException {

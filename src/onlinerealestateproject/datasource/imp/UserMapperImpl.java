@@ -16,9 +16,10 @@ import onlinerealestateproject.util.ToolUpdate;
 public class UserMapperImpl implements UserMapper {
 	User user = new User(0, null, null, null, null, 0, null);
 	IdentityMap<User> map = IdentityMap.getInstance(user);
-
+	
+	
 	@Override
-	public User find(int id, String tablename) {
+	public User find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();
 		map.put(id, tf.findUser(id));

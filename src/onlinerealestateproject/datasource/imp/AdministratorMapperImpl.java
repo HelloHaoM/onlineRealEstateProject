@@ -27,6 +27,15 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	IdentityMap<Administrator> map = IdentityMap.getInstance(administrator);
 	
 	@Override
+	public boolean isFind(String username, String password) {
+		// TODO Auto-generated method stub
+		ToolFind tf = new ToolFind();
+		if(tf.findAdmByAccount(username, password))
+			return true;
+		return false;
+	}
+	
+	@Override
 	public Administrator find(int id) {
 		// TODO Auto-generated method stub
 		ToolFind tf = new ToolFind();

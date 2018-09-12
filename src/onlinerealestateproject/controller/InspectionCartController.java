@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.tools.DocumentationTool.Location;
 
 import onlinerealestateproject.domain.Order;
@@ -53,9 +54,12 @@ public class InspectionCartController extends ActionServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
+		HttpSession httpSession = request.getSession();
+		
 		if(request.getParameter("back") != null) {
 			// back to main page
 			int uid = Integer.parseInt(request.getParameter("id"));
+			httpSession.setAttribute("userId", uid);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}
 		else if(request.getParameter("delete") != null) {
@@ -64,12 +68,14 @@ public class InspectionCartController extends ActionServlet {
 			int uid = Integer.parseInt(request.getParameter("id"));
 			int oid = Integer.parseInt(request.getParameter("order-id"));
 			if(orderService.deleteOrder(uid, oid)) {
+				httpSession.setAttribute("userId", uid);
 				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 				System.out.println("Delete Successful");
 			}
 		}else if(request.getParameter("confirm") != null) {
 			// confirm and back to main page
 			int uid = Integer.parseInt(request.getParameter("id"));
+			httpSession.setAttribute("userId", uid);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}else if(request.getParameter("update") != null) {
 			// update an order
@@ -77,6 +83,7 @@ public class InspectionCartController extends ActionServlet {
 			int oid = Integer.parseInt(request.getParameter("order-id"));
 			String inspectionTime = request.getParameter("inspection-time");
 			if(orderService.updateOrder(oid, inspectionTime)) {
+				httpSession.setAttribute("userId", uid);
 				request.setAttribute("info", "Update Successfully");
 				forward("./InspectionCart/InspectionCartPage.jsp?id="+uid, request, response);
 			}

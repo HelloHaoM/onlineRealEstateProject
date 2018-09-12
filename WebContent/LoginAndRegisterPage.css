@@ -21,6 +21,13 @@ body
     color: red;
 }
 
+.session-info
+{
+	text-align: center;
+	color: white;
+	font-family: 'Open Sans' , sans-serif;
+}
+
 .wrap
 {
     width: 100%;

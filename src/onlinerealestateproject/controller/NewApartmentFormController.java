@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.service.ApartmentService;
@@ -43,8 +44,12 @@ public class NewApartmentFormController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
+		HttpSession httpSession = request.getSession();
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		if(request.getParameter("back") != null) {
+			httpSession.setAttribute("userId", id);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
 		}
 		else if(request.getParameter("create") != null) {
@@ -60,6 +65,7 @@ public class NewApartmentFormController extends ActionServlet {
 			Apartment apartment = new Apartment(0, startRentTime, endRentTime, 
 					availability, price, acreage, location, apartmentName);
 			if(apartmentService.addApartment(apartment)) {
+				httpSession.setAttribute("userId", id);
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
 			}
 			

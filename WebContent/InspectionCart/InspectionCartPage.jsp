@@ -2,7 +2,7 @@
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="onlinerealestateproject.domain.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
+    pageEncoding="UTF-8" session="false" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,9 @@
 </head>
 <body>
 <%
-	int uid = Integer.parseInt(request.getParameter("id"));
+	//int uid = Integer.parseInt(request.getParameter("id"));
+	HttpSession session = request.getSession();
+	int uid = Integer.parseInt(session.getAttribute("userId").toString());
 	System.out.println(uid);
 	
 	String info = (String) request.getAttribute("info");

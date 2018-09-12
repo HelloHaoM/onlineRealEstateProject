@@ -1,7 +1,7 @@
 <%@page import="onlinerealestateproject.datasource.imp.ApartmentMapperImpl"%>
 <%@page import="onlinerealestateproject.datasource.ApartmentMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.util.*, onlinerealestateproject.domain.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
+    pageEncoding="UTF-8" session="false" import="java.util.*, java.lang.*, onlinerealestateproject.util.*, onlinerealestateproject.domain.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,8 @@
 <body>
 <%
 	String id = request.getParameter("id");
+	//HttpSession session = request.getSession();
+	//String id = session.getAttribute("userId").toString();
 %>
 <section class="jumbotron text-center">
     <div class="container">

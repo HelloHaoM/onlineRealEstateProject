@@ -3,7 +3,7 @@
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*" %>
+    pageEncoding="UTF-8" session="false" import="java.util.*, java.lang.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,23 +17,23 @@
 <body>
 
 <%
+	HttpSession session = request.getSession();
 	String permission;
-	String userName = request.getParameter("userName");
-	String id = request.getParameter("id");
+	//String userName = request.getParameter("userName");
+	String userName = session.getAttribute("userName").toString();
+	//String id = request.getParameter("id");
+	String id = session.getAttribute("userId").toString();
 	String navHref = "./LoginAndRegisterPage.jsp";
 	UserMapper userMapper = new UserMapperImpl();
 	if(userName == null){
-/* 		ClientMapper clientMapper = new ClientMapperImpl();
-		userName = clientMapper.find(Integer.parseInt(id)).getUserName(); */
-
-		userName = userMapper.find(Integer.parseInt(id)).getUserName();
+		//userName = userMapper.find(Integer.parseInt(id)).getUserName();
 	}
 	if(userName != null)
 		navHref = "./InspectionCart/InspectionCartPage.jsp";
 	
 	permission = userMapper.find(Integer.parseInt(id)).getPermission();
 	System.out.println(permission);
-		
+	
 %>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -59,7 +59,14 @@
                     %>
                     		<li class="page-scroll">
                     		<a href="../InspectionCart/InspectionCartPage.jsp?id=<%= id %>">
-                    		<% out.print(userName);
+                    		<% //out.print(userName);
+                    			if(session.isNew()){
+                    				
+                    				out.print(userName);
+                    			}
+                    			else{
+                    				out.print(userName);
+                    			} 
                     	}
                     %></a>
         			<% 	
@@ -123,7 +130,7 @@
                 	UnitofWorkApartment.newCurrent();
                 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
                 	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments();
-           			for(int i = 0; i < apartList.size() / 2 + 1; i++){
+           			for(int i = 0; i < apartList.size() / 2; i++){
            		%>
            			<!-- Begin Listing-->
                     <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
@@ -191,7 +198,7 @@
                 
                 	<% 
                 	
-           				for(int i = apartList.size() / 2 + 1; i < apartList.size(); i++){
+           				for(int i = apartList.size() / 2; i < apartList.size(); i++){
            					System.out.println(apartList.get(i).getApartmentName());
            			%>
            			<!-- Begin Listing-->

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.service.ApartmentService;
@@ -45,6 +46,9 @@ public class ApartmentController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
+		HttpSession session = request.getSession();
+		
 		int uid = Integer.parseInt(request.getParameter("client-id"));
 		int apid = Integer.parseInt(request.getParameter("apartment-id"));
 		String userName = request.getParameter("username");
@@ -52,14 +56,21 @@ public class ApartmentController extends ActionServlet {
 		// make an order via orderService
 		if(request.getParameter("book") != null) {
 			if(orderService.makeOrder(uid, apid, inspectionTime)) {
+				session.setAttribute("userId", uid);
+				session.setAttribute("apartmentId", apid);
 				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 			}
 		}
 		else if(request.getParameter("update") != null) {
+			session.setAttribute("userId", uid);
+			session.setAttribute("apartmentId", apid);
 			response.sendRedirect("./ApartmentForm/ApartmentFormPage.jsp?id="+uid+"&apid="+apid);
 		}
 		else if(request.getParameter("delete") != null) {
 			if(apartmentService.deleteApartment(apid)) {
+				session.setAttribute("userId", uid);
+				session.setAttribute("apartmentId", apid);
+				session.setAttribute("userName", userName);
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
 			}
 		}

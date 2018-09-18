@@ -5,6 +5,7 @@ import onlinerealestateproject.lock.LockManager;
 
 public class ExclusiveWriteLockManager implements LockManager{
 
+	
 	@Override
 	public boolean acquireLock(long lockable, String owner)  {
 		// TODO Auto-generated method stub

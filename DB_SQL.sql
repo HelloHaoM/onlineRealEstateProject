@@ -10,7 +10,7 @@ drop sequence if exists sql_au_inc_users ;
 create sequence sql_au_inc_users increment by 1 minvalue 1 no maxvalue start with 1;
 
 drop table if exists lock;
-create table lock ( lockableid int not null, owner varchar(255) not null);
+create table lock (lockableid int not null, owner varchar(255) not null);
 insert into lock(lockableid, owner) values (1,'steve');
 
 drop table if exists users;

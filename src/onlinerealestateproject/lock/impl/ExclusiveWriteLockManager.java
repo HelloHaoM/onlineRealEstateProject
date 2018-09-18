@@ -11,14 +11,6 @@ import onlinerealestateproject.util.MySQLConnection;
 import onlinerealestateproject.util.ToolFind;
 
 public class ExclusiveWriteLockManager implements LockManager{
-
-  public static void main(String[] argv) {
-
-	System.out.println("-------- MySQL JDBC Connection Testing ------------");
-	ExclusiveWriteLockManager E = new ExclusiveWriteLockManager();
-//	E.acquireLock(3,"heyy");
-	E.releaseLock(3, "heyy");
-  }
 	
 	@Override
 	public boolean acquireLock(int lockableid, String owner)  {
@@ -40,11 +32,9 @@ public class ExclusiveWriteLockManager implements LockManager{
 				e.printStackTrace();
 				return false;
 			}
-			
-			
 		}
 		
-		return false;
+		return result;
 	}
 
 	@Override

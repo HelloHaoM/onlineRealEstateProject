@@ -1,4 +1,4 @@
-package onlinerealestateproject.domain;
+package onlinerealestateproject.dto;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -7,11 +7,17 @@ import java.io.OutputStream;
 
 import javax.xml.bind.Element;
 
+/**
+ * @author haomai
+ * An user dto object
+ */
+
 public class UserDTO {
 	
 	private int uid;
 	private String username;
 	private String password;
+
 	
 	public UserDTO(int uid, String username, String password) {
 		this.uid = uid;

@@ -18,6 +18,11 @@ import onlinerealestateproject.util.UserFactory;
  */
 public class UserServiceImp implements UserService {
 	
+	public User findUser(int id) {
+		UserMapper userMapper = new UserMapperImpl();
+		return userMapper.find(id);
+	}
+	
 	public int findUserId(String userName, String password) {
 		ClientMapper clientMapper = new ClientMapperImpl();
 		return clientMapper.findIdByAccount(userName, password);

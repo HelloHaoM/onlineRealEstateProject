@@ -1,3 +1,5 @@
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentService"%>
 <%@page import="onlinerealestateproject.datasource.imp.ApartmentMapperImpl"%>
 <%@page import="onlinerealestateproject.datasource.ApartmentMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,10 +23,13 @@
 	int id = Integer.parseInt(session.getAttribute("userId").toString());
 	int apid = Integer.parseInt(session.getAttribute("apartmentId").toString());
 	
-	UnitofWorkApartment.newCurrent();
+/* 	UnitofWorkApartment.newCurrent();
 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 	
-	Apartment apartment = apartmentMapper.find(apid);
+	Apartment apartment = apartmentMapper.find(apid); */
+	
+	ApartmentService apartmentService = new ApartmentServiceImp();
+	Apartment apartment = apartmentService.getApartment(apid);
 	
 	String info = (String) request.getAttribute("info");
 	if(info != null){

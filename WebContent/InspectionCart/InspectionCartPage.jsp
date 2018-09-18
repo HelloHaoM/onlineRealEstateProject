@@ -1,3 +1,7 @@
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentService"%>
+<%@page import="onlinerealestateproject.service.OrderService"%>
+<%@page import="onlinerealestateproject.service.imp.OrderServiceImp"%>
 <%@page import="onlinerealestateproject.util.UnitofWorkApartment"%>
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="onlinerealestateproject.domain.Order"%>
@@ -49,13 +53,18 @@
                     </thead>
                     <tbody>
                     	<%
-                    		UnitofWorkApartment.newCurrent();
+/*                     		UnitofWorkApartment.newCurrent();
                     		OrderMapper orderMapper = new OrderMapperImpl();
                     		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-                    		ArrayList<Order> orderList = orderMapper.findAllOrders(uid);
+                    		ArrayList<Order> orderList = orderMapper.findAllOrders(uid); */
+                    		OrderService orderService = new OrderServiceImp();
+                    		ArrayList<Order> orderList = orderService.getAllOrder(uid);
+                    		
+                    		ApartmentService apartmentService = new ApartmentServiceImp();
                     		
                     		for(Order order : orderList){
-                    			Apartment apartment = apartmentMapper.find(order.getApid());
+                    			//Apartment apartment = apartmentMapper.find(order.getApid());
+                    			Apartment apartment = apartmentService.getApartment(order.getApid());
                     	%>
                     		<tr>
                     		<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>

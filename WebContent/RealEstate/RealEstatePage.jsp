@@ -1,3 +1,7 @@
+<%@page import="onlinerealestateproject.service.imp.UserServiceImp"%>
+<%@page import="onlinerealestateproject.service.UserService"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentService"%>
 <%@page import="onlinerealestateproject.util.UnitofWorkApartment"%>
 <%@page import="onlinerealestateproject.domain.Client"%>
 <%@page import="onlinerealestateproject.domain.Apartment"%>
@@ -24,14 +28,16 @@
 	//String id = request.getParameter("id");
 	String id = session.getAttribute("userId").toString();
 	String navHref = "./LoginAndRegisterPage.jsp";
-	UserMapper userMapper = new UserMapperImpl();
+	//UserMapper userMapper = new UserMapperImpl();
 	if(userName == null){
 		//userName = userMapper.find(Integer.parseInt(id)).getUserName();
 	}
 	if(userName != null)
 		navHref = "./InspectionCart/InspectionCartPage.jsp";
 	
-	permission = userMapper.find(Integer.parseInt(id)).getPermission();
+	UserService userService = new UserServiceImp();
+	permission = userService.findUser(Integer.parseInt(id)).getPermission();
+	//permission = userMapper.find(Integer.parseInt(id)).getPermission();
 	System.out.println(permission);
 	
 %>
@@ -127,9 +133,11 @@
                 <div class="col-sm-6"> 
                 
                 <% 
-                	UnitofWorkApartment.newCurrent();
-                	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-                	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments();
+/*                	UnitofWorkApartment.newCurrent();
+                 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+                	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments(); */
+                	ApartmentService apartmentService = new ApartmentServiceImp();
+                	ArrayList<Apartment> apartList = apartmentService.getAvailableApartmentList();
            			for(int i = 0; i < apartList.size() / 2; i++){
            		%>
            			<!-- Begin Listing-->

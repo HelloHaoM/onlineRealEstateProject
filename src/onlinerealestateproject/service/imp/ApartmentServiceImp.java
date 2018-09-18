@@ -16,16 +16,19 @@ import onlinerealestateproject.util.UnitofWorkApartment;
 public class ApartmentServiceImp implements ApartmentService{
 	
 	public Apartment getApartment(int apid) {
+		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 		return apartmentMapper.find(apid);
 	}
 	
 	public ArrayList<Apartment> getAvailableApartmentList(){
+    	UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 		return apartmentMapper.findAllApartments();
 	}
 	
 	public boolean addApartment(Apartment apartment) {
+		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 		
 		if(apartmentMapper.insert(apartment)) {
@@ -35,6 +38,7 @@ public class ApartmentServiceImp implements ApartmentService{
 	}
 	
 	public boolean updateApartment(Apartment apartment) {
+		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 
 		if(apartmentMapper.update(apartment)) {

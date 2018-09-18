@@ -2,8 +2,7 @@ package onlinerealestateproject.lock;
 
 public interface LockManager {
 	
-	public boolean acquireLock(long lockable, String owner);
-	public void releaseLock(long lockable, String owner);
-	public void releaseAllLocks(String owner);
-
+	public boolean acquireLock(int lockable, String owner);
+	public void releaseLock(int lockable, String owner);
+	
 }

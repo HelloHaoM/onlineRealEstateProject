@@ -61,7 +61,8 @@ public class ExclusiveWriteLockManager implements LockManager{
 			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			
 		}catch (SQLException e) {
-			
+			e.printStackTrace();
+
 		}
 		
 		

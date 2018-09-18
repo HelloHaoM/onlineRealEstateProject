@@ -89,7 +89,8 @@
             <div class="row">
                 <div class="col-sm-12  col-md-6">
                 	<input type="hidden" name="id" value="<%= id %>"></input>
-                    <input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input>
+                    <!-- <input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input> -->
+                    <a class="btn btn-lg btn-block btn-light" href="../RealEstate/RealEstatePage.jsp?id=<%= id %>">Back</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
 <%--                 		<input type="hidden" name="id" value="<%=id%>"></input> --%>

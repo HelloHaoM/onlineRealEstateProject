@@ -64,7 +64,18 @@
                     	if(userName != null){
                     %>
                     		<li class="page-scroll">
-                    		<a href="../InspectionCart/InspectionCartPage.jsp?id=<%= id %>">
+                    		<% if(permission.equals("administrator")){
+                    		%>
+                    				<a href="">
+                    		<% 
+                    			}
+                    			else{
+                    		%>
+                    				<a href="../InspectionCart/InspectionCartPage.jsp?id=<%= id %>">
+                    		<%
+                    			}
+                    		%>
+                    		
                     		<% //out.print(userName);
                     			if(session.isNew()){
                     				

@@ -3,6 +3,7 @@ package onlinerealestateproject.dto;
 import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.domain.Apartment;
+import onlinerealestateproject.util.UnitofWorkApartment;
 
 /**
  * @author haomai
@@ -20,9 +21,10 @@ public class ApartmentAssembler {
 		return result;
 	}
 	
-	public static void updateApartment(String apid, ApartmentDTO dto) {
+	public static void updateApartment(int apid, ApartmentDTO dto) {
+		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		Apartment apartment = apartmentMapper.find(Integer.parseInt(apid));
+		Apartment apartment = apartmentMapper.find(apid);
 		if(apartment == null)
 			throw new RuntimeException("Apartment does not exist: " + dto.getApartmentName());
 		apartment.setStartRentTime(dto.getStartRentTime());
@@ -32,6 +34,26 @@ public class ApartmentAssembler {
 		apartment.setAcreage(dto.getAcreage());
 		apartment.setLocation(dto.getLocation());
 		apartment.setApartmentName(dto.getApartmentName());
+		
+		apartmentMapper.update(apartment);
+	}
+	
+	public static void createApartment(ApartmentDTO dto) {
+		UnitofWorkApartment.newCurrent();
+		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		Apartment apartment = new Apartment(dto.getApid(), 
+				dto.getStartRentTime(), dto.getEndRentTime(), 
+				dto.getAvailability(), dto.getPrice(), 
+				dto.getAcreage(), dto.getLocation(), 
+				dto.getApartmentName());
+		
+		apartmentMapper.insert(apartment);
+	}
+	
+	public static void deleteApartment(int apid) {
+		UnitofWorkApartment.newCurrent();
+		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		apartmentMapper.delete(apid);
 	}
 
 }

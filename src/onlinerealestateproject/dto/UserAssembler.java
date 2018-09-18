@@ -3,6 +3,7 @@ package onlinerealestateproject.dto;
 import onlinerealestateproject.datasource.UserMapper;
 import onlinerealestateproject.datasource.imp.UserMapperImpl;
 import onlinerealestateproject.domain.User;
+import onlinerealestateproject.util.UserFactory;
 
 /**
  * @author haomai
@@ -17,12 +18,19 @@ public class UserAssembler {
 		return result;
 	}
 	
-	public static void updateUser(String id, UserDTO dto) {
+	public static void updateUser(int id, UserDTO dto) {
 		UserMapper userMapper = new UserMapperImpl();
-		User user  = userMapper.find(Integer.parseInt(id));
+		User user  = userMapper.find(id);
 		if(user == null)
 			throw new RuntimeException("User does not exist: " + dto.getUsername());
 		user.setUserName(dto.getUsername());
 		user.setPassword(dto.getPassword());
+	}
+	
+	public static void createUser(UserDTO dto) {
+		User user = UserFactory.createSimpleUser("client", 
+				dto.getUsername(), dto.getPassword());
+		UserMapper userMapper = new UserMapperImpl();
+		userMapper.insert(user);
 	}
 }

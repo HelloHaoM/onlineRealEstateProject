@@ -49,14 +49,14 @@
                     <tr>
                     	<td>Apartment Acreage:</td>
                     	<td>
-                    		<input class="form-control" name="acreage" required="required"></input>
+                    		<input class="form-control" type="number" name="acreage" required="required"></input>
                     	</td>
                     </tr>
                     
                     <tr>
                     	<td>Apartment Price:</td>
                     	<td>
-                    		<input class="form-control" name="price" required="required"></input>
+                    		<input class="form-control" type="number" name="price" required="required"></input>
                     	</td>
                     </tr>
                     

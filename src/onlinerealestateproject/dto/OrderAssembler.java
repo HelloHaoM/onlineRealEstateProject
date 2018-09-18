@@ -18,13 +18,28 @@ public class OrderAssembler {
 		return result;
 	}
 	
-	public static void updateOrder(String oid, OrderDTO dto) {
+	public static void updateOrder(int oid, OrderDTO dto) {
 		OrderMapper orderMapper = new OrderMapperImpl();
-		Order order = orderMapper.find(Integer.parseInt(oid));
+		Order order = orderMapper.find(oid);
 		if(order == null)
 			throw new RuntimeException("Order does not exit");
 		order.setInspStartTime(dto.getInspStartTime());
 		order.setInspEndTime(dto.getInspEndTime());
+		
+		orderMapper.updateOrderInspectionTime(oid, order.getInspStartTime());
+	}
+	
+	public static void createOrder(OrderDTO dto) {
+		Order order = new Order(dto.getOid(), 
+				dto.getInspStartTime(), dto.getInspEndTime(),
+				dto.getUid(), dto.getApid());
+		OrderMapper orderMapper = new OrderMapperImpl();
+		orderMapper.insert(order);
+	}
+	
+	public static void deleteOrder(int oid) {
+		OrderMapper orderMapper = new OrderMapperImpl();
+		orderMapper.delete(oid);
 	}
 
 }

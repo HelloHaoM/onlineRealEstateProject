@@ -4,7 +4,13 @@ import java.rmi.RemoteException;
 
 import onlinerealestateproject.dto.UserDTO;
 
+/**
+ * @author haomai
+ * A remote user service interface
+ */
+
 public interface UserServiceBean {
-	public UserDTO getUser(String id) throws RemoteException;
-	public void updateUser(String id, UserDTO dto) throws RemoteException;
+	public UserDTO getUser(int id) throws RemoteException;
+	public void createUser(UserDTO dto) throws RemoteException;
+	public void updateUser(int id, UserDTO dto) throws RemoteException;
 }

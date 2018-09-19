@@ -1,5 +1,10 @@
 package onlinerealestateproject.service.imp;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.rmi.RemoteException;
 
 import onlinerealestateproject.datasource.OrderMapper;
@@ -37,6 +42,26 @@ public class OrderServiceBeanImp implements OrderServiceBean{
 		// TODO Auto-generated method stub
 		new OrderAssembler().deleteOrder(oid);
 		
+	}
+
+	@Override
+	public byte[] gerOrderByte(int oid) throws RemoteException {
+		// TODO Auto-generated method stub
+		OrderMapper orderMapper = new OrderMapperImpl();
+		return OrderDTO.object2Byte(new OrderAssembler().writeDTO(orderMapper.find(oid)));
+	}
+
+	@Override
+	public void createOrderByByte(byte[] orderByte) throws RemoteException {
+		// TODO Auto-generated method stub
+		new OrderAssembler().createOrder(OrderDTO.byte2Object(orderByte));
+		
+	}
+
+	@Override
+	public void updateOrder(int oid, byte[] orderByte) throws RemoteException {
+		// TODO Auto-generated method stub
+		new OrderAssembler().updateOrder(oid, OrderDTO.byte2Object(orderByte));
 	}
 
 }

@@ -13,6 +13,7 @@ import onlinerealestateproject.util.UnitofWorkApartment;
 public class ApartmentAssembler {
 	
 	public static ApartmentDTO writeDTO(Apartment apartment) {
+		UnitofWorkApartment.newCurrent();
 		ApartmentDTO result = new ApartmentDTO(apartment.getApid(), 
 				apartment.getStartRentTime(), apartment.getEndRentTime(), 
 				apartment.getAvailability(), apartment.getPrice(),

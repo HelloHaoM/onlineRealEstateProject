@@ -2,8 +2,16 @@ package onlinerealestateproject.dto;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 import javax.xml.bind.Element;
 
@@ -12,7 +20,7 @@ import javax.xml.bind.Element;
  * An user dto object
  */
 
-public class UserDTO {
+public class UserDTO implements Serializable{
 	
 	private int uid;
 	private String username;
@@ -55,9 +63,41 @@ public class UserDTO {
 		encoder.close();
 	}
 	
-	public UserDTO fromXML(InputStream inputStream) {
+	public static UserDTO fromXML(InputStream inputStream) {
 		XMLDecoder decoder = new XMLDecoder(inputStream);
 		UserDTO result = (UserDTO) decoder.readObject();
 		return result;
 	}
+	
+	public static byte[] object2Byte(UserDTO userDTO) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(out);
+			oos.writeObject(userDTO);
+			byte[] result = out.toByteArray();
+			out.close();
+			oos.close();
+			return result;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static UserDTO byte2Object(byte[] userByte) {
+		ByteArrayInputStream in = new ByteArrayInputStream(userByte);
+		try {
+			ObjectInputStream oin = new ObjectInputStream(in);
+			UserDTO result = (UserDTO)oin.readObject();
+			in.close();
+			oin.close();
+			return result;
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

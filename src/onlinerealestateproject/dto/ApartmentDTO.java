@@ -2,8 +2,14 @@ package onlinerealestateproject.dto;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 import onlinerealestateproject.util.UnitofWorkApartment;
 
@@ -12,7 +18,7 @@ import onlinerealestateproject.util.UnitofWorkApartment;
  * An apartment dto object
  */
 
-public class ApartmentDTO {
+public class ApartmentDTO implements Serializable{
 	
 	public int apid;
 	
@@ -162,6 +168,37 @@ public class ApartmentDTO {
 		ApartmentDTO result = (ApartmentDTO) decoder.readObject();
 		decoder.close();
 		return result;
+	}
+	
+	public static byte[] object2Byte(ApartmentDTO apartmentDTO) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(out);
+			oos.writeObject(apartmentDTO);
+			byte[] result = out.toByteArray();
+			out.close();
+			oos.close();
+			return result;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ApartmentDTO byte2Object(byte[] apartmentByte) {
+		ByteArrayInputStream in = new ByteArrayInputStream(apartmentByte);
+		try {
+			ObjectInputStream oin = new ObjectInputStream(in);
+			ApartmentDTO result = (ApartmentDTO)oin.readObject();
+			in.close();
+			oin.close();
+			return result;
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

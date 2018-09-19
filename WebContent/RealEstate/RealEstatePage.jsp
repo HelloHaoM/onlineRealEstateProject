@@ -1,3 +1,7 @@
+<%@page import="onlinerealestateproject.dto.ApartmentDTO"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentServiceBean"%>
+<%@page import="java.io.ByteArrayInputStream"%>
 <%@page import="onlinerealestateproject.service.imp.UserServiceImp"%>
 <%@page import="onlinerealestateproject.service.UserService"%>
 <%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
@@ -39,6 +43,11 @@
 	permission = userService.findUser(Integer.parseInt(id)).getPermission();
 	//permission = userMapper.find(Integer.parseInt(id)).getPermission();
 	System.out.println(permission);
+	
+	ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
+	byte[] apartmentByte = apartmentServiceBean.getApartmentByte(1);
+	ApartmentDTO apartmentDTO = ApartmentDTO.byte2Object(apartmentByte);
+	System.out.println("test byte: " + apartmentDTO.getApartmentName());
 	
 %>
 

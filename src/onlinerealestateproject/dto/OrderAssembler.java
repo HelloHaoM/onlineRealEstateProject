@@ -1,8 +1,14 @@
 package onlinerealestateproject.dto;
 
+import java.util.ArrayList;
+
+import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.OrderMapper;
+import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.datasource.imp.OrderMapperImpl;
+import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.util.UnitofWorkApartment;
 
 /**
  * @author haomai
@@ -15,6 +21,17 @@ public class OrderAssembler {
 		OrderDTO result = new OrderDTO(order.getUid(), 
 				order.getOid(), order.getApid(),
 				order.getInspStartTime(), order.getInspEndTime());
+		return result;
+	}
+	
+	public static ArrayList<OrderDTO> writeDTOList(int uid){
+		OrderMapper orderMapper = new OrderMapperImpl();
+		ArrayList<Order> orderList = orderMapper.findAllOrders(uid);
+		ArrayList<OrderDTO> result = new ArrayList<OrderDTO>();
+		for(Order order : orderList) {
+			OrderDTO temp = writeDTO(order);
+			result.add(temp);
+		}
 		return result;
 	}
 	

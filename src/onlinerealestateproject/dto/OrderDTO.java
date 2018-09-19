@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author haomai
@@ -31,8 +32,6 @@ public class OrderDTO implements Serializable{
 		this.inspStartTime = inspStartTime;
 		this.inspEndTime = inspEndTime;
 	}
-	
-	
 	
 	public int getUid() {
 		return uid;
@@ -123,6 +122,14 @@ public class OrderDTO implements Serializable{
 		return null;
 	}
 	
+	public static ArrayList<byte[]> objectList2ByteList(ArrayList<OrderDTO> list){
+		ArrayList<byte[]> result = new ArrayList<byte[]>();
+		for(OrderDTO orderDTO : list) {
+			result.add(object2Byte(orderDTO));
+		}
+		return result;
+	}
+	
 	public static OrderDTO byte2Object(byte[] orderByte) {
 		ByteArrayInputStream in = new ByteArrayInputStream(orderByte);
 		try {
@@ -136,5 +143,13 @@ public class OrderDTO implements Serializable{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static ArrayList<OrderDTO> byteList2ObjectList(ArrayList<byte[]> list){
+		ArrayList<OrderDTO> result = new ArrayList<OrderDTO>();
+		for(byte[] orderByte : list) {
+			result.add(byte2Object(orderByte));
+		}
+		return result;
 	}
 }

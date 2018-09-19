@@ -6,9 +6,11 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import onlinerealestateproject.datasource.OrderMapper;
 import onlinerealestateproject.datasource.imp.OrderMapperImpl;
+import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.dto.OrderAssembler;
 import onlinerealestateproject.dto.OrderDTO;
 import onlinerealestateproject.service.OrderServiceBean;
@@ -62,6 +64,12 @@ public class OrderServiceBeanImp implements OrderServiceBean{
 	public void updateOrder(int oid, byte[] orderByte) throws RemoteException {
 		// TODO Auto-generated method stub
 		new OrderAssembler().updateOrder(oid, OrderDTO.byte2Object(orderByte));
+	}
+
+	@Override
+	public ArrayList<byte[]> getOrderByteList(int uid) throws RemoteException {
+		// TODO Auto-generated method stub
+		return OrderDTO.objectList2ByteList(new OrderAssembler().writeDTOList(uid));
 	}
 
 }

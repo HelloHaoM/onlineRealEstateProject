@@ -1,3 +1,6 @@
+<%@page import="onlinerealestateproject.dto.ApartmentDTO"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentServiceBean"%>
 <%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
 <%@page import="onlinerealestateproject.service.ApartmentService"%>
 <%@page import="onlinerealestateproject.datasource.imp.ApartmentMapperImpl"%>
@@ -28,8 +31,10 @@
 	
 	Apartment apartment = apartmentMapper.find(apid); */
 	
-	ApartmentService apartmentService = new ApartmentServiceImp();
-	Apartment apartment = apartmentService.getApartment(apid);
+	//ApartmentService apartmentService = new ApartmentServiceImp();
+	//Apartment apartment = apartmentService.getApartment(apid);
+	ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
+	ApartmentDTO apartment = ApartmentDTO.byte2Object(apartmentServiceBean.getApartmentByte(apid));
 	
 	String info = (String) request.getAttribute("info");
 	if(info != null){

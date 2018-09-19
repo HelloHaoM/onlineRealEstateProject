@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import onlinerealestateproject.util.UnitofWorkApartment;
 
@@ -186,6 +187,14 @@ public class ApartmentDTO implements Serializable{
 		return null;
 	}
 	
+	public static ArrayList<byte[]> objectList2ByteList(ArrayList<ApartmentDTO> list){
+		ArrayList<byte[]> result = new ArrayList<byte[]>();
+		for(ApartmentDTO apartmentDTO : list) {
+			result.add(object2Byte(apartmentDTO));
+		}
+		return result;
+	}
+	
 	public static ApartmentDTO byte2Object(byte[] apartmentByte) {
 		ByteArrayInputStream in = new ByteArrayInputStream(apartmentByte);
 		try {
@@ -199,6 +208,14 @@ public class ApartmentDTO implements Serializable{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static ArrayList<ApartmentDTO> byteList2ObjectList(ArrayList<byte[]> list){
+		ArrayList<ApartmentDTO> result = new ArrayList<ApartmentDTO>();
+		for(byte[] apartmentByte : list) {
+			result.add(byte2Object(apartmentByte));
+		}
+		return result;
 	}
 
 }

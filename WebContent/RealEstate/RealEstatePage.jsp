@@ -1,3 +1,6 @@
+<%@page import="onlinerealestateproject.dto.UserDTO"%>
+<%@page import="onlinerealestateproject.service.imp.UserServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.UserServiceBean"%>
 <%@page import="onlinerealestateproject.dto.ApartmentDTO"%>
 <%@page import="onlinerealestateproject.service.imp.ApartmentServiceBeanImp"%>
 <%@page import="onlinerealestateproject.service.ApartmentServiceBean"%>
@@ -40,14 +43,12 @@
 		navHref = "./InspectionCart/InspectionCartPage.jsp";
 	
 	UserService userService = new UserServiceImp();
-	permission = userService.findUser(Integer.parseInt(id)).getPermission();
+	//permission = userService.findUser(Integer.parseInt(id)).getPermission();
+	UserServiceBean userServiceBean = new UserServiceBeanImp();
+	UserDTO userDTO = UserDTO.byte2Object(userServiceBean.getUserByte(Integer.parseInt(id)));
+	permission = userDTO.getPermission();
 	//permission = userMapper.find(Integer.parseInt(id)).getPermission();
 	System.out.println(permission);
-	
-	ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
-	byte[] apartmentByte = apartmentServiceBean.getApartmentByte(1);
-	ApartmentDTO apartmentDTO = ApartmentDTO.byte2Object(apartmentByte);
-	System.out.println("test byte: " + apartmentDTO.getApartmentName());
 	
 %>
 
@@ -153,11 +154,14 @@
                 <div class="col-sm-6"> 
                 
                 <% 
-/*                	UnitofWorkApartment.newCurrent();
-                 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-                	ArrayList<Apartment> apartList = apartmentMapper.findAllApartments(); */
-                	ApartmentService apartmentService = new ApartmentServiceImp();
-                	ArrayList<Apartment> apartList = apartmentService.getAvailableApartmentList();
+                	//UnitofWorkApartment.newCurrent();
+                 	//ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+                	//ArrayList<Apartment> apartList = apartmentMapper.findAllApartments(); 
+                	//ApartmentService apartmentService = new ApartmentServiceImp();
+                	//ArrayList<Apartment> apartList = apartmentService.getAvailableApartmentList();
+                	ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
+                	ArrayList<byte[]> temp = apartmentServiceBean.getApartmentByteList();
+                	ArrayList<ApartmentDTO> apartList = ApartmentDTO.byteList2ObjectList(temp);
            			for(int i = 0; i < apartList.size() / 2; i++){
            		%>
            			<!-- Begin Listing-->
@@ -190,7 +194,7 @@
                                 	<form class="realestate-order" action="../ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
                                 		<input type="hidden" name="username" value="<%= userName %>"></input>
-                                		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
+                                		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getApid() %>"></input>
                                 		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
                                 		<%
                                 			if(permission.equals("client")){
@@ -259,7 +263,7 @@
                                 	<form class="realestate-order" action="../ApartmentController", method="post">
                                 		<input type="hidden" name="client-id" value="<%= id %>"></input>
                                 		<input type="hidden" name="username" value="<%= userName %>"></input>
-                                		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getapid() %>"></input>
+                                		<input type="hidden" name="apartment-id" value="<%= apartList.get(i).getApid() %>"></input>
                                 		<input class="form-control" type="text" name="inspection-time" placeholder="Favourite Inspection Time ( hour:min dd-mm-yy )"></input>
                     					                                		<%
                                 			if(permission.equals("client")){

@@ -23,6 +23,7 @@ import onlinerealestateproject.service.imp.OrderServiceImp;
 public class InspectionCartController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
 	private static OrderService orderService = new OrderServiceImp();
+	
        
     /**
      * @see HttpServlet#HttpServlet()

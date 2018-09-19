@@ -14,7 +14,7 @@ public class UserAssembler {
 	
 	public static UserDTO writeDTO(User user) {
 		UserDTO result = new UserDTO(user.getUid(),
-				user.getUserName(), user.getPassword());
+				user.getUserName(), user.getPassword(), user.getPermission());
 		return result;
 	}
 	

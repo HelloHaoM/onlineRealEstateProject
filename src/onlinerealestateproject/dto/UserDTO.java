@@ -25,12 +25,14 @@ public class UserDTO implements Serializable{
 	private int uid;
 	private String username;
 	private String password;
+	private String permission;
 
 	
-	public UserDTO(int uid, String username, String password) {
+	public UserDTO(int uid, String username, String password, String permission) {
 		this.uid = uid;
 		this.username = username;
 		this.password = password;
+		this.permission = permission;
 	}
 
 	public int getUid() {
@@ -57,6 +59,15 @@ public class UserDTO implements Serializable{
 		this.password = password;
 	}
 	
+	
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
+
 	public static void toXML(UserDTO userDTO, OutputStream outputStream) {
 		XMLEncoder encoder = new XMLEncoder(outputStream);
 		encoder.writeObject(userDTO);

@@ -9,9 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.domain.Order;
+import onlinerealestateproject.dto.OrderDTO;
 import onlinerealestateproject.service.ApartmentService;
+import onlinerealestateproject.service.ApartmentServiceBean;
 import onlinerealestateproject.service.OrderService;
+import onlinerealestateproject.service.OrderServiceBean;
+import onlinerealestateproject.service.imp.ApartmentServiceBeanImp;
 import onlinerealestateproject.service.imp.ApartmentServiceImp;
+import onlinerealestateproject.service.imp.OrderServiceBeanImp;
 import onlinerealestateproject.service.imp.OrderServiceImp;
 
 /**
@@ -23,6 +28,8 @@ public class ApartmentController extends ActionServlet {
 	
 	private static OrderService orderService = new OrderServiceImp();
 	private static ApartmentService apartmentService = new ApartmentServiceImp();
+	private static OrderServiceBean orderServiceBean = new OrderServiceBeanImp();
+	private static ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -67,12 +74,19 @@ public class ApartmentController extends ActionServlet {
 			response.sendRedirect("./ApartmentForm/ApartmentFormPage.jsp?id="+uid+"&apid="+apid);
 		}
 		else if(request.getParameter("delete") != null) {
-			if(apartmentService.deleteApartment(apid)) {
-				session.setAttribute("userId", uid);
-				session.setAttribute("apartmentId", apid);
-				session.setAttribute("userName", userName);
-				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
-			}
+//			if(apartmentService.deleteApartment(apid)) {
+//				session.setAttribute("userId", uid);
+//				session.setAttribute("apartmentId", apid);
+//				session.setAttribute("userName", userName);
+//				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
+//			}
+			//TODO: Need to get lock
+			apartmentServiceBean.deleteApartment(apid);
+			session.setAttribute("userId", uid);
+			session.setAttribute("apartmentId", apid);
+			session.setAttribute("userName", userName);
+			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
+			
 		}
 		
 		

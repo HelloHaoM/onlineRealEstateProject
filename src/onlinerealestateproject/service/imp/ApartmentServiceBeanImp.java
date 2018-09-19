@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
@@ -62,6 +63,13 @@ public class ApartmentServiceBeanImp implements ApartmentServiceBean{
 	public void updateApartmentByByte(int apid, byte[] apartmentByte) throws RemoteException {
 		// TODO Auto-generated method stub
 		new ApartmentAssembler().updateApartment(apid, ApartmentDTO.byte2Object(apartmentByte));
+	}
+
+	@Override
+	public ArrayList<byte[]> getApartmentByteList() throws RemoteException {
+		// TODO Auto-generated method stub
+		return ApartmentDTO.objectList2ByteList(new ApartmentAssembler().writeDTOList());
+		
 	}
 
 }

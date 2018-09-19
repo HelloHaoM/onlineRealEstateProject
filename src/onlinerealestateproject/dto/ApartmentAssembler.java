@@ -1,5 +1,7 @@
 package onlinerealestateproject.dto;
 
+import java.util.ArrayList;
+
 import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.domain.Apartment;
@@ -19,6 +21,18 @@ public class ApartmentAssembler {
 				apartment.getAvailability(), apartment.getPrice(),
 				apartment.getAcreage(), apartment.getLocation(),
 				apartment.getApartmentName());
+		return result;
+	}
+	
+	public static ArrayList<ApartmentDTO> writeDTOList(){
+		UnitofWorkApartment.newCurrent();
+		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		ArrayList<Apartment> apartmentList = apartmentMapper.findAllApartments();
+		ArrayList<ApartmentDTO> result = new ArrayList<ApartmentDTO>();
+		for(Apartment apartment : apartmentList) {
+			ApartmentDTO temp = writeDTO(apartment);
+			result.add(temp);
+		}
 		return result;
 	}
 	

@@ -1,3 +1,9 @@
+<%@page import="onlinerealestateproject.dto.ApartmentDTO"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentServiceBean"%>
+<%@page import="onlinerealestateproject.dto.OrderDTO"%>
+<%@page import="onlinerealestateproject.service.imp.OrderServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.OrderServiceBean"%>
 <%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
 <%@page import="onlinerealestateproject.service.ApartmentService"%>
 <%@page import="onlinerealestateproject.service.OrderService"%>
@@ -57,14 +63,20 @@
                     		OrderMapper orderMapper = new OrderMapperImpl();
                     		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
                     		ArrayList<Order> orderList = orderMapper.findAllOrders(uid); */
-                    		OrderService orderService = new OrderServiceImp();
-                    		ArrayList<Order> orderList = orderService.getAllOrder(uid);
+                    		//OrderService orderService = new OrderServiceImp();
+                    		//ArrayList<Order> orderList = orderService.getAllOrder(uid);
+                    		OrderServiceBean orderServiceBean = new OrderServiceBeanImp();
+                    		ArrayList<byte[]> temp = orderServiceBean.getOrderByteList(uid);
+                    		ArrayList<OrderDTO> orderList = OrderDTO.byteList2ObjectList(temp);
                     		
-                    		ApartmentService apartmentService = new ApartmentServiceImp();
+                    		//ApartmentService apartmentService = new ApartmentServiceImp();
+                    		ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
                     		
-                    		for(Order order : orderList){
+                    		
+                    		for(OrderDTO order : orderList){
                     			//Apartment apartment = apartmentMapper.find(order.getApid());
-                    			Apartment apartment = apartmentService.getApartment(order.getApid());
+                    			//Apartment apartment = apartmentService.getApartment(order.getApid());
+                    			ApartmentDTO apartment = ApartmentDTO.byte2Object(apartmentServiceBean.getApartmentByte(order.getApid()));
                     	%>
                     		<tr>
                     		<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>

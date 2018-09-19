@@ -110,10 +110,12 @@ public class OrderMapperImpl implements OrderMapper{
 	
 	public boolean delete(int oid) throws DataMapperException {
 		// TODO Auto-generated method stub
-		ToolDelete td = new ToolDelete();
-		if(td.deleteOrder(oid, "order_has_admin"))
-			if(td.deleteOrder(oid, "inspection_order"))
-				return true;
+		if(ewlm.hasLock(oid, sessionid)) {
+			ToolDelete td = new ToolDelete();
+			if(td.deleteOrder(oid, "order_has_admin"))
+				if(td.deleteOrder(oid, "inspection_order"))
+					return true;
+		}
 		return false;
 		
 	}

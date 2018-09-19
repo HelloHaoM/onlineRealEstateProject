@@ -12,13 +12,13 @@ import onlinerealestateproject.util.ToolFind;
 
 public class ExclusiveWriteLockManager implements LockManager{
 	
+	
 	@Override
 	public boolean acquireLock(int lockableid, String owner)  {
 		// TODO Auto-generated method stub
 		boolean result = true;
 		if(!hasLock(lockableid,owner)) {
 			try {
-				System.out.println("2222");
 				String sql = "insert into lock (lockableid,owner) values (?,?)";
 				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
@@ -32,6 +32,8 @@ public class ExclusiveWriteLockManager implements LockManager{
 				e.printStackTrace();
 				return false;
 			}
+		}else {
+			System.out.println("The resource has been locked");
 		}
 		
 		return result;
@@ -41,9 +43,7 @@ public class ExclusiveWriteLockManager implements LockManager{
 	public void releaseLock(int lockableid, String owner) {
 		// TODO Auto-generated method stub
 		try {
-			System.out.println("2222");
 			String sql = "delete from lock where lockableid =?";
-			System.out.println("2222");
 			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
 			dbStatement.setInt(1, lockableid);
@@ -57,11 +57,32 @@ public class ExclusiveWriteLockManager implements LockManager{
 		
 		
 	}
+	
+	@Override
+	public void releaseAllLock(String owner) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "delete from lock where owner=?";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
+			dbStatement.setString(1, owner);
+			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+		
+	}
+	
 
 	public boolean hasLock(int lockableid, String owner) {
 		ToolFind tf = new ToolFind();
 		return tf.hasLock(lockableid, owner);
 		
 	}
+	
+	
 	
 }

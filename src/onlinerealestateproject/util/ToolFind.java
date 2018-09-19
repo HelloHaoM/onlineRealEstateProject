@@ -18,16 +18,21 @@ import onlinerealestateproject.domain.User;
 public class ToolFind {
 
 	
-	public static void main(String[] argv) {
-
-		System.out.println("-------- MySQL JDBC Connection Testing ------------");
-		findClient(1);
-	}
-	
+//	public static void main(String[] argv) {
+//
+//		System.out.println("-------- MySQL JDBC Connection Testing ------------");
+//		findClient(1);
+//		if(hasLock(,"heyyy")) {
+//			System.out.println("yes");
+//		}else {
+//			System.out.println("no");
+//		}
+//	}
+//	
 	public static boolean hasLock(int lockableid, String owner) {
 		try {	
 			int lockid = -1;
-			String statement = "SELECT * FROM lock where lockableid='"+lockableid+"' and owner='"+owner+"'";
+			String statement = "SELECT * FROM lock where lockableid='"+lockableid+"'";
 			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println(dbStatement);

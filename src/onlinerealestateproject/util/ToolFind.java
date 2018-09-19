@@ -18,18 +18,34 @@ import onlinerealestateproject.domain.User;
 public class ToolFind {
 
 	
-//	public static void main(String[] argv) {
-//
-//		System.out.println("-------- MySQL JDBC Connection Testing ------------");
-//		findClient(1);
-//		if(hasLock(,"heyyy")) {
-//			System.out.println("yes");
-//		}else {
-//			System.out.println("no");
-//		}
-//	}
-//	
+
 	public static boolean hasLock(int lockableid, String owner) {
+		try {	
+			int lockid = -1;
+			String statement = "SELECT * FROM lock where lockableid='"+lockableid+"' and owner='"+owner+"'";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
+			System.out.println(dbStatement);
+			ResultSet rs = dbStatement.executeQuery();
+			while(rs.next()) {
+				lockid = rs.getInt(1);
+			}
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			if(lockid!=-1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+			//throw new DataMapperException(e);
+			return false;
+		}
+	}
+	
+	public static boolean beenLocked(int lockableid, String owner) {
 		try {	
 			int lockid = -1;
 			String statement = "SELECT * FROM lock where lockableid='"+lockableid+"'";
@@ -54,6 +70,9 @@ public class ToolFind {
 			return false;
 		}
 	}
+	
+	
+	
 	
 	public static boolean findAdmByAccount(String username, String password) {
 		try {

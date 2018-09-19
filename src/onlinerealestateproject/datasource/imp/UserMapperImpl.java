@@ -4,6 +4,7 @@ import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.datasource.UserMapper;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.User;
+import onlinerealestateproject.lock.impl.ExclusiveWriteLockManager;
 import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
@@ -16,7 +17,8 @@ import onlinerealestateproject.util.ToolUpdate;
 public class UserMapperImpl implements UserMapper {
 	User user = new User(0, null, null, null, null, 0, null);
 	IdentityMap<User> map = IdentityMap.getInstance(user);
-	
+	public String sessionid;
+	ExclusiveWriteLockManager ewlm = new ExclusiveWriteLockManager();
 	
 	@Override
 	public User find(int id) {
@@ -45,14 +47,17 @@ public class UserMapperImpl implements UserMapper {
 	@Override
 	public boolean update(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
-		ToolUpdate tu = new ToolUpdate();
-		if(map.get(user.getUid())!=null){
-			map.put(user.getUid(), user);
-			if(tu.updateUAC(user.uid, user.firstName, user.lastName,
-				user.userName, user.password,user.order,user.permission, "users"))
-			return true;
-		return false;
+		if(ewlm.hasLock(user.getUid(), sessionid)) {
+			ToolUpdate tu = new ToolUpdate();
+			if(map.get(user.getUid())!=null){
+				map.put(user.getUid(), user);
+				if(tu.updateUAC(user.uid, user.firstName, user.lastName,
+					user.userName, user.password,user.order,user.permission, "users"))
+				return true;
+			return false;
+			}
 		}
+		
 		return false;
 	
 	}
@@ -61,14 +66,17 @@ public class UserMapperImpl implements UserMapper {
 	@Override
 	public boolean delete(User user) throws DataMapperException {
 		// TODO Auto-generated method stub
-		ToolDelete td = new ToolDelete();
-		if(map.get(user.getUid())!=null){
-			map.put(user.getUid(), null);
-		
-			if(td.delete(user.getUid(), "users"))
-				return true;
-			return false;
+		if(ewlm.hasLock(user.getUid(), sessionid)) {
+			ToolDelete td = new ToolDelete();
+			if(map.get(user.getUid())!=null){
+				map.put(user.getUid(), null);
+			
+				if(td.delete(user.getUid(), "users"))
+					return true;
+				return false;
+			}
 		}
+		
 		return false;
 	}
 	

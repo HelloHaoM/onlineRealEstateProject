@@ -11,13 +11,23 @@ import onlinerealestateproject.util.MySQLConnection;
 import onlinerealestateproject.util.ToolFind;
 
 public class ExclusiveWriteLockManager implements LockManager{
-	
+
+	public static void main(String[] argv) {
+
+		System.out.println("-------- MySQL JDBC Connection Testing ------------");
+		ExclusiveWriteLockManager e = new ExclusiveWriteLockManager();
+		if(e.hasLock(1,"steve")) {
+			System.out.println("yes");
+		}else {
+			System.out.println("no");
+		}
+	}
 	
 	@Override
 	public boolean acquireLock(int lockableid, String owner)  {
 		// TODO Auto-generated method stub
 		boolean result = true;
-		if(!hasLock(lockableid,owner)) {
+		if(!beenLocked(lockableid,owner)) {
 			try {
 				String sql = "insert into lock (lockableid,owner) values (?,?)";
 				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
@@ -78,8 +88,17 @@ public class ExclusiveWriteLockManager implements LockManager{
 	
 
 	public boolean hasLock(int lockableid, String owner) {
+		//Judege whether a user has the lock.
+		
 		ToolFind tf = new ToolFind();
 		return tf.hasLock(lockableid, owner);
+		
+	}
+	
+	public boolean beenLocked(int lockableid, String owner) {
+		//Judege whether the resource has been locked.
+		ToolFind tf = new ToolFind();
+		return tf.beenLocked(lockableid, owner);
 		
 	}
 	

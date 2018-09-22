@@ -55,6 +55,7 @@ public class LoginAndRegisterController extends ActionServlet {
 		//doGet(request, response);
 		
 		HttpSession httpSession = request.getSession();
+		SessionManager.getInstance().setHttpSession(httpSession);
 		
 		if(request.getParameter("submit").equals("login")) {
 			System.out.println(request.getParameter("username"));
@@ -64,6 +65,7 @@ public class LoginAndRegisterController extends ActionServlet {
 				int id = userService.findUserId(userName, password);
 				httpSession.setAttribute("userId", id);
 				httpSession.setAttribute("userName", userName);
+				SessionManager.getInstance().setHttpSession(httpSession);
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id+"&userName="+userName);
 			}
 			else {
@@ -81,6 +83,7 @@ public class LoginAndRegisterController extends ActionServlet {
 				int id = userService.findUserId(userName, password);
 				httpSession.setAttribute("userId", id);
 				httpSession.setAttribute("userName", userName);
+				SessionManager.getInstance().setHttpSession(httpSession);
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id+"&userName="+userName);
 			}else {
 				request.setAttribute("info", "Register Failed");

@@ -23,7 +23,6 @@ import onlinerealestateproject.service.imp.OrderServiceImp;
 public class InspectionCartController extends ActionServlet {
 	private static final long serialVersionUID = 1L;
 	private static OrderService orderService = new OrderServiceImp();
-	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -56,11 +55,13 @@ public class InspectionCartController extends ActionServlet {
 		//doGet(request, response);
 		
 		HttpSession httpSession = request.getSession();
+		SessionManager.getInstance().setHttpSession(httpSession);
 		
 		if(request.getParameter("back") != null) {
 			// back to main page
 			int uid = Integer.parseInt(request.getParameter("id"));
 			httpSession.setAttribute("userId", uid);
+			SessionManager.getInstance().setHttpSession(httpSession);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}
 		else if(request.getParameter("delete") != null) {
@@ -70,6 +71,7 @@ public class InspectionCartController extends ActionServlet {
 			int oid = Integer.parseInt(request.getParameter("order-id"));
 			if(orderService.deleteOrder(uid, oid)) {
 				httpSession.setAttribute("userId", uid);
+				SessionManager.getInstance().setHttpSession(httpSession);
 				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 				System.out.println("Delete Successful");
 			}
@@ -77,6 +79,7 @@ public class InspectionCartController extends ActionServlet {
 			// confirm and back to main page
 			int uid = Integer.parseInt(request.getParameter("id"));
 			httpSession.setAttribute("userId", uid);
+			SessionManager.getInstance().setHttpSession(httpSession);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid);
 		}else if(request.getParameter("update") != null) {
 			// update an order
@@ -85,6 +88,7 @@ public class InspectionCartController extends ActionServlet {
 			String inspectionTime = request.getParameter("inspection-time");
 			if(orderService.updateOrder(oid, inspectionTime)) {
 				httpSession.setAttribute("userId", uid);
+				SessionManager.getInstance().setHttpSession(httpSession);
 				request.setAttribute("info", "Update Successfully");
 				forward("./InspectionCart/InspectionCartPage.jsp?id="+uid, request, response);
 			}

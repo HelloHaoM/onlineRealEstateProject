@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.dto.ApartmentDTO;
@@ -47,8 +48,15 @@ public class ApartmentFormController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
+		HttpSession httpSession = request.getSession();
+		SessionManager.getInstance().setHttpSession(httpSession);
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int apid = Integer.parseInt(request.getParameter("apid"));
+		httpSession.setAttribute("userId", id);
+		httpSession.setAttribute("apartmentId", apid);
+		SessionManager.getInstance().setHttpSession(httpSession);
 		if(request.getParameter("confirm") != null) {
 			String startRentTime = request.getParameter("startRentTime");
 			String endRentTime = request.getParameter("endRentTime");

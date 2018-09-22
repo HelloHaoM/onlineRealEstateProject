@@ -55,6 +55,7 @@ public class ApartmentController extends ActionServlet {
 		//doGet(request, response);
 		
 		HttpSession session = request.getSession();
+		SessionManager.getInstance().setHttpSession(session);
 		
 		int uid = Integer.parseInt(request.getParameter("client-id"));
 		int apid = Integer.parseInt(request.getParameter("apartment-id"));
@@ -65,12 +66,14 @@ public class ApartmentController extends ActionServlet {
 			if(orderService.makeOrder(uid, apid, inspectionTime)) {
 				session.setAttribute("userId", uid);
 				session.setAttribute("apartmentId", apid);
+				SessionManager.getInstance().setHttpSession(session);
 				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 			}
 		}
 		else if(request.getParameter("update") != null) {
 			session.setAttribute("userId", uid);
 			session.setAttribute("apartmentId", apid);
+			SessionManager.getInstance().setHttpSession(session);
 			response.sendRedirect("./ApartmentForm/ApartmentFormPage.jsp?id="+uid+"&apid="+apid);
 		}
 		else if(request.getParameter("delete") != null) {
@@ -85,6 +88,7 @@ public class ApartmentController extends ActionServlet {
 			session.setAttribute("userId", uid);
 			session.setAttribute("apartmentId", apid);
 			session.setAttribute("userName", userName);
+			SessionManager.getInstance().setHttpSession(session);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
 			
 		}

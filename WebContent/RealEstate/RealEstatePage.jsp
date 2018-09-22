@@ -1,3 +1,4 @@
+<%@page import="onlinerealestateproject.controller.SessionManager"%>
 <%@page import="onlinerealestateproject.dto.UserDTO"%>
 <%@page import="onlinerealestateproject.service.imp.UserServiceBeanImp"%>
 <%@page import="onlinerealestateproject.service.UserServiceBean"%>

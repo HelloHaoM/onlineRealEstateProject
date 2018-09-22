@@ -50,10 +50,12 @@ public class NewApartmentFormController extends ActionServlet {
 		//doGet(request, response);
 		
 		HttpSession httpSession = request.getSession();
+		SessionManager.getInstance().setHttpSession(httpSession);
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		if(request.getParameter("back") != null) {
 			httpSession.setAttribute("userId", id);
+			SessionManager.getInstance().setHttpSession(httpSession);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
 		}
 		else if(request.getParameter("create") != null) {
@@ -78,6 +80,7 @@ public class NewApartmentFormController extends ActionServlet {
 					availability, price, acreage, location, apartmentName);
 			apartmentServiceBean.createApartmentByByte(ApartmentDTO.object2Byte(apartmentDTO));
 			httpSession.setAttribute("userId", id);
+			SessionManager.getInstance().setHttpSession(httpSession);
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
 			
 		}

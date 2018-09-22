@@ -1,3 +1,4 @@
+<%@page import="onlinerealestateproject.controller.SessionManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
@@ -12,8 +13,11 @@
 </head>
 <body>
 <%
-	HttpSession session = request.getSession();
+	HttpSession httpSession = request.getSession();
+	SessionManager.getInstance().setHttpSession(httpSession);
+	HttpSession session = SessionManager.getInstance().getHttpSession();
 	String userName="";
+	System.out.println("session id: " + SessionManager.getInstance().getHttpSessionId());
 %>
 <div class="container">
     <div class="row">
@@ -36,11 +40,12 @@
                 </p>
                 <P class="session-info">
                 	<%
-                		if(session.isNew()){
+                		if(SessionManager.getInstance().isNewSession()){
                 			out.print("Hello, New User");
                 		}
                 		else{
-                			if(session.getAttribute("userName") != null){
+                			if(SessionManager.getInstance().getHttpSession()
+                					.getAttribute("userName") != null){
                 				userName = session.getAttribute("userName").toString();
                 				System.out.println("userName: " + userName);
                 			} 

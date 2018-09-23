@@ -6,7 +6,6 @@ import onlinerealestateproject.datasource.ClientMapper;
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Client;
-import onlinerealestateproject.lock.impl.ExclusiveWriteLockManager;
 import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
@@ -20,8 +19,6 @@ public class ClientMapperImpl implements ClientMapper {
 	
 	Client client = new Client(0, null, null, null, null, 0, null);
 	IdentityMap<Client> map = IdentityMap.getInstance(client);
-	public String sessionid;
-	ExclusiveWriteLockManager ewlm = new ExclusiveWriteLockManager();
 	
 	@Override
 	public boolean isFind(String username, String password) {
@@ -65,34 +62,28 @@ public class ClientMapperImpl implements ClientMapper {
 	@Override
 	public boolean update(Client client) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(client.getUid(), sessionid)) {
-			ToolUpdate tu = new ToolUpdate();
-			if(map.get(client.getUid())!=null){
-				map.put(client.getUid(), client);
-				
-				if(tu.updateUAC(client.uid, client.firstName, client.lastName,
-						client.userName, client.password,client.order,client.permission, "client"))
-					return true;
-				return false;
-			}
+		ToolUpdate tu = new ToolUpdate();
+		if(map.get(client.getUid())!=null){
+			map.put(client.getUid(), client);
+			
+			if(tu.updateUAC(client.uid, client.firstName, client.lastName,
+					client.userName, client.password,client.order,client.permission, "client"))
+				return true;
+			return false;
 		}
-		
 		return false;
 	}
 
 	@Override
 	public boolean delete(Client client) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(client.getUid(), sessionid)) {
-			ToolDelete td = new ToolDelete();
-			if(map.get(client.getUid())!=null){
-				map.put(client.getUid(), null);
-				if(td.delete(client.getUid(), "client"))
-					return true;
-				return false;
-			}
+		ToolDelete td = new ToolDelete();
+		if(map.get(client.getUid())!=null){
+			map.put(client.getUid(), null);
+			if(td.delete(client.getUid(), "client"))
+				return true;
+			return false;
 		}
-		
 		return false;
 	}
 

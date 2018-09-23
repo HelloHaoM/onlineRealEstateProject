@@ -12,7 +12,6 @@ import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Client;
 import onlinerealestateproject.domain.Order;
-import onlinerealestateproject.lock.impl.ExclusiveWriteLockManager;
 import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.ToolDelete;
 import onlinerealestateproject.util.ToolFind;
@@ -26,9 +25,6 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 
 	Administrator administrator = new Administrator(0, null, null, null, null, 0, null);
 	IdentityMap<Administrator> map = IdentityMap.getInstance(administrator);
-	public String sessionid;
-	ExclusiveWriteLockManager ewlm = new ExclusiveWriteLockManager();
-	
 	
 	@Override
 	public boolean isFind(String username, String password) {
@@ -66,18 +62,14 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	@Override
 	public boolean update(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(administrator.getUid(), sessionid)) {
-			ToolUpdate tu = new ToolUpdate();
-			if(map.get(administrator.getUid())!=null){
-				map.put(administrator.getUid(), administrator);
-			
-				if(tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
-					administrator.userName, administrator.password,administrator.order, administrator.permission, "administrator"))
-					return true;
-				return false;
-			}else {
-				System.out.println("resource been locked");
-			}
+		ToolUpdate tu = new ToolUpdate();
+		if(map.get(administrator.getUid())!=null){
+			map.put(administrator.getUid(), administrator);
+		
+			if(tu.updateUAC(administrator.uid, administrator.firstName, administrator.lastName,
+				administrator.userName, administrator.password,administrator.order, administrator.permission, "administrator"))
+				return true;
+			return false;
 		}
 		return false;
 	}
@@ -86,18 +78,13 @@ public class AdministratorMapperImpl implements AdministratorMapper {
 	@Override
 	public boolean delete(Administrator administrator) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(administrator.getUid(), sessionid)) {
-			ToolDelete td = new ToolDelete();
-			if(map.get(administrator.getUid())!=null){
-				map.put(administrator.getUid(), null);
-				if(td.delete(administrator.getUid(), "administator"))
-				return true;
-			return false;
-		}else {
-			System.out.println("resource been locked");
-		}
-		}
-		
+		ToolDelete td = new ToolDelete();
+		if(map.get(administrator.getUid())!=null){
+			map.put(administrator.getUid(), null);
+			if(td.delete(administrator.getUid(), "administator"))
+			return true;
+		return false;
+	}
 	
 	return false;
 }

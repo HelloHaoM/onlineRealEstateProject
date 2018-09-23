@@ -13,7 +13,6 @@ import java.sql.SQLException;
 
 import onlinerealestateproject.domain.Administrator;
 import onlinerealestateproject.domain.Apartment;
-import onlinerealestateproject.lock.impl.ExclusiveWriteLockManager;
 import onlinerealestateproject.util.IdentityMap;
 import onlinerealestateproject.util.MySQLConnection;
 import onlinerealestateproject.util.ToolDelete;
@@ -31,9 +30,6 @@ import onlinerealestateproject.datasource.DataMapperException;
  */
 	public class ApartmentMapperImpl implements ApartmentMapper {
  
-		public String sessionid;
-		ExclusiveWriteLockManager ewlm = new ExclusiveWriteLockManager();
-		
 		public ArrayList<Apartment> findAllApartments(){
 			ArrayList<Apartment> apartments = new ArrayList<>();
 			try {
@@ -89,13 +85,10 @@ import onlinerealestateproject.datasource.DataMapperException;
 	@Override
 	public boolean update(Apartment apartment) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(apartment.getApid(), sessionid)) {
-			ToolUpdate tu = new ToolUpdate();
-			if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
-				apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
-				return true;
-			
-		}
+		ToolUpdate tu = new ToolUpdate();
+		if(tu.updateAp(apartment.apid, apartment.startRentTime, apartment.endRentTime, apartment.availability,
+			apartment.price, apartment.acreage, apartment.location, apartment.apartmentName))
+			return true;
 		return false;
 	}
 		
@@ -104,22 +97,17 @@ import onlinerealestateproject.datasource.DataMapperException;
 	@Override
 	public boolean delete(Apartment apartment) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(apartment.getApid(), sessionid)) {
-			ToolDelete td = new ToolDelete();
-			if(td.delete(apartment.getapid(), "apartment"))
-				return true;
-		}
+		ToolDelete td = new ToolDelete();
+		if(td.delete(apartment.getapid(), "apartment"))
+			return true;
 		return false;
 	}
 	
 	public boolean delete(int apid) throws DataMapperException {
 		// TODO Auto-generated method stub
-		if(ewlm.hasLock(apid, sessionid)) {
-			ToolDelete td = new ToolDelete();
-			if(td.deleteApartment(apid))
-				return true;
-
-		}
+		ToolDelete td = new ToolDelete();
+		if(td.deleteApartment(apid))
+			return true;
 		return false;
 	}
 
@@ -134,12 +122,6 @@ import onlinerealestateproject.datasource.DataMapperException;
 		
 		return tf.findApartment(id);
 	}
-
-
-
-
-
-
 
 
 }

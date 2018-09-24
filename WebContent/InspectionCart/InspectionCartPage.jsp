@@ -87,6 +87,7 @@
                             	<td class="text-right">
                             	<input type="hidden" name="id" value="<%= order.getUid() %>"></input>
                             	<input type="hidden" name="order-id" value="<%= order.getOid() %>"></input>
+                            	<input type="hidden" name="apartment-id" value="<%= order.getApid() %>"></input>
                             	<input class="btn btn-sm btn-success" type="submit" name="update" value="Update"> </input>
                           		<input class="btn btn-sm btn-danger" type="submit" name="delete" value="Delete"> </input> 
                           		</td>

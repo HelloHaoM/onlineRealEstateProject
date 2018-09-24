@@ -14,6 +14,17 @@ import onlinerealestateproject.util.ToolFind;
 public class ExclusiveWriteLockManager implements LockManager{
 	private static ExclusiveWriteLockManager singletonExclusiveWriteLockManager = new ExclusiveWriteLockManager();
 
+	
+		
+		  public static void main(String[] argv) {
+
+				System.out.println("-------- MySQL JDBC Connection Testing ------------");
+//				ExclusiveWriteLockManager.getInstance().acquireLockAp(5,"626", "m");
+				if(ExclusiveWriteLockManager.getInstance().beenLocked2(5, "626", "1856EAF6557520F172033A8C63BB0BFA"))
+				{
+					ExclusiveWriteLockManager.getInstance().acquireLockAp(99,"qq", "m");
+				}
+			  }
 
 	public static ExclusiveWriteLockManager getInstance() {
 		if(singletonExclusiveWriteLockManager == null)
@@ -47,6 +58,32 @@ public class ExclusiveWriteLockManager implements LockManager{
 		
 		return result;
 	}
+	
+	public boolean acquireLockAp(int apid,String inspstarttime, String owner)  {
+		// TODO Auto-generated method stub
+		boolean result = true;
+		if(!beenLocked2(apid,inspstarttime,owner)) {
+			try {
+				String sql = "insert into lock2 (apid,inspectstarttime,owner) values (?,?,?)";
+				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
+				dbStatement.setInt(1, apid);
+				dbStatement.setString(2, inspstarttime);
+				dbStatement.setString(3, owner);
+				dbStatement.executeUpdate();
+				MySQLConnection.getSingleMySQLConnection().closeConnection();
+				
+			}catch (SQLException e) {
+				 
+				e.printStackTrace();
+				return false;
+			}
+		}else {
+			System.out.println("The resource has been locked");
+		}
+		
+		return result;
+	}
 
 	@Override
 	public void releaseLock(int lockableid, String owner) {
@@ -56,6 +93,23 @@ public class ExclusiveWriteLockManager implements LockManager{
 			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
 			dbStatement.setInt(1, lockableid);
+			dbStatement.executeUpdate();
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+		
+		
+	}
+	public void releaseLock2(int apid, String inspectstarttime, String owner) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "delete from lock2 where apid =? and inspectstarttime = '"+inspectstarttime+"'";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
+			dbStatement.setInt(1, apid);
 			dbStatement.executeUpdate();
 			MySQLConnection.getSingleMySQLConnection().closeConnection();
 			
@@ -98,6 +152,12 @@ public class ExclusiveWriteLockManager implements LockManager{
 		//Judege whether the resource has been locked.
 		ToolFind tf = new ToolFind();
 		return tf.beenLocked(lockableid, owner);
+		
+	}
+	public boolean beenLocked2(int apid,String inspstarttime, String owner) {
+		//Judege whether the resource has been locked.
+		ToolFind tf = new ToolFind();
+		return tf.beenLocked2(apid,inspstarttime, owner);
 		
 	}
 	

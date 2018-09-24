@@ -71,7 +71,31 @@ public class ToolFind {
 		}
 	}
 	
-	
+	public static boolean beenLocked2(int apid ,String inspectstarttime, String owner) {
+		try {	
+			int lockid = -1;
+			String statement = "SELECT * FROM lock2 where apid='"+apid+"'"+"and inspectstarttime ='"+inspectstarttime+"'";
+			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
+			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
+			System.out.println(dbStatement);
+			ResultSet rs = dbStatement.executeQuery();
+			while(rs.next()) {
+				lockid = rs.getInt(1);
+			}
+			MySQLConnection.getSingleMySQLConnection().closeConnection();
+			if(lockid!=-1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}	
+		catch (SQLException e) {
+			e.printStackTrace();
+			//throw new DataMapperException(e);
+			return false;
+		}
+	}
 	
 	
 	public static boolean findAdmByAccount(String username, String password) {

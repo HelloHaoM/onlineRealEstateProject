@@ -86,24 +86,28 @@ public class InspectionCartController extends ActionServlet {
 			// update an order
 			int uid = Integer.parseInt(request.getParameter("id"));
 			int oid = Integer.parseInt(request.getParameter("order-id"));
+			int apid = Integer.parseInt(request.getParameter("apartment-id"));
+			String inspectstarttime = request.getParameter("inspection-time");
 			
-			if(!ExclusiveWriteLockManager.getInstance().hasLock(oid, SessionManager.getInstance().getHttpSessionId()))
-				{ExclusiveWriteLockManager.getInstance().acquireLock(oid, SessionManager.getInstance().getHttpSessionId());
-					String inspectionTime = request.getParameter("inspection-time");
-					if(orderService.updateOrder(oid, inspectionTime)) {
-						httpSession.setAttribute("userId", uid);
-						SessionManager.getInstance().setHttpSession(httpSession);
-						request.setAttribute("info", "Update Successfully");
-//						ExclusiveWriteLockManager.getInstance().releaseLock(oid,SessionManager.getInstance().getHttpSessionId());
-						forward("./InspectionCart/InspectionCartPage.jsp?id="+uid, request, response);
+			if(!ExclusiveWriteLockManager.getInstance().beenLocked2(5,"dddd",SessionManager.getInstance().getHttpSessionId())) {
+				ExclusiveWriteLockManager.getInstance().acquireLockAp(apid,inspectstarttime, SessionManager.getInstance().getHttpSessionId());
+				String inspectionTime = request.getParameter("inspection-time");
+				if(orderService.updateOrder(oid, inspectionTime)) {
+					httpSession.setAttribute("userId", uid);
+					SessionManager.getInstance().setHttpSession(httpSession);
+					request.setAttribute("info", "Update Successfully");
+//					ExclusiveWriteLockManager.getInstance().releaseLock2(apid,inspectstarttime,SessionManager.getInstance().getHttpSessionId());
+					forward("./InspectionCart/InspectionCartPage.jsp?id="+uid, request, response);
 						
-					}else {
-						System.out.println("error");
-					}
+				}else {
+					System.out.println("error");
+				}}else {
+					System.out.println("already got key");
+				}
 			}
 			}
-		}
 		
-	}
+		
+}
 
 

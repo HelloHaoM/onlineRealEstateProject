@@ -51,9 +51,9 @@ public class ExclusiveWriteLockManager implements LockManager{
 	public boolean acquireLockAp(int apid,String inspstarttime, String owner)  {
 		// TODO Auto-generated method stub
 		boolean result = true;
-		if(!beenLocked2(apid,inspstarttime,owner)) {
+		if(!beenLockedAp(apid,inspstarttime,owner)) {
 			try {
-				String sql = "insert into lock2 (apid,inspectstarttime,owner) values (?,?,?)";
+				String sql = "insert into lockap (apid,inspectstarttime,owner) values (?,?,?)";
 				MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 				PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
 				dbStatement.setInt(1, apid);
@@ -92,10 +92,10 @@ public class ExclusiveWriteLockManager implements LockManager{
 		
 		
 	}
-	public void releaseLock2(int apid, String inspectstarttime, String owner) {
+	public void releaseLockAp(int apid, String inspectstarttime, String owner) {
 		// TODO Auto-generated method stub
 		try {
-			String sql = "delete from lock2 where apid =? and inspectstarttime = '"+inspectstarttime+"'";
+			String sql = "delete from lockap where apid =? and inspectstarttime = '"+inspectstarttime+"'";
 			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(sql);
 			dbStatement.setInt(1, apid);
@@ -143,10 +143,10 @@ public class ExclusiveWriteLockManager implements LockManager{
 		return tf.beenLocked(lockableid, owner);
 		
 	}
-	public boolean beenLocked2(int apid,String inspstarttime, String owner) {
+	public boolean beenLockedAp(int apid,String inspstarttime, String owner) {
 		//Judege whether the resource has been locked.
 		ToolFind tf = new ToolFind();
-		return tf.beenLocked2(apid,inspstarttime, owner);
+		return tf.beenLockedAp(apid,inspstarttime, owner);
 		
 	}
 	

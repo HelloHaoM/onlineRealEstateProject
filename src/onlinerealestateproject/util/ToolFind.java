@@ -71,10 +71,10 @@ public class ToolFind {
 		}
 	}
 	
-	public static boolean beenLocked2(int apid ,String inspectstarttime, String owner) {
+	public static boolean beenLockedAp(int apid ,String inspectstarttime, String owner) {
 		try {	
 			int lockid = -1;
-			String statement = "SELECT * FROM lock2 where apid='"+apid+"'"+"and inspectstarttime ='"+inspectstarttime+"'";
+			String statement = "SELECT * FROM lockap where apid='"+apid+"'"+"and inspectstarttime ='"+inspectstarttime+"'";
 			MySQLConnection.getSingleMySQLConnection().establishDBConnection();
 			PreparedStatement dbStatement = MySQLConnection.getSingleMySQLConnection().getConnection().prepareStatement(statement);
 			System.out.println(dbStatement);

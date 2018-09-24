@@ -89,7 +89,7 @@ public class InspectionCartController extends ActionServlet {
 			int apid = Integer.parseInt(request.getParameter("apartment-id"));
 			String inspectstarttime = request.getParameter("inspection-time");
 			
-			if(!ExclusiveWriteLockManager.getInstance().beenLocked2(5,"dddd",SessionManager.getInstance().getHttpSessionId())) {
+			if(!ExclusiveWriteLockManager.getInstance().beenLockedAp(5,"dddd",SessionManager.getInstance().getHttpSessionId())) {
 				ExclusiveWriteLockManager.getInstance().acquireLockAp(apid,inspectstarttime, SessionManager.getInstance().getHttpSessionId());
 				String inspectionTime = request.getParameter("inspection-time");
 				if(orderService.updateOrder(oid, inspectionTime)) {

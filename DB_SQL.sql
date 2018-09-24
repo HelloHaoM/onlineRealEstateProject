@@ -13,9 +13,9 @@ drop table if exists lock;
 create table lock (lockableid int not null, owner varchar(255) not null, primary key (lockableid, owner));
 insert into lock(lockableid, owner) values (1,'steve');
 
-drop table if exists lock2;
-create table lock2 (apid int not null, inspectstarttime varchar(255) not null, owner varchar(255) not null);
-insert into lock2(apid, inspectstarttime, owner) values (1,'911','steve');
+drop table if exists lockap;
+create table lockAp (apid int not null, inspectstarttime varchar(255) not null, owner varchar(255) not null);
+insert into lockAp(apid, inspectstarttime, owner) values (1,'911','steve');
 
 drop table if exists users;
 create table users (id int not null UNIQUE default nextval('sql_au_inc_users'),firstName varchar(255),lastName varchar(255),userName varchar(255),password varchar(255), oid int, permission varchar(255),  primary key(id));

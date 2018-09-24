@@ -14,17 +14,6 @@ import onlinerealestateproject.util.ToolFind;
 public class ExclusiveWriteLockManager implements LockManager{
 	private static ExclusiveWriteLockManager singletonExclusiveWriteLockManager = new ExclusiveWriteLockManager();
 
-	
-		
-		  public static void main(String[] argv) {
-
-				System.out.println("-------- MySQL JDBC Connection Testing ------------");
-//				ExclusiveWriteLockManager.getInstance().acquireLockAp(5,"626", "m");
-				if(ExclusiveWriteLockManager.getInstance().beenLocked2(5, "626", "1856EAF6557520F172033A8C63BB0BFA"))
-				{
-					ExclusiveWriteLockManager.getInstance().acquireLockAp(99,"qq", "m");
-				}
-			  }
 
 	public static ExclusiveWriteLockManager getInstance() {
 		if(singletonExclusiveWriteLockManager == null)

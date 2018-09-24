@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.domain.Order;
 import onlinerealestateproject.dto.OrderDTO;
+import onlinerealestateproject.lock.impl.ExclusiveWriteLockManager;
 import onlinerealestateproject.service.ApartmentService;
 import onlinerealestateproject.service.ApartmentServiceBean;
 import onlinerealestateproject.service.OrderService;
@@ -63,12 +64,17 @@ public class ApartmentController extends ActionServlet {
 		String inspectionTime = request.getParameter("inspection-time");
 		// make an order via orderService
 		if(request.getParameter("book") != null) {
+			
+			ExclusiveWriteLockManager.getInstance().acquireLock(apid, SessionManager.getInstance().getHttpSessionId());
+			
 			if(orderService.makeOrder(uid, apid, inspectionTime)) {
 				session.setAttribute("userId", uid);
 				session.setAttribute("apartmentId", apid);
 				SessionManager.getInstance().setHttpSession(session);
 				response.sendRedirect("./InspectionCart/InspectionCartPage.jsp?id="+uid);
 			}
+			
+			ExclusiveWriteLockManager.getInstance().releaseLock(apid, SessionManager.getInstance().getHttpSessionId());
 		}
 		else if(request.getParameter("update") != null) {
 			session.setAttribute("userId", uid);
@@ -84,11 +90,17 @@ public class ApartmentController extends ActionServlet {
 //				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
 //			}
 			//TODO: Need to get lock
-			apartmentServiceBean.deleteApartment(apid);
 			session.setAttribute("userId", uid);
 			session.setAttribute("apartmentId", apid);
 			session.setAttribute("userName", userName);
 			SessionManager.getInstance().setHttpSession(session);
+			
+			ExclusiveWriteLockManager.getInstance().acquireLock(apid, SessionManager.getInstance().getHttpSessionId());
+			
+			apartmentServiceBean.deleteApartment(apid);
+			
+			ExclusiveWriteLockManager.getInstance().releaseLock(apid, SessionManager.getInstance().getHttpSessionId());
+			
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+uid+"&userName="+userName);
 			
 		}

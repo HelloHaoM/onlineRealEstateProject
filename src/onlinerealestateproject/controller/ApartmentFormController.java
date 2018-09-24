@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.dto.ApartmentDTO;
+import onlinerealestateproject.lock.impl.ExclusiveWriteLockManager;
 import onlinerealestateproject.service.ApartmentService;
 import onlinerealestateproject.service.ApartmentServiceBean;
 import onlinerealestateproject.service.imp.ApartmentServiceBeanImp;
@@ -79,7 +80,13 @@ public class ApartmentFormController extends ActionServlet {
 			UnitofWorkApartment.newCurrent();
 			ApartmentDTO apartmentDTO = new ApartmentDTO(apid, startRentTime, endRentTime, 
 					availability, price, acreage, location, apartmentName);
+			
+			ExclusiveWriteLockManager.getInstance().acquireLock(apid, SessionManager.getInstance().getHttpSessionId());
+			
 			apartmentServiceBean.updateApartmentByByte(apid, ApartmentDTO.object2Byte(apartmentDTO));
+			
+			ExclusiveWriteLockManager.getInstance().releaseLock(apid, SessionManager.getInstance().getHttpSessionId());
+			
 			request.setAttribute("info", "Update Successfully");
 			response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id);
 			

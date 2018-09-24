@@ -13,6 +13,7 @@ drop table if exists lock;
 create table lock (lockableid int not null, owner varchar(255) not null, primary key (lockableid, owner));
 insert into lock(lockableid, owner) values (1,'steve');
 
+drop table if exists lock2;
 drop table if exists lockap;
 create table lockAp (apid int not null, inspectstarttime varchar(255) not null, owner varchar(255) not null);
 insert into lockAp(apid, inspectstarttime, owner) values (1,'911','steve');
@@ -59,10 +60,10 @@ insert into inspection_order(inspStartTime, inspEndTime,id, apid) values ('08/09
 
 drop table if exists apartment_has_admin;
 create table apartment_has_admin (id int not null,apid int not null, primary key(id,apid), foreign key(id) references administrator(id), foreign key(apid) references apartment(apid));
-insert into apartment_has_admin(id, apid) values (1, 1);
+
 
 drop table if exists order_has_admin;
 create table order_has_admin (oid int not null,id int not null, primary key(oid,id), foreign key(oid) references inspection_order(oid), foreign key(id) references administrator(id));
-insert into order_has_admin(oid, id) values (1, 1);
+
 
 

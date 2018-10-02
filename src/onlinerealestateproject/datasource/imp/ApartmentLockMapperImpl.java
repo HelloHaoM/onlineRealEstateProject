@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import onlinerealestateproject.controller.SessionManager;
 import onlinerealestateproject.datasource.ApartmentLockMapper;
+import onlinerealestateproject.datasource.ApartmentMapper;
 import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.lock.LockManager;
@@ -18,11 +19,11 @@ import onlinerealestateproject.util.ToolUpdate;
 
 public class ApartmentLockMapperImpl implements ApartmentLockMapper {
 
-	private ApartmentLockMapper aplm;
+	private ApartmentMapper aplm;
 	private ExclusiveWriteLockManager lm;
 	private String sessionId;
 
-	public ApartmentLockMapperImpl(ApartmentLockMapper aplm) {
+	public ApartmentLockMapperImpl(ApartmentMapper aplm) {
 		this.aplm = aplm;
 		this.lm = ExclusiveWriteLockManager.getInstance();
 		this.sessionId = SessionManager.getInstance().getHttpSessionId();

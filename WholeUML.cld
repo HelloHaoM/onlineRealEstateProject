@@ -48,8 +48,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>195</x>
-        <y>402</y>
+        <x>92</x>
+        <y>380</y>
       </constraint>
       <sourceConnections>
         <net.java.amateras.uml.classdiagram.model.RealizationModel>
@@ -89,8 +89,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>207</x>
-              <y>517</y>
+              <x>104</x>
+              <y>495</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.AggregationModel>
@@ -130,8 +130,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>106</x>
-                    <y>664</y>
+                    <x>11</x>
+                    <y>658</y>
                   </constraint>
                   <sourceConnections>
                     <net.java.amateras.uml.classdiagram.model.GeneralizationModel>
@@ -163,8 +163,8 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>696</x>
-                          <y>829</y>
+                          <x>399</x>
+                          <y>807</y>
                         </constraint>
                         <sourceConnections/>
                         <targetConnections>
@@ -205,8 +205,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>976</x>
-                                <y>690</y>
+                                <x>710</x>
+                                <y>661</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.GeneralizationModel reference="../../.."/>
@@ -518,8 +518,8 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>953</x>
-                                      <y>559</y>
+                                      <x>740</x>
+                                      <y>490</y>
                                     </constraint>
                                     <sourceConnections>
                                       <net.java.amateras.uml.classdiagram.model.AggregationModel reference="../../.."/>
@@ -561,8 +561,8 @@
                                           <constraint>
                                             <height>-1</height>
                                             <width>-1</width>
-                                            <x>943</x>
-                                            <y>423</y>
+                                            <x>747</x>
+                                            <y>386</y>
                                           </constraint>
                                           <sourceConnections>
                                             <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
@@ -1039,7 +1039,7 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>355</x>
+                                <x>229</x>
                                 <y>658</y>
                               </constraint>
                               <sourceConnections>
@@ -1713,8 +1713,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>422</x>
-                                <y>828</y>
+                                <x>159</x>
+                                <y>806</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.GeneralizationModel reference="../../.."/>
@@ -1800,8 +1800,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>940</x>
-                                <y>825</y>
+                                <x>706</x>
+                                <y>801</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.GeneralizationModel reference="../../.."/>
@@ -1887,8 +1887,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>662</x>
-                                <y>695</y>
+                                <x>453</x>
+                                <y>664</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.GeneralizationModel reference="../../.."/>
@@ -1930,8 +1930,8 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>660</x>
-                                      <y>526</y>
+                                      <x>468</x>
+                                      <y>489</y>
                                     </constraint>
                                     <sourceConnections>
                                       <net.java.amateras.uml.classdiagram.model.AggregationModel reference="../../.."/>
@@ -1973,145 +1973,14 @@
                                           <constraint>
                                             <height>-1</height>
                                             <width>-1</width>
-                                            <x>642</x>
-                                            <y>416</y>
+                                            <x>450</x>
+                                            <y>375</y>
                                           </constraint>
                                           <sourceConnections>
                                             <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
                                           </sourceConnections>
                                           <targetConnections/>
-                                          <children>
-                                            <net.java.amateras.uml.classdiagram.model.OperationModel>
-                                              <backgroundColor reference="../../../backgroundColor"/>
-                                              <foregroundColor reference="../../../foregroundColor"/>
-                                              <showIcon>true</showIcon>
-                                              <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                                              <listeners serialization="custom">
-                                                <java.beans.PropertyChangeSupport>
-                                                  <default>
-                                                    <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                                                    <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                                                  </default>
-                                                  <null/>
-                                                </java.beans.PropertyChangeSupport>
-                                              </listeners>
-                                              <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1"/>
-                                              <name>getApartment</name>
-                                              <type>Apartment</type>
-                                              <params>
-                                                <net.java.amateras.uml.classdiagram.model.Argument>
-                                                  <name>apid</name>
-                                                  <type>int</type>
-                                                </net.java.amateras.uml.classdiagram.model.Argument>
-                                              </params>
-                                              <isAbstract>false</isAbstract>
-                                              <isStatic>false</isStatic>
-                                              <isFinal>false</isFinal>
-                                            </net.java.amateras.uml.classdiagram.model.OperationModel>
-                                            <net.java.amateras.uml.classdiagram.model.OperationModel>
-                                              <backgroundColor reference="../../../backgroundColor"/>
-                                              <foregroundColor reference="../../../foregroundColor"/>
-                                              <showIcon>true</showIcon>
-                                              <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                                              <listeners serialization="custom">
-                                                <java.beans.PropertyChangeSupport>
-                                                  <default>
-                                                    <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                                                    <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                                                  </default>
-                                                  <null/>
-                                                </java.beans.PropertyChangeSupport>
-                                              </listeners>
-                                              <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                                              <name>getAvailableApartmentList</name>
-                                              <type>ArrayList&lt;Apartment&gt;</type>
-                                              <params/>
-                                              <isAbstract>false</isAbstract>
-                                              <isStatic>false</isStatic>
-                                              <isFinal>false</isFinal>
-                                            </net.java.amateras.uml.classdiagram.model.OperationModel>
-                                            <net.java.amateras.uml.classdiagram.model.OperationModel>
-                                              <backgroundColor reference="../../../backgroundColor"/>
-                                              <foregroundColor reference="../../../foregroundColor"/>
-                                              <showIcon>true</showIcon>
-                                              <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                                              <listeners serialization="custom">
-                                                <java.beans.PropertyChangeSupport>
-                                                  <default>
-                                                    <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                                                    <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                                                  </default>
-                                                  <null/>
-                                                </java.beans.PropertyChangeSupport>
-                                              </listeners>
-                                              <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                                              <name>addApartment</name>
-                                              <type>boolean</type>
-                                              <params>
-                                                <net.java.amateras.uml.classdiagram.model.Argument>
-                                                  <name>apartment</name>
-                                                  <type>Apartment</type>
-                                                </net.java.amateras.uml.classdiagram.model.Argument>
-                                              </params>
-                                              <isAbstract>false</isAbstract>
-                                              <isStatic>false</isStatic>
-                                              <isFinal>false</isFinal>
-                                            </net.java.amateras.uml.classdiagram.model.OperationModel>
-                                            <net.java.amateras.uml.classdiagram.model.OperationModel>
-                                              <backgroundColor reference="../../../backgroundColor"/>
-                                              <foregroundColor reference="../../../foregroundColor"/>
-                                              <showIcon>true</showIcon>
-                                              <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                                              <listeners serialization="custom">
-                                                <java.beans.PropertyChangeSupport>
-                                                  <default>
-                                                    <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                                                    <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                                                  </default>
-                                                  <null/>
-                                                </java.beans.PropertyChangeSupport>
-                                              </listeners>
-                                              <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                                              <name>updateApartment</name>
-                                              <type>boolean</type>
-                                              <params>
-                                                <net.java.amateras.uml.classdiagram.model.Argument>
-                                                  <name>apartment</name>
-                                                  <type>Apartment</type>
-                                                </net.java.amateras.uml.classdiagram.model.Argument>
-                                              </params>
-                                              <isAbstract>false</isAbstract>
-                                              <isStatic>false</isStatic>
-                                              <isFinal>false</isFinal>
-                                            </net.java.amateras.uml.classdiagram.model.OperationModel>
-                                            <net.java.amateras.uml.classdiagram.model.OperationModel>
-                                              <backgroundColor reference="../../../backgroundColor"/>
-                                              <foregroundColor reference="../../../foregroundColor"/>
-                                              <showIcon>true</showIcon>
-                                              <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                                              <listeners serialization="custom">
-                                                <java.beans.PropertyChangeSupport>
-                                                  <default>
-                                                    <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                                                    <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                                                  </default>
-                                                  <null/>
-                                                </java.beans.PropertyChangeSupport>
-                                              </listeners>
-                                              <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                                              <name>deleteApartment</name>
-                                              <type>boolean</type>
-                                              <params>
-                                                <net.java.amateras.uml.classdiagram.model.Argument>
-                                                  <name>apid</name>
-                                                  <type>int</type>
-                                                </net.java.amateras.uml.classdiagram.model.Argument>
-                                              </params>
-                                              <isAbstract>false</isAbstract>
-                                              <isStatic>false</isStatic>
-                                              <isFinal>false</isFinal>
-                                            </net.java.amateras.uml.classdiagram.model.OperationModel>
-                                          </children>
+                                          <children/>
                                           <filterProperty/>
                                           <propertyDescriptors>
                                             <org.eclipse.ui.views.properties.TextPropertyDescriptor>
@@ -6885,8 +6754,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1625</x>
-        <y>583</y>
+        <x>1505</x>
+        <y>690</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -6956,8 +6825,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1424</x>
-        <y>589</y>
+        <x>1304</x>
+        <y>696</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -7027,8 +6896,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1216</x>
-        <y>586</y>
+        <x>1096</x>
+        <y>693</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -7098,8 +6967,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1622</x>
-        <y>509</y>
+        <x>1502</x>
+        <y>616</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -7177,8 +7046,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1417</x>
-        <y>513</y>
+        <x>1297</x>
+        <y>620</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -7256,8 +7125,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1214</x>
-        <y>514</y>
+        <x>1094</x>
+        <y>621</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -7360,8 +7229,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1394</x>
-              <y>103</y>
+              <x>1393</x>
+              <y>95</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
@@ -7593,8 +7462,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1607</x>
-        <y>351</y>
+        <x>1487</x>
+        <y>458</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -7626,234 +7495,14 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1595</x>
-              <y>438</y>
+              <x>1475</x>
+              <y>545</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
             </sourceConnections>
             <targetConnections/>
-            <children>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1"/>
-                <name>getApartment</name>
-                <type>ApartmentDTO</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apid</name>
-                    <type>int</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>createApartment</name>
-                <type>void</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>dto</name>
-                    <type>ApartmentDTO</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>updateApartment</name>
-                <type>void</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apid</name>
-                    <type>int</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>dto</name>
-                    <type>ApartmentDTO</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>deleteApartment</name>
-                <type>void</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apid</name>
-                    <type>int</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>getApartmentByte</name>
-                <type>byte[]</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apid</name>
-                    <type>int</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>createApartmentByByte</name>
-                <type>void</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apartmentByte</name>
-                    <type>byte[]</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>updateApartmentByByte</name>
-                <type>void</type>
-                <params>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apid</name>
-                    <type>int</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                  <net.java.amateras.uml.classdiagram.model.Argument>
-                    <name>apartmentByte</name>
-                    <type>byte[]</type>
-                  </net.java.amateras.uml.classdiagram.model.Argument>
-                </params>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-              <net.java.amateras.uml.classdiagram.model.OperationModel>
-                <backgroundColor reference="../../../../../../../../backgroundColor"/>
-                <foregroundColor reference="../../../../../../../../foregroundColor"/>
-                <showIcon>true</showIcon>
-                <parent class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
-                <listeners serialization="custom">
-                  <java.beans.PropertyChangeSupport>
-                    <default>
-                      <source class="net.java.amateras.uml.classdiagram.model.OperationModel" reference="../../../.."/>
-                      <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
-                    </default>
-                    <null/>
-                  </java.beans.PropertyChangeSupport>
-                </listeners>
-                <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
-                <name>getApartmentByteList</name>
-                <type>ArrayList&lt;byte[]&gt;</type>
-                <params/>
-                <isAbstract>false</isAbstract>
-                <isStatic>false</isStatic>
-                <isFinal>false</isFinal>
-              </net.java.amateras.uml.classdiagram.model.OperationModel>
-            </children>
+            <children/>
             <filterProperty/>
             <propertyDescriptors>
               <org.eclipse.ui.views.properties.TextPropertyDescriptor>
@@ -7966,8 +7615,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1406</x>
-        <y>348</y>
+        <x>1286</x>
+        <y>455</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -7999,8 +7648,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1391</x>
-              <y>440</y>
+              <x>1271</x>
+              <y>547</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
@@ -8151,8 +7800,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1216</x>
-        <y>346</y>
+        <x>1096</x>
+        <y>453</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -8184,8 +7833,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1180</x>
-              <y>441</y>
+              <x>1060</x>
+              <y>548</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>

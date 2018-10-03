@@ -8,12 +8,12 @@ import org.apache.tomcat.util.codec.binary.Base64;
 
 import onlinerealestateproject.controller.SessionManager;
 
-public class CryptoManager {
-	private static CryptoManager cryptoManager = new CryptoManager();
+public class SecurityManager {
+	private static SecurityManager cryptoManager = new SecurityManager();
 
-	public static CryptoManager getInstance() {
+	public static SecurityManager getInstance() {
 		if (cryptoManager == null)
-			cryptoManager = new CryptoManager();
+			cryptoManager = new SecurityManager();
 		return cryptoManager;
 	}
 

@@ -8,15 +8,15 @@ import org.apache.tomcat.util.codec.binary.Base64;
 
 import onlinerealestateproject.controller.SessionManager;
 
-public class Crypto {
-	private static Crypto cryptoManager = new Crypto();
+public class CryptoManager {
+	private static CryptoManager cryptoManager = new CryptoManager();
 
-	public static Crypto getInstance() {
+	public static CryptoManager getInstance() {
 		if (cryptoManager == null)
-			cryptoManager = new Crypto();
+			cryptoManager = new CryptoManager();
 		return cryptoManager;
 	}
-	
+
 //	public static void main(String[] args) {
 //		String key = "Bar19346Bcr12345";
 //		String initVector = "RandomInitVector"; 

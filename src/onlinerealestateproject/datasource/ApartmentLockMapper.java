@@ -1,8 +1,7 @@
-package onlinerealestateproject.lockmapper;
+package onlinerealestateproject.datasource;
 
 import java.util.ArrayList;
 
-import onlinerealestateproject.datasource.DataMapperException;
 import onlinerealestateproject.domain.Apartment;
 
 public interface ApartmentLockMapper {

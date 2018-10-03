@@ -2,7 +2,9 @@ package onlinerealestateproject.dto;
 
 import java.util.ArrayList;
 
+import onlinerealestateproject.datasource.ApartmentLockMapper;
 import onlinerealestateproject.datasource.ApartmentMapper;
+import onlinerealestateproject.datasource.imp.ApartmentLockMapperImpl;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.util.UnitofWorkApartment;
@@ -27,7 +29,8 @@ public class ApartmentAssembler {
 	public static ArrayList<ApartmentDTO> writeDTOList(){
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		ArrayList<Apartment> apartmentList = apartmentMapper.findAllApartments();
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		ArrayList<Apartment> apartmentList = apartmentLockMapper.findAllApartments();
 		ArrayList<ApartmentDTO> result = new ArrayList<ApartmentDTO>();
 		for(Apartment apartment : apartmentList) {
 			ApartmentDTO temp = writeDTO(apartment);
@@ -39,7 +42,8 @@ public class ApartmentAssembler {
 	public static void updateApartment(int apid, ApartmentDTO dto) {
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		Apartment apartment = apartmentMapper.find(apid);
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		Apartment apartment = apartmentLockMapper.find(apid);
 		if(apartment == null)
 			throw new RuntimeException("Apartment does not exist: " + dto.getApartmentName());
 		apartment.setStartRentTime(dto.getStartRentTime());
@@ -50,25 +54,27 @@ public class ApartmentAssembler {
 		apartment.setLocation(dto.getLocation());
 		apartment.setApartmentName(dto.getApartmentName());
 		
-		apartmentMapper.update(apartment);
+		apartmentLockMapper.update(apartment);
 	}
 	
 	public static void createApartment(ApartmentDTO dto) {
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
 		Apartment apartment = new Apartment(dto.getApid(), 
 				dto.getStartRentTime(), dto.getEndRentTime(), 
 				dto.getAvailability(), dto.getPrice(), 
 				dto.getAcreage(), dto.getLocation(), 
 				dto.getApartmentName());
 		
-		apartmentMapper.insert(apartment);
+		apartmentLockMapper.insert(apartment);
 	}
 	
 	public static void deleteApartment(int apid) {
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		apartmentMapper.delete(apid);
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		apartmentLockMapper.delete(apid);
 	}
 
 }

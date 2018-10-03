@@ -9,7 +9,9 @@ import java.io.OutputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import onlinerealestateproject.datasource.ApartmentLockMapper;
 import onlinerealestateproject.datasource.ApartmentMapper;
+import onlinerealestateproject.datasource.imp.ApartmentLockMapperImpl;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.dto.ApartmentAssembler;
 import onlinerealestateproject.dto.ApartmentDTO;
@@ -22,7 +24,8 @@ public class ApartmentServiceBeanImp implements ApartmentServiceBean{
 	public ApartmentDTO getApartment(int apid) throws RemoteException {
 		// TODO Auto-generated method stub
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		return new ApartmentAssembler().writeDTO(apartmentMapper.find(apid));
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		return new ApartmentAssembler().writeDTO(apartmentLockMapper.find(apid));
 	}
 
 	@Override
@@ -49,7 +52,8 @@ public class ApartmentServiceBeanImp implements ApartmentServiceBean{
 		// TODO Auto-generated method stub
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		return ApartmentDTO.object2Byte(new ApartmentAssembler().writeDTO(apartmentMapper.find(apid)));
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		return ApartmentDTO.object2Byte(new ApartmentAssembler().writeDTO(apartmentLockMapper.find(apid)));
 	}
 
 	@Override

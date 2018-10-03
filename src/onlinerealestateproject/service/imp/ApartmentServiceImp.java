@@ -2,7 +2,9 @@ package onlinerealestateproject.service.imp;
 
 import java.util.ArrayList;
 
+import onlinerealestateproject.datasource.ApartmentLockMapper;
 import onlinerealestateproject.datasource.ApartmentMapper;
+import onlinerealestateproject.datasource.imp.ApartmentLockMapperImpl;
 import onlinerealestateproject.datasource.imp.ApartmentMapperImpl;
 import onlinerealestateproject.domain.Apartment;
 import onlinerealestateproject.service.ApartmentService;
@@ -18,20 +20,23 @@ public class ApartmentServiceImp implements ApartmentService{
 	public Apartment getApartment(int apid) {
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		return apartmentMapper.find(apid);
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		return apartmentLockMapper.find(apid);
 	}
 	
 	public ArrayList<Apartment> getAvailableApartmentList(){
     	UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		return apartmentMapper.findAllApartments();
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		return apartmentLockMapper.findAllApartments();
 	}
 	
 	public boolean addApartment(Apartment apartment) {
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
 		
-		if(apartmentMapper.insert(apartment)) {
+		if(apartmentLockMapper.insert(apartment)) {
 			return true;
 		}
 		return false;
@@ -40,8 +45,9 @@ public class ApartmentServiceImp implements ApartmentService{
 	public boolean updateApartment(Apartment apartment) {
 		UnitofWorkApartment.newCurrent();
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-
-		if(apartmentMapper.update(apartment)) {
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		
+		if(apartmentLockMapper.update(apartment)) {
 			return true;
 		}
 		return false;
@@ -49,7 +55,8 @@ public class ApartmentServiceImp implements ApartmentService{
 	
 	public boolean deleteApartment(int apid) {
 		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-		if(apartmentMapper.delete(apid)) {
+		ApartmentLockMapper apartmentLockMapper = new ApartmentLockMapperImpl(apartmentMapper);
+		if(apartmentLockMapper.delete(apid)) {
 			return true;
 		}
 		return false;

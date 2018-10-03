@@ -1,5 +1,10 @@
-Test Scenarios （User: u1, 123; Administrator: a1, 123）
+## Test Scenarios
+
 In order to test the project via deploy website, please follow the instruction in the following text:
+
+UserName and Password:
+User: u1, 123; 
+Administrator: a1, 123
 
 FeatureA:
 1.	Input the username and the password (u1, 123) and click Log In

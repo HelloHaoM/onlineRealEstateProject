@@ -1,7 +1,7 @@
 <%@page import="onlinerealestateproject.datasource.imp.ApartmentMapperImpl"%>
 <%@page import="onlinerealestateproject.datasource.ApartmentMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.util.*, onlinerealestateproject.domain.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
+    pageEncoding="UTF-8" session="false" import="java.util.*, java.lang.*, onlinerealestateproject.util.*, onlinerealestateproject.domain.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,8 @@
 <body>
 <%
 	String id = request.getParameter("id");
+	//HttpSession session = request.getSession();
+	//String id = session.getAttribute("userId").toString();
 %>
 <section class="jumbotron text-center">
     <div class="container">
@@ -47,14 +49,14 @@
                     <tr>
                     	<td>Apartment Acreage:</td>
                     	<td>
-                    		<input class="form-control" name="acreage" required="required"></input>
+                    		<input class="form-control" type="number" name="acreage" required="required"></input>
                     	</td>
                     </tr>
                     
                     <tr>
                     	<td>Apartment Price:</td>
                     	<td>
-                    		<input class="form-control" name="price" required="required"></input>
+                    		<input class="form-control" type="number" name="price" required="required"></input>
                     	</td>
                     </tr>
                     
@@ -87,7 +89,8 @@
             <div class="row">
                 <div class="col-sm-12  col-md-6">
                 	<input type="hidden" name="id" value="<%= id %>"></input>
-                    <input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input>
+                    <!-- <input type="submit" name="back" value="Back" class="btn btn-lg btn-block btn-light" ></input> -->
+                    <a class="btn btn-lg btn-block btn-light" href="../RealEstate/RealEstatePage.jsp?id=<%= id %>">Back</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
 <%--                 		<input type="hidden" name="id" value="<%=id%>"></input> --%>

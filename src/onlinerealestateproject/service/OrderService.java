@@ -1,5 +1,7 @@
 package onlinerealestateproject.service;
 
+import java.util.ArrayList;
+
 import onlinerealestateproject.domain.Order;
 
 /**
@@ -8,6 +10,8 @@ import onlinerealestateproject.domain.Order;
  */
 
 public interface OrderService {
+	// find all order of a user
+	public ArrayList<Order> getAllOrder(int uid);
 	// make an order
 	public boolean makeOrder(int uid, int apid, String inspectionTime);
 	// delete an order

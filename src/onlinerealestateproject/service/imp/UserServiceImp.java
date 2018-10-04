@@ -18,6 +18,11 @@ import onlinerealestateproject.util.UserFactory;
  */
 public class UserServiceImp implements UserService {
 	
+	public User findUser(int id) {
+		UserMapper userMapper = new UserMapperImpl();
+		return userMapper.find(id);
+	}
+	
 	public int findUserId(String userName, String password) {
 		ClientMapper clientMapper = new ClientMapperImpl();
 		return clientMapper.findIdByAccount(userName, password);
@@ -53,7 +58,7 @@ public class UserServiceImp implements UserService {
 	
 	public boolean register(String firstName, String lastName, String userName, String password) {
 		// create a client and the id and oid is defined to 999 and 0(which are default)
-				Client client = (Client) UserFactory.createUser("client", 999, firstName, lastName, userName, password, 0, "client");
+		Client client = (Client) UserFactory.createUser("client", 999, firstName, lastName, userName, password, 0, "client");
 		ClientMapper clientMapper = new ClientMapperImpl();
 		
 		// insert by client mapper

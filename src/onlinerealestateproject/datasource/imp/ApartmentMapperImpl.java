@@ -124,10 +124,4 @@ import onlinerealestateproject.datasource.DataMapperException;
 	}
 
 
-
-
-
-
-
-
 }

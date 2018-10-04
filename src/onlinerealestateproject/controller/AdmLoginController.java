@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import onlinerealestateproject.service.UserService;
 import onlinerealestateproject.service.imp.UserServiceImp;
@@ -41,12 +42,19 @@ public class AdmLoginController extends ActionServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
+		HttpSession httpSession = request.getSession();
+		SessionManager.getInstance().setHttpSession(httpSession);
+		
 		if(request.getParameter("submit").equals("login")) {
 			System.out.println(request.getParameter("username"));
 			String userName = request.getParameter("username");
 			String password = request.getParameter("password");
 			if(userService.admLogin(userName, password)) {
 				int id = userService.findUserId(userName, password);
+				httpSession.setAttribute("userId", id);
+				httpSession.setAttribute("userName", userName);
+				SessionManager.getInstance().setHttpSession(httpSession);
 				response.sendRedirect("./RealEstate/RealEstatePage.jsp?id="+id+"&userName="+userName);
 			}
 			else {

@@ -1,7 +1,12 @@
+<%@page import="onlinerealestateproject.dto.ApartmentDTO"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentServiceBean"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentService"%>
 <%@page import="onlinerealestateproject.datasource.imp.ApartmentMapperImpl"%>
 <%@page import="onlinerealestateproject.datasource.ApartmentMapper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.util.*, onlinerealestateproject.domain.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
+    pageEncoding="UTF-8" session="false" import="java.util.*, java.lang.*, onlinerealestateproject.util.*, onlinerealestateproject.domain.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +19,22 @@
 </head>
 <body>
 <%
-	int id = Integer.parseInt(request.getParameter("id"));
-	int apid = Integer.parseInt(request.getParameter("apid"));
-	UnitofWorkApartment.newCurrent();
+	HttpSession session = request.getSession();
+	//int id = Integer.parseInt(request.getParameter("id"));
+	//int apid = Integer.parseInt(request.getParameter("apid"));
+	
+	int id = Integer.parseInt(session.getAttribute("userId").toString());
+	int apid = Integer.parseInt(session.getAttribute("apartmentId").toString());
+	
+/* 	UnitofWorkApartment.newCurrent();
 	ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
 	
-	Apartment apartment = apartmentMapper.find(apid);
+	Apartment apartment = apartmentMapper.find(apid); */
+	
+	//ApartmentService apartmentService = new ApartmentServiceImp();
+	//Apartment apartment = apartmentService.getApartment(apid);
+	ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
+	ApartmentDTO apartment = ApartmentDTO.byte2Object(apartmentServiceBean.getApartmentByte(apid));
 	
 	String info = (String) request.getAttribute("info");
 	if(info != null){

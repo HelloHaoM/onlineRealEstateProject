@@ -1,8 +1,18 @@
+<%@page import="onlinerealestateproject.dto.ApartmentDTO"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentServiceBean"%>
+<%@page import="onlinerealestateproject.dto.OrderDTO"%>
+<%@page import="onlinerealestateproject.service.imp.OrderServiceBeanImp"%>
+<%@page import="onlinerealestateproject.service.OrderServiceBean"%>
+<%@page import="onlinerealestateproject.service.imp.ApartmentServiceImp"%>
+<%@page import="onlinerealestateproject.service.ApartmentService"%>
+<%@page import="onlinerealestateproject.service.OrderService"%>
+<%@page import="onlinerealestateproject.service.imp.OrderServiceImp"%>
 <%@page import="onlinerealestateproject.util.UnitofWorkApartment"%>
 <%@page import="onlinerealestateproject.domain.Apartment"%>
 <%@page import="onlinerealestateproject.domain.Order"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
+    pageEncoding="UTF-8" session="false" import="java.util.*, java.lang.*, onlinerealestateproject.*, onlinerealestateproject.datasource.*, onlinerealestateproject.datasource.imp.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +25,9 @@
 </head>
 <body>
 <%
-	int uid = Integer.parseInt(request.getParameter("id"));
+	//int uid = Integer.parseInt(request.getParameter("id"));
+	HttpSession session = request.getSession();
+	int uid = Integer.parseInt(session.getAttribute("userId").toString());
 	System.out.println(uid);
 	
 	String info = (String) request.getAttribute("info");
@@ -47,13 +59,24 @@
                     </thead>
                     <tbody>
                     	<%
-                    		UnitofWorkApartment.newCurrent();
+/*                     		UnitofWorkApartment.newCurrent();
                     		OrderMapper orderMapper = new OrderMapperImpl();
                     		ApartmentMapper apartmentMapper = new ApartmentMapperImpl();
-                    		ArrayList<Order> orderList = orderMapper.findAllOrders(uid);
+                    		ArrayList<Order> orderList = orderMapper.findAllOrders(uid); */
+                    		//OrderService orderService = new OrderServiceImp();
+                    		//ArrayList<Order> orderList = orderService.getAllOrder(uid);
+                    		OrderServiceBean orderServiceBean = new OrderServiceBeanImp();
+                    		ArrayList<byte[]> temp = orderServiceBean.getOrderByteList(uid);
+                    		ArrayList<OrderDTO> orderList = OrderDTO.byteList2ObjectList(temp);
                     		
-                    		for(Order order : orderList){
-                    			Apartment apartment = apartmentMapper.find(order.getApid());
+                    		//ApartmentService apartmentService = new ApartmentServiceImp();
+                    		ApartmentServiceBean apartmentServiceBean = new ApartmentServiceBeanImp();
+                    		
+                    		
+                    		for(OrderDTO order : orderList){
+                    			//Apartment apartment = apartmentMapper.find(order.getApid());
+                    			//Apartment apartment = apartmentService.getApartment(order.getApid());
+                    			ApartmentDTO apartment = ApartmentDTO.byte2Object(apartmentServiceBean.getApartmentByte(order.getApid()));
                     	%>
                     		<tr>
                     		<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
@@ -64,6 +87,7 @@
                             	<td class="text-right">
                             	<input type="hidden" name="id" value="<%= order.getUid() %>"></input>
                             	<input type="hidden" name="order-id" value="<%= order.getOid() %>"></input>
+                            	<input type="hidden" name="apartment-id" value="<%= order.getApid() %>"></input>
                             	<input class="btn btn-sm btn-success" type="submit" name="update" value="Update"> </input>
                           		<input class="btn btn-sm btn-danger" type="submit" name="delete" value="Delete"> </input> 
                           		</td>

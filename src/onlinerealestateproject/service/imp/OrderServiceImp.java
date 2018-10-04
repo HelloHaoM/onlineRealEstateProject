@@ -1,5 +1,7 @@
 package onlinerealestateproject.service.imp;
 
+import java.util.ArrayList;
+
 import onlinerealestateproject.datasource.OrderMapper;
 import onlinerealestateproject.datasource.imp.OrderMapperImpl;
 import onlinerealestateproject.domain.Client;
@@ -13,6 +15,10 @@ import onlinerealestateproject.service.OrderService;
 
 public class OrderServiceImp implements OrderService{
 	
+	public ArrayList<Order> getAllOrder(int uid){
+		OrderMapper orderMapper = new OrderMapperImpl();
+		return orderMapper.findAllOrders(uid);
+	}
 	
 	public boolean makeOrder(int uid, int apid, String inspectionTime) {
 		// create an new order

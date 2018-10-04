@@ -1,5 +1,6 @@
+<%@page import="onlinerealestateproject.controller.SessionManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,13 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%
+	HttpSession httpSession = request.getSession();
+	SessionManager.getInstance().setHttpSession(httpSession);
+	HttpSession session = SessionManager.getInstance().getHttpSession();
+	String userName="";
+	System.out.println("session id: " + SessionManager.getInstance().getHttpSessionId());
+%>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -30,6 +38,21 @@
                 <p class="form-title">
                     Sign In
                 </p>
+                <P class="session-info">
+                	<%
+                		if(SessionManager.getInstance().isNewSession()){
+                			out.print("Hello, New User");
+                		}
+                		else{
+                			if(SessionManager.getInstance().getHttpSession()
+                					.getAttribute("userName") != null){
+                				userName = session.getAttribute("userName").toString();
+                				System.out.println("userName: " + userName);
+                			} 
+                			out.print("Welcome Back " + userName);
+                		}
+                	%>
+                </P>
                 <p class="alter-info">
                 	<%
 						String info = (String) request.getAttribute("info");
@@ -38,7 +61,7 @@
 					%>
                 </p>
                 <form class="login" action="LoginAndRegisterController" method="post">
-                <input type="text" name="username" placeholder="Username" required="required" />
+                <input type="text" name="username" placeholder="Username" value="<%= userName %>" required="required" />
                 <input type="password" name="password" placeholder="Password" required="required" />
                 <input type="submit" name="submit" value="login" class="btn btn-success btn-sm" />
                 <div class="remember-register">

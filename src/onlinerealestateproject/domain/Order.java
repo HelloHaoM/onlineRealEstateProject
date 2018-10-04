@@ -27,10 +27,10 @@ public class Order {
 
 	
 	
-	public Order(int oid, String inspStartTime, String inspEndTime, int uid, int apid2) {
+	public Order(int oid, String inspStartTime, String inspEndTime, int uid, int apid) {
 		// TODO Auto-generated constructor stub
 		this.oid = oid;
-		this.apid = apid2;
+		this.apid = apid;
 		this.inspStartTime = inspStartTime;
 		this.inspEndTime = inspEndTime;
 		this.uid = uid;

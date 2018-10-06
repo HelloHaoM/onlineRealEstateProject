@@ -53,7 +53,7 @@ drop sequence if exists sql_au_inc_ord;
 create sequence sql_au_inc_ord increment by 1 minvalue 1 no maxvalue start with 1;
 
 drop table if exists inspection_order;
-create table inspection_order (oid int not null UNIQUE default nextval('sql_au_inc_ord'),inspStartTime varchar(255), inspEndTime varchar(255),  primary key(oid,id,apid),id int, apid int, foreign key(id) references client(id), foreign key(apid) references apartment(apid));
+create table inspection_order (oid int not null UNIQUE default nextval('sql_au_inc_ord'),inspStartTime varchar(255), inspEndTime varchar(255),  primary key(oid,id,apid),id int, apid int, foreign key(id) references users(id), foreign key(apid) references apartment(apid));
 insert into inspection_order(inspStartTime, inspEndTime,id, apid) values ('08/09/2018','09/09/2018', 1, 1);
 insert into inspection_order(inspStartTime, inspEndTime,id, apid) values ('08/09/2018','09/09/2018', 1, 2);
 insert into inspection_order(inspStartTime, inspEndTime,id, apid) values ('08/09/2018','09/09/2018', 1, 3);

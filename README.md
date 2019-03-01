@@ -14,11 +14,11 @@ A real estate website to search add, update, deltet apartments.
 
 * Clone or download the project
 
-* Open the Apache Server
-
 * Open the Postgres Server
 
 * Run the SQL script
+
+* Open the Apache Server (will be running when run the project if it is set up successfuly)
 
 * Run the project on the server
 

@@ -1,10 +1,32 @@
 ## Online Real Estate
 
-A real estate website to search add, update, deltet apartment.
+A real estate website to search add, update, deltet apartments.
 
-## Test Scenarios
+## Prerequisties
+
+* Java
+
+* Apache
+
+* Postgres
+
+## Running
+
+* Clone or download the project
+
+* Open the Apache Server
+
+* Open the Postgres Server
+
+* Run the SQL script
+
+* Run the project on the server
+
+## Deployment
 
 Deploy Website: https://pacific-anchorage-97765.herokuapp.com/
+
+## Test Scenarios
 
 In order to test the project via deploy website, please follow the instruction in the following text:
 
